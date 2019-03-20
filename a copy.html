@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+    <style type="text/css">
+        body,div,input{
+            margin:0px;
+            padding:0px;
+        }
+        body{
+            background-color: blue
+        }
+        .box{
+            width: 610px;
+            height: 600px;
+            margin: 50px auto;
+            background: white;
+            padding-left: 10px;
+        }
+        .gender{
+            width: 600px;
+            height: 200px;
+            padding-left: 10px;
+        }
+        .age{
+            width: 600px;
+            height: 100px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding-left: 10px;
+        }
+        .country{
+            width: 600px;
+            height: 100px;
+            padding-left: 10px;
+        }
+        .continue{
+            width: 100px;
+            height: 50px;
+            margin: 10px auto;
+            background: green;
+            color:white;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="gender">
+            <div>gender</div>
+            <div> 
+                <input value="m" name="gender" type="radio"/>Male
+            </div>
+            <div>
+                <input value="f" name="gender" type="radio"/>Female
+            </div>
+        </div>
+        <div class="age">
+            <div>what is your age(in year)?</div>
+            <input type="text" placeholder="your answer"/>
+        </div>
+        <div class="country">
+            <div>which country do you want to live in?</div>
+            <div>
+                <input value="Canada" name="country" type="radio"/>Canada
+            </div>
+            <div>    
+                <input value="Mexico" name="country" type="radio"/>Mexico
+            </div>
+            <div>
+                <input value="USA" name="country" type="radio"/>USA
+            </div>
+        </div>
+    </div>
+    <div class="continue">Continue</div>
+</body>
+</html>
