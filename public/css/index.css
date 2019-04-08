@@ -1,0 +1,72 @@
+body,div,a,header,footer{margin:0px;padding:0px;}
+header{
+    width:1680px;
+    height:60px;
+    background: blue;
+}
+body{
+    background:pink;
+    width:1680px;
+}
+.groupname{
+    width: 1431px;
+    height: 60px;
+    color: white;
+    font-size: 30px;
+    font-style: italic;
+    text-align: center;
+    line-height: 60px;
+    float:left
+}
+.login,.register{
+    width:100px;
+    height:60px;
+    float: right;
+}
+
+.login a,.register a{
+    color:red;
+    font-size: 30px;
+    text-align: center;
+    line-height: 60px;
+    text-decoration: none;
+}
+.container{
+    width:1731px;
+}
+.list li{
+    margin-top:50px;
+    font-size: 35px;
+    color:green;
+}
+.list{
+    width:200px;
+    background: orange;
+    float:left;
+}
+.content{
+    width:1450px;
+    padding: 20px;
+    float: left;
+}
+.one_tutor{
+    width: 300px;
+    height: 300px;
+    border:1px solid black;
+    float: left;
+    margin-right: 30px;
+    margin-bottom:30px;
+    background: white
+}
+.tutor_pic{
+    width:300px;
+    height:200px;
+}
+.tutor_name{
+    width:300px;
+    height:100px;
+    font-size: 30px;
+    text-align: center;
+    line-height: 100px;
+    border-top:1px solid black;
+}
