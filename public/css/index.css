@@ -23,7 +23,9 @@ body{
     height:60px;
     float: right;
 }
-
+.register{
+    margin-right:20px;
+}
 .login a,.register a{
     color: #015249;
     font-size: 30px;
