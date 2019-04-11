@@ -13,7 +13,16 @@ app.use(express.static("./public"));
 
 app.get("/",router.getIndex);
 
-app.get("/findstudent",function(req,res){
-    res.json(a);  
+app.get("/findstudent/",function(req,res){
+    res.json(a); 
+
 });
+app.get("/user/:name",router.showUser);
+
+app.get("/api",function(req,res){
+	findAllUser(``)
+})
+
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+
