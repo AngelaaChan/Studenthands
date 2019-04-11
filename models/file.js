@@ -1,6 +1,32 @@
-var tutorlist =[{"name":"name1","age":1,"subject":"Maths"},{"name":"name2","age":2,"subject":"Physics"},{"name":"name3","age":3,"subject":"Chemical"}];
-var studentlist = [{"name":"abc","age":11,"subject":"English"},{"name":"def","age":22,"subject":"IT"},{"name":"ghi","age":33,"subject":"Chemical"}];
-
+var tutorlist =[{"name":"name1","age":1,"subject":"Maths"},
+				{"name":"name2","age":2,"subject":"Physics"},
+				{"name":"name3","age":3,"subject":"Chemical"}];
+var studentlist = [{"name":"abc","age":11,"subject":"English"},
+				   {"name":"def","age":22,"subject":"IT"},
+				   {"name":"ghi","age":33,"subject":"Chemical"}];
+/*
+	student :{
+		"name": String
+		"age": int
+		"University": String
+		"Gender" : String
+		"Email" : String
+		"subject" : String
+		"Balance" : float
+	}
+	tutor :{
+		"name": String
+		"age": int
+		"University": String
+		"Gender" : String
+		"Email" : String
+		"subject" : String
+		"personal description" : String
+		"Balance" : float
+		"Rate" : float
+		"Suburb" : String
+	}
+ */
 
 
 var findstudentByName = function(name,callback){
@@ -71,12 +97,12 @@ var findtutorBySubject = function(subject,callback){
 	})(0)
 };
 
-var createStudent = function(query,callback){
+var addStudent = function(query,callback){
 	studentlist.push(query);
 	callback(studentlist);
 };
 
-var createTutor = function(query,callback){
+var addTutor = function(query,callback){
 	tutorlist.push(query);
 	callback(tutorlist);
 }
@@ -173,8 +199,8 @@ module.exports.findtutorByName = findtutorByName;
 module.exports.findstudentByName = findstudentByName;
 module.exports.findstudentBySubject = findstudentBySubject;
 module.exports.findtutorBySubject = findtutorBySubject;
-module.exports.createStudent = createStudent;
-module.exports.createTutor = createTutor;
+module.exports.addStudent = addStudent;
+module.exports.addTutor = addTutor;
 module.exports.updateStudent = updateStudent;
 module.exports.updateTutor = updateTutor;
 module.exports.allStudent = allStudent;

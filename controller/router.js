@@ -52,14 +52,14 @@ exports.updateTutorInfo = function(req,res){
     });
 };
 
-exports.createNewStudent = function(req,res){
-    file.createStudent(req.query,function(students){
+exports.createStudent = function(req,res){
+    file.addStudent(req.query,function(students){
         res.json(students);
     });
 };
 
-exports.createNewTutor = function(req,res){
-    file.createTutor(req.query,function(tutors){
+exports.createTutor = function(req,res){
+    file.addTutor(req.query,function(tutors){
         res.json(tutors);
     });
 };

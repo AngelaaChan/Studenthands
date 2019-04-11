@@ -29,9 +29,9 @@ app.get("/updatestudent",router.updateStudentInfo);
 
 app.get("/updatetutor",router.updateTutorInfo);
 
-app.get("/createstudent",router.createNewStudent);
+app.get("/createstudent",router.createStudent);
 
-app.get("/createtutor",router.createNewTutor);
+app.get("/createtutor",router.createTutor);
 
 app.get("/delstudent/:name",router.delStudent);
 
