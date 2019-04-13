@@ -13,7 +13,7 @@ var app=express();
 //app.use(express.static("./public"));
 
 
-//app.get("/",router.getIndex);
+app.get("/",router.getIndex);
 
 app.get("/findstudent/:name",router.findstudentbyname);
 
@@ -21,7 +21,7 @@ app.get("/findtutor/:name",router.findtutorbyname);
 
 app.get("/findtutorate/:rate",router.findtutorbyrate);
 
-app.get("/allstudents",router.allstudents);
+app.get("/allstudents？",router.allstudents);
 
 app.get("/alltutors",router.alltutors);
 

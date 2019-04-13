@@ -1,6 +1,10 @@
 
 var db = require("../models/db.js");
 
+exports.getIndex = function(req,res){
+    res.render("index2.ejs");
+};
+
 exports.findstudentbyname = function(req,res){
 
     db.findstudent(req.params.name,function(student){
