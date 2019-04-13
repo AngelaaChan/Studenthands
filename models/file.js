@@ -28,181 +28,29 @@ var studentlist = [{"name":"abc","age":11,"subject":"English"},
 	}
  */
 
+const mongoose = require("mongoose");
 
-var findstudentByName = function(name,callback){
-	(function iterator(i){
-		if(i<studentlist.length){
-			if(name==studentlist[i].name){
-				callback(studentlist[i]);
-				return;
-			}else{
-				iterator(i+1);
-				return;
-			}
-		}else{
-			callback(null);
-			return;
-		}
-	})(0);
-};
+var studentSchema = mongoose.Schema(
+    {
+        "name":String,
+        "age":String,
+        "subject":String,
+        "University":String,
+        "Gender":String,
+        "Balance":String
+    }
+);
+mongoose.model('student',studentSchema);
+var student = mongoose.model('student');
 
-var findtutorByName = function(name,callback){
-	(function iterator(i){
-		if(i<tutorlist.length){
-			if(name==tutorlist[i].name){
-				callback(tutorlist[i]);
-				return;
-			}else{
-				iterator(i+1);
-				return;
-			}
-		}else{
-			callback(null);
-			return;
-		}
-	})(0);
-};
+const uri = "mongodb+srv://admin:zxcvb123@cluster0-rxn4r.mongodb.net/test?retryWrites=true";
 
-var findstudentBySubject = function(subject,callback){
-	(function iterator(i){
-		if(i<studentlist.length){
-			if(subject==studentlist[i].subject){
-				callback(studentlist[i]);
-				return;
-			}else{
-				iterator(i+1);
-				return;
-			}
-		}else{
-			callback(null);
-			return;
-		}
-	})(0)
-};
+mongoose.connect(uri,{ useNewUrlParser: true });
 
-var findtutorBySubject = function(subject,callback){
-	(function iterator(i){
-		if(i<tutorlist.length){
-			if(subject==tutorlist[i].subject){
-				callback(tutorlist[i]);
-				return;
-			}else{
-				iterator(i+1);
-				return;
-			}
-		}else{
-			callback(null);
-			return;
-		}
-	})(0)
-};
+const con = mongoose.connection;
+con.on('err',console.error.bind(console,"disconnect"));
+con.once('open',function(){
+    console.log("connected");
+});
 
-var addStudent = function(query,callback){
-	studentlist.push(query);
-	callback(studentlist);
-};
 
-var addTutor = function(query,callback){
-	tutorlist.push(query);
-	callback(tutorlist);
-}
-
-var updateStudent = function(query,callback){
-	var name = query.name;
-	//callback(studentlist);
-	(function iterator(i){
-		if(i<studentlist.length){
-			if(name==studentlist[i].name){
-				studentlist[i].age = query.age;
-				studentlist[i].subject = query.subject;
-				callback(studentlist);
-				return;
-			}else{
-				iterator(i+1);
-				return;
-			}
-		}else{
-			callback(studentlist);
-			return;
-		}
-	})(0);
-};
-
-var updateTutor = function(query,callback){
-	var name = query.name;
-	//callback(tutorlist);
-	(function iterator(i){
-		if(i<tutorlist.length){
-			if(name==tutorlist[i].name){
-				tutorlist[i].age = query.age;
-				tutorlist[i].subject = query.subject;
-				callback(tutorlist);
-				return;
-			}else{
-				iterator(i+1);
-				return;
-			}
-		}else{
-			callback(tutorlist);
-			return;
-		}
-	})(0);
-};
-
-var deleteStudent = function(name,callback){
-	(function iterator(i){
-		if(i<studentlist.length){
-			if(name==studentlist[i].name){
-				studentlist.splice(i,1);
-				callback(studentlist);
-				return;
-			}else{
-				iterator(i+1);
-				return;
-			}
-		}else{
-			callback(null);
-			return;
-		}
-	})(0);
-};
-
-var deleteTutor = function(name,callback){
-	(function iterator(i){
-		if(i<tutorlist.length){
-			if(name==tutorlist[i].name){
-				tutorlist.splice(i,1);
-				callback(tutorlist);
-				return;
-			}else{
-				iterator(i+1);
-				return;
-			}
-		}else{
-			callback(null);
-			return;
-		}
-	})(0);
-};
-
-var allStudent = function(callback){
-	callback(studentlist);
-	return;
-};
-
-var allTutor = function(callback){
-	callback(tutorlist);
-	return;
-}
-
-module.exports.findtutorByName = findtutorByName;
-module.exports.findstudentByName = findstudentByName;
-module.exports.findstudentBySubject = findstudentBySubject;
-module.exports.findtutorBySubject = findtutorBySubject;
-module.exports.addStudent = addStudent;
-module.exports.addTutor = addTutor;
-module.exports.updateStudent = updateStudent;
-module.exports.updateTutor = updateTutor;
-module.exports.allStudent = allStudent;
-module.exports.allTutor = allTutor;
-module.exports.deleteTutor = deleteTutor;

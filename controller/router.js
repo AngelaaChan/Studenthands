@@ -1,77 +1,68 @@
-var file = require("../models/file");
 
-exports.getIndex=function(req,res){
-    res.render("index.ejs");
-};
+var db = require("../models/db.js");
 
-exports.showstudentByName = function(req,res){
-	file.findstudentByName(req.params.name,function(student){
+exports.findstudentbyname = function(req,res){
+
+    db.findstudent(req.params.name,function(student){
         res.json(student);
     });
 };
 
-exports.showtutorByName = function(req,res){
-	file.findtutorByName(req.params.name,function(tutor){
+exports.findtutorbyname = function(req,res){
+    db.findtutor(req.params.name,function(tutor){
         res.json(tutor);
     });
 };
 
-exports.showstudentBySubject = function(req,res){
-    file.findstudentBySubject(req.params.subject,function(student){
-        res.json(student);
-    });
-};
-
-exports.showtutorBySubject = function(req,res){
-    file.findtutorBySubject(req.params.subject,function(tutor){
-        res.json(tutor);
-    });
-}
-
-exports.showAllstudent = function(req,res){
-    file.allStudent(function(students){
-        res.json(students);
-    });
-}
-
-exports.showAlltutor = function(req,res){
-    file.allTutor(function(tutors){
+exports.findtutorbyrate = function(req,res){
+    db.findtutorate(parseInt(req.params.Rate),function(tutors){
         res.json(tutors);
-    })
+    });
 };
 
-exports.updateStudentInfo = function(req,res){
-    file.updateStudent(req.query,function(students){
+exports.allstudents = function(req,res){
+    db.allstudent(function(students){
         res.json(students);
     });
 };
 
-exports.updateTutorInfo = function(req,res){
-    file.updateTutor(req.query,function(tutors){
+exports.alltutors = function(req,res){
+    db.alltutor(function(tutors){
         res.json(tutors);
     });
 };
 
 exports.createStudent = function(req,res){
-    file.addStudent(req.query,function(students){
-        res.json(students);
+    db.insertstudent(req.query,function(result){
+        res.json(result);
     });
 };
 
 exports.createTutor = function(req,res){
-    file.addTutor(req.query,function(tutors){
-        res.json(tutors);
+    db.insertutor(req.query,function(result){
+        res.json(result);
     });
 };
 
-exports.delStudent= function(req,res){
-    file.delStudent(req.params.name,function(students){
-        res.json(students);
+exports.updateStudentsub = function(req,res){
+    db.updatestudentsubject(req.query,function(result){
+        res.json(result);
     });
 };
 
-exports.delTutor = function(req,res){
-    file.deleteTutor(req.params.name,function(tutors){
-        res.json(tutors);
+exports.updateTutorsub = function(req,res){
+    db.updatetutorsubject(req.query,function(result){
+        res.json(result);
+    });
+};
+
+exports.delstudent = function(req,res){
+    db.delstudentbyname(req.params.name,function(result){
+        res.json(result);
+    });
+};
+exports.deltutor = function(req,res){
+    db.deltutorbyname(req.params.name,function(result){
+        res.json(result);
     });
 };
