@@ -21,7 +21,7 @@ app.get("/findtutor/:name",router.findtutorbyname);
 
 app.get("/findtutorate/:rate",router.findtutorbyrate);
 
-app.get("/allstudents？",router.allstudents);
+app.get("/allstudents",router.allstudents);
 
 app.get("/alltutors",router.alltutors);
 
