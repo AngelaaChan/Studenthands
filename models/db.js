@@ -40,6 +40,19 @@ exports.findtutorate=function(rate,callback){
     client.close();
 };
 
+exports.findtutorsub=function(subject,callback){
+    var client = new MongoClient(url, {useNewUrlParser: true});
+    client.connect(err=>{
+        var tutors=client.db("studenthands").collection("tutors");
+        tutors.find({"subject":subject}).toArray(function(err,result){
+            callback(result);
+            return;
+        });
+        return;
+    });
+    client.close();
+}
+
 exports.allstudent=function(callback){
     var client = new MongoClient(url, { useNewUrlParser: true });
     client.connect(err=>{
@@ -123,6 +136,42 @@ exports.updatetutorsubject=function(tutor,callback){
     client.connect(err=>{
         var tutors = client.db("studenthands").collection("tutors");
         tutors.updateOne({"name":tutor.name},{$set:{"subject":tutor.subject}},function(err,result){
+            callback(result);
+            return;
+        });
+        return;
+    });
+    client.close();
+}
+
+exports.updatestudent=function(student,callback){
+    var client = new MongoClient(url, { useNewUrlParser: true });
+    client.connect(err=>{
+        var students = client.db("studenthands").collection("students");
+        students.updateOne({"name":student.name},
+            {$set:{"subject":student.subject,
+                    "age":parseInt(student.age),
+                    "Gender":student.Gender,
+                    "Balance":parseFloat(student.Balance)}},function(err,result){
+            callback(result);
+            return;
+        });
+        return;
+    });
+    client.close();
+};
+
+exports.updatetutor=function(tutor,callback){
+    var client = new MongoClient(url, { useNewUrlParser: true });
+    client.connect(err=>{
+        var tutors = client.db("studenthands").collection("tutors");
+        tutors.updateOne({"name":tutor.name},
+            {$set:{"subject":tutor.subject,
+                    "age":parseInt(tutor.age),
+                    "University":tutor.University,
+                    "Gender":tutor.Gender,
+                    "Balance":parseFloat(tutor.Balance),
+                    "Rate":parseInt(tutor.Rate)}},function(err,result){
             callback(result);
             return;
         });

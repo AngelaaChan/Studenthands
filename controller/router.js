@@ -24,6 +24,12 @@ exports.findtutorbyrate = function(req,res){
     });
 };
 
+exports.findtutorbysub = function(req,res){
+    db.findtutorsub(req.params.subject,function(tutors){
+        res.json(tutors);
+    });
+};
+
 exports.allstudents = function(req,res){
     db.allstudent(function(students){
         res.json(students);
@@ -56,6 +62,18 @@ exports.updateStudentsub = function(req,res){
 
 exports.updateTutorsub = function(req,res){
     db.updatetutorsubject(req.query,function(result){
+        res.json(result);
+    });
+};
+
+exports.updateStudentinfo = function(req,res){
+    db.updatestudent(req.query,function(result){
+        res.json(result);
+    });
+};
+
+exports.updateTutorinfo = function(req,res){
+    db.updatetutor(req.query,function(result){
         res.json(result);
     });
 };

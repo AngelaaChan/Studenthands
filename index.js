@@ -8,9 +8,9 @@ var app=express();
 
 
 
-//app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'ejs');
-//app.use(express.static("./public"));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.use(express.static("./public"));
 
 
 app.get("/",router.getIndex);
@@ -19,7 +19,9 @@ app.get("/findstudent/:name",router.findstudentbyname);
 
 app.get("/findtutor/:name",router.findtutorbyname);
 
-app.get("/findtutorate/:rate",router.findtutorbyrate);
+app.get("/findtutorate/:Rate",router.findtutorbyrate);
+
+app.get("/findtutorsubject/:subject",router.findtutorbysub);
 
 app.get("/allstudents",router.allstudents);
 
@@ -32,6 +34,10 @@ app.get("/newtutor",router.createTutor);
 app.get("/updatestudentsubj",router.updateStudentsub);
 
 app.get("/updatetutorsubj",router.updateTutorsub);
+
+app.get("/updatestudentinfo",router.updateStudentinfo);
+
+app.get("/updatetutorinfo",router.updateTutorinfo);
 
 app.get("/delstudent/:name",router.delstudent);
 
