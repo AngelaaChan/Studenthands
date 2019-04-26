@@ -9,67 +9,61 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header text-center">
-            <h3 class="text-center">StudentHands</h3>
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Find Tutors<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/searchTutorSub">Tutors by rate</a></li>
-                    <li><a href="/searchTutorRate">Tutors by subject</a></li>
-                </ul>
-            </li>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Discussion Forum<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Post</a></li>
-                    <li><a href="#">#</a></li>
-                </ul>
-            </li>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Weekly Challenge<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Current challenges</a></li>
-                    <li><a href="#">Ranking</a></li>
-                </ul>
-            </li>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header text-center">
+                <h3 class="text-center">StudentHands</h3>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Find Tutors<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/searchTutorRate">Tutors by rate</a></li>
+                        <li><a href="/searchTutorSub">Tutors by suburb</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Discussion Forum<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Post</a></li>
+                        <li><a href="#">#</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Weekly Challenge<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Current challenges</a></li>
+                        <li><a href="#">Ranking</a></li>
+                    </ul>
+                </li>
 
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="/Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Sign up<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/StudentRegister"><span class="glyphicon glyphicon-user"></span> Student Register</a></li>
-                    <li><a href="/TutorRegister"><span class="glyphicon glyphicon-user"></span> Tutor Register</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</nav>
-<div class="content">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="/Register"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="content">
         <div class="row">
             <div class="col-md-4">
-                <img src="/image/tutor.jpg" alt="Tutor" style="width:100%">
-                <div class="text-center">
-                    <a href="#">Find Tutors</a>
-                </div>
+                <a href="/searchTutorRate">
+                    <img src="/image/tutor.jpg" alt="Tutor" style="width:100%">
+                    <div class="text-center">Find Tutors</div>
+                </a>
             </div>
             <div class="col-md-4">
-                <img src="/image/forum.jpg" alt="Forum" style="width:100%">
-                <div class="text-center">
-                    <a href="#">Discussion Board</a>
-                </div>
+                <a href="#">
+                    <img src="/image/forum.jpg" alt="Forum" style="width:100%">
+                    <div class="text-center">Discussion Board</div>
+                </a>
             </div>
             <div class="col-md-4">
-                <img src="/image/challenge.jpg" alt="Weeklychallenge" style="width:100%">
-                <div class="text-center">
-                    <a href="#">Weekly Challenge</a>
-                </div>
+                <a href="#">
+                    <img src="/image/challenge.jpg" alt="Weeklychallenge" style="width:100%">
+                    <div class="text-center">Weekly Challenge</div>
+                </a>
             </div>
         </div>
-</div>
-
+    </div>
 </body>
 
 </html>

@@ -5,13 +5,13 @@ exports.getIndex = function(req,res){
     res.render("index.ejs");
 };
 
-exports.StudentRegister = function(req,res){
-    res.render("StudentRegister.ejs");
+exports.Register = function(req,res){
+    res.render("Register.ejs");
 };
 
-exports.TutorRegister = function(req,res){
+/*exports.TutorRegister = function(req,res){
     res.render("TutorRegister.ejs");
-};
+};*/
 
 exports.login = function(req,res){
     res.render("Login.ejs");
