@@ -2,7 +2,7 @@
 var db = require("../models/db.js");
 
 exports.getIndex = function(req,res){
-    res.render("index2.ejs");
+    res.render("index.ejs");
 };
 
 exports.findstudentbyname = function(req,res){

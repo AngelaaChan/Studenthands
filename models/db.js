@@ -188,6 +188,7 @@ exports.delstudentbyname = function(name,callback){
             callback(result);
         });
     });
+    client.close()
 };
 
 exports.deltutorbyname = function(name,callback){
@@ -198,6 +199,7 @@ exports.deltutorbyname = function(name,callback){
             callback(result);
         });
     });
+    client.close();
 };
 //collection.update({a:996}, {$set: {a:997}}, function(error, bars){});
 //updatestudentsubject({"name":"Bob","subject":"Chemistry"});
