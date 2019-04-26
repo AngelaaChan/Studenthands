@@ -1,61 +1,83 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Main Page</title>
-        <meta charset="utf-8"/>
-        <link rel="stylesheet" type="text/css" href="/css/index.css"/>
-    </head>
-    <body>
-        <header>
-            <div class="groupname">StudentHands</div>
-            <div class="login"><a href="/views/login.html">Login</a></div>
-            <div class="register"><a href="/views/register.html">Register</a></div>
-        </header>
-        <div class="container">
-            <div class="list">
-                <ul>
-                    <li>All tutors</li>
-                    <li>Subject1</li>
-                    <li>Subject2</li>
-                    <li>Subject3</li>
-                    <li>Subject4</li>
-                    <li>Subject5</li>
+<html lang="en">
+<head>
+    <title>Main Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+    <link rel="stylesheet" href="/public/css/index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header text-center">
+            <h3 class="text-center">StudentHands</h3>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="index.ejs">Home</a></li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Find Tutors<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Tutors by rate</a></li>
+                    <li><a href="#">Tutors by subject</a></li>
                 </ul>
+            </li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Discussion Forum<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Post</a></li>
+                    <li><a href="#">#</a></li>
+                </ul>
+            </li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Weekly Challenge<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Current challenges</a></li>
+                    <li><a href="#">Ranking</a></li>
+                </ul>
+            </li>
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/views/login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Sign up<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/views/StudentRegister.html"><span class="glyphicon glyphicon-user"></span> Student Register</a></li>
+                    <li><a href="/views/TutorRegister.html"><span class="glyphicon glyphicon-user"></span> Tutor Register</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="content">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="/image/tutor.jpg" alt="Tutor" style="width:100%">
+                <div class="text-center">
+                    <a href="#">Find Tutors</a>
+                </div>
             </div>
-            <div class="content">
-                <div class="one_tutor">
-                    <div class="tutor_pic">
-                    </div>
-                    <div class="tutor_name">tutorname</div>
+            <div class="col-md-4">
+                <img src="/image/forum.jpg" alt="Forum" style="width:100%">
+                <div class="text-center">
+                    <a href="#">Discussion Board</a>
                 </div>
-                <div class="one_tutor">
-                    <div class="tutor_pic">
-                    </div>
-                    <div class="tutor_name">tutorname</div>
-                </div>
-                <div class="one_tutor">
-                    <div class="tutor_pic">
-                    </div>
-                    <div class="tutor_name">tutorname</div>
-                </div>
-                <div class="one_tutor">
-                    <div class="tutor_pic">
-                    </div>
-                    <div class="tutor_name">tutorname</div>
-                </div>
-                <div class="one_tutor">
-                    <div class="tutor_pic">
-                    </div>
-                    <div class="tutor_name">tutorname</div>
-                </div>
-                <div class="one_tutor">
-                    <div class="tutor_pic">
-                    </div>
-                    <div class="tutor_name">tutorname</div>
+            </div>
+            <div class="col-md-4">
+                <img src="/image/challenge.jpg" alt="Weeklychallenge" style="width:100%">
+                <div class="text-center">
+                    <a href="#">Weekly Challenge</a>
                 </div>
             </div>
         </div>
-        <footer></footer>
-    </body>
+</div>
+
+</body>
 
 </html>
+
+<style>
+    .navbar-header {
+        color: #edf0f1;
+        margin-top: -10px;
+    }
+</style>
