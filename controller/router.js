@@ -5,6 +5,18 @@ exports.getIndex = function(req,res){
     res.render("index.ejs");
 };
 
+exports.StudentRegister = function(req,res){
+    res.render("StudentRegister.ejs");
+};
+
+exports.login = function(req,res){
+    res.render("Login.ejs");
+};
+
+exports.searchTutor = function(req,res){
+    res.render("searchTutor.ejs");
+};
+
 exports.findstudentbyname = function(req,res){
 
     db.findstudent(req.params.name,function(student){

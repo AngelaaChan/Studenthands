@@ -15,6 +15,12 @@ app.use(express.static("./public"));
 
 app.get("/",router.getIndex);
 
+app.get("/views/StudentRegister",router.StudentRegister);
+
+app.get("/views/Login",router.login);
+
+app.get("/views/searchTutor",router.searchTutor);
+
 app.get("/findstudent/:name",router.findstudentbyname);
 
 app.get("/findtutor/:name",router.findtutorbyname);
