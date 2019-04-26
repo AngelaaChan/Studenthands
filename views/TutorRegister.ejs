@@ -73,6 +73,8 @@ a {
   background-color: #f1f1f1;
   text-align: center;
 }
+
+
 </style>
 </head>
 <body>
@@ -91,17 +93,21 @@ a {
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
     <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+
+    <label for="subject"><b>Subject</b></label>
+    <input type="text" placeholder="Enter Subject" name="subject" required>
     <label class="gender"><b>Gender</b></label>
-    <div class="p-t-10">
-        <label class="radio-container m-r-45">Male
-            <input type="radio" checked="checked" name="gender">
-            <span class="checkmark"></span>
-        </label>
-        <label class="radio-container">Female
-            <input type="radio" name="gender">
-            <span class="checkmark"></span>
-        </label>
-    </div>
+      <div class="p-t-10">
+          <label class="radio-container m-r-45">Male
+              <input type="radio" checked="checked" name="gender">
+              <span class="checkmark"></span>
+          </label>
+          <label class="radio-container">Female
+              <input type="radio" name="gender">
+              <span class="checkmark"></span>
+          </label>
+      </div>
+
     <hr>
     <p>By creating an account you agree to our <a href=" ">Terms & Privacy</a >.</p >
 
@@ -110,7 +116,7 @@ a {
   </div>
   
   <div class="container signin">
-    <p>Already have an account? <a href="/Login">Sign in</a >.</p >
+    <p>Already have an account? <a href="/Login">Log in</a >.</p >
   </div>
 </form>
 

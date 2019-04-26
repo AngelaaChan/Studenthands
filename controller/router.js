@@ -9,12 +9,20 @@ exports.StudentRegister = function(req,res){
     res.render("StudentRegister.ejs");
 };
 
+exports.TutorRegister = function(req,res){
+    res.render("TutorRegister.ejs");
+};
+
 exports.login = function(req,res){
     res.render("Login.ejs");
 };
 
-exports.searchTutor = function(req,res){
-    res.render("searchTutor.ejs");
+exports.searchTutorSub = function(req,res){
+    res.render("searchTutorSub.ejs");
+};
+
+exports.searchTutorRate = function(req,res){
+    res.render("searchTutorRate.ejs");
 };
 
 exports.findstudentbyname = function(req,res){
