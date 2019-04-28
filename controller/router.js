@@ -9,6 +9,17 @@ exports.Register = function(req,res){
     res.render("Register.ejs");
 };
 
+exports.DiscussionBoard = function(req,res){
+    res.render("discussion.ejs");
+}
+
+exports.ranking = function(req,res){
+    res.render("rank.ejs");
+};
+
+exports.Challenge = function(req,res){
+    res.render("challenge.ejs");
+}
 /*exports.TutorRegister = function(req,res){
     res.render("TutorRegister.ejs");
 };*/

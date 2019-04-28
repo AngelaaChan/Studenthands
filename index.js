@@ -17,9 +17,13 @@ app.get("/",router.getIndex);
 
 app.get("/Register",router.Register);
 
-//app.get("/TutorRegister",router.TutorRegister);
-
 app.get("/Login",router.login);
+
+app.get("/discussionforum",router.DiscussionBoard);
+
+app.get("/challenge",router.Challenge);
+
+app.get("/ranking",router.ranking);
 
 app.get("/searchTutorSub",router.searchTutorSub);
 
