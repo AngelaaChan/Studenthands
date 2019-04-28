@@ -109,12 +109,23 @@
   
 
   <div class="container">
+
+    <label for="subject"><b>Subject</b></label>
+    <input type="text" placeholder="Enter subject name" name="subject">
+
     <label for="suburb"><b>Suburb</b></label>
     <input type="text" placeholder="Enter suburb" name="suburb">
-
-    <label for="Name"><b>Name</b></label>
-    <input type="text" placeholder="Enter Tutor Name" name="Name">
-           
+    <label class="gender"><b>Gender</b></label>
+    <div class="p-t-10">
+        <label class="radio-container m-r-45">Male
+            <input type="radio" name="gender">
+            <span class="checkmark"></span>
+        </label>
+        <label class="radio-container">Female
+            <input type="radio" name="gender">
+            <span class="checkmark"></span>
+        </label>
+    </div>
     <button type="submit">Search</button>
     
   </div>
