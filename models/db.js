@@ -201,6 +201,7 @@ exports.deltutorbyname = function(name,callback){
     });
     client.close();
 };
+
 //collection.update({a:996}, {$set: {a:997}}, function(error, bars){});
 //updatestudentsubject({"name":"Bob","subject":"Chemistry"});
 

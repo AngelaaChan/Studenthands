@@ -20,9 +20,6 @@ exports.ranking = function(req,res){
 exports.Challenge = function(req,res){
     res.render("challenge.ejs");
 }
-/*exports.TutorRegister = function(req,res){
-    res.render("TutorRegister.ejs");
-};*/
 
 exports.login = function(req,res){
     res.render("Login.ejs");
