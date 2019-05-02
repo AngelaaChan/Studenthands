@@ -83,12 +83,16 @@ exports.insertstudent=function(student,callback){
     var client = new MongoClient(url, { useNewUrlParser: true });
     client.connect(err=>{
         var students = client.db("studenthands").collection("students");
-        var oneStudent={"name":student.name,
+        var oneStudent={"username":student.username,
+                        "name":student.name,
+                        "password":student.password,
                         "age":parseInt(student.age),
                         "subject":student.subject,
-                        "University":student.University,
-                        "Gender":student.Gender,
-                        "Balance":parseFloat(student.Balance)};
+                        "university":student.university,
+                        "gender":student.Gender,
+                        "suburb":student.suburb,
+                        "email":student.email,
+                        "balance":0};
         students.insertOne(oneStudent,function(err,result){
             callback(result);
             return;
@@ -201,6 +205,19 @@ exports.deltutorbyname = function(name,callback){
     });
     client.close();
 };
+
+exports.findtutorcondition=function(condition,callback){
+    var client = new MongoClient(url, {useNewUrlParser: true});
+    client.connect(err=>{
+        var tutors=client.db("studenthands").collection("tutors");
+        tutors.find(condition).toArray(function(err,result){
+            callback(result);
+            return;
+        });
+        return;
+    });
+    client.close();
+}
 
 //collection.update({a:996}, {$set: {a:997}}, function(error, bars){});
 //updatestudentsubject({"name":"Bob","subject":"Chemistry"});

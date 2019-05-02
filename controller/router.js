@@ -71,9 +71,17 @@ exports.alltutors = function(req,res){
 };
 
 exports.createStudent = function(req,res){
-    db.insertstudent(req.query,function(result){
-        res.json(result);
-    });
+    var id = req.body.identity;
+    if (id == "student"){
+        db.insertstudent(req.body,function(result){
+            res.render("registersuccess.ejs");
+        });
+    }
+    else{
+        db.insertutor(req.body,function(result){
+            res.render("registersuccess.ejs");
+        });
+    };
 };
 
 exports.createTutor = function(req,res){
@@ -114,5 +122,16 @@ exports.delstudent = function(req,res){
 exports.deltutor = function(req,res){
     db.deltutorbyname(req.params.name,function(result){
         res.json(result);
+    });
+};
+
+exports.findtutorc = function(req,res){
+    for(var key in req.body){
+        if (req.body[key] == ''){
+            delete(req.body[key])
+        };
+    };
+    db.findtutorcondition(req.body,function(result){
+        res.render("searchtutorresult.ejs",{"result":result});
     });
 };

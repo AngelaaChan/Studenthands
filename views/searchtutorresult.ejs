@@ -103,37 +103,18 @@
       </ul>
     </div>
   </nav>
-  <h2>Search Tutor by Rate</h2>
-
-  <form method="POST" action="/search">
-    
-
-    <div class="container">
-      <label for="subject"><b>Subject</b></label>
-      <input type="text" placeholder="Enter subject" name="subject">
-
-      <label for="rate"><b>Rate</b></label>
-      <input type="text" placeholder="Enter Least Rate" name="rate">
-      
-      <label class="gender"><b>Gender</b></label>
-      <div class="p-t-10">
-          <label class="radio-container m-r-45">Male
-              <input type="radio" name="gender" value="Male">
-              <span class="checkmark"></span>
-          </label>
-          <label class="radio-container">Female
-              <input type="radio" name="gender" value="Female">
-              <span class="checkmark"></span>
-          </label>
-      </div>
-
-      <button type="submit">Search</button>
-      
+  <h2>Result</h2>
+  <div class="container">
+    <div class="row">
+        <% for(var i=0;i<result.length;i++){%>
+            <div class="col-xs-6 col-md-3">
+                <h4>name:<%=result[i].name%></h4>
+                <h4>subject:<%=result[i].subject%></h4>
+                <h4>rate:<%=result[i].Rate%></h4>
+            </div>
+        <% }%>
+    </div>            
     </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-    </div>
-  </form>
 
 </body>
 </html>

@@ -1,5 +1,6 @@
 const express = require('express');
 const router=require("./controller/router.js");
+const bodyParser=require("body-parser");
 const path = require('path');
 const PORT = process.env.PORT || 5000;
 //var db = require("./models/db.js");
@@ -11,7 +12,7 @@ var app=express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static("./public"));
-
+app.use(bodyParser.urlencoded({extended:false}));
 
 app.get("/",router.getIndex);
 
@@ -24,6 +25,8 @@ app.get("/discussionforum",router.DiscussionBoard);
 app.get("/challenge",router.Challenge);
 
 app.get("/ranking",router.ranking);
+
+app.post("/search",router.findtutorc);
 
 app.get("/searchTutorSub",router.searchTutorSub);
 
@@ -41,7 +44,7 @@ app.get("/allstudents",router.allstudents);
 
 app.get("/alltutors",router.alltutors);
 
-app.get("/newstudent",router.createStudent);
+app.post("/newstudent",router.createStudent);
 
 app.get("/newtutor",router.createTutor);
 
@@ -60,6 +63,7 @@ app.get("/deltutor/:name",router.deltutor);
 	findAllUser(``);
 });*/
 
+//app.post("/");
 
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
