@@ -106,13 +106,17 @@ exports.insertutor=function(tutor,callback){
     var client = new MongoClient(url, { useNewUrlParser: true });
     client.connect(err=>{
         var tutors = client.db("studenthands").collection("tutors");
-        var oneTutor={"name":tutor.name,
+        var oneTutor={"username":tutor.username,
+                        "name":tutor.name,
+                        "password":tutor.password,
                         "age":parseInt(tutor.age),
-                        "subject":tutor.subject,
-                        "University":tutor.University,
-                        "Gender":tutor.Gender,
-                        "Balance":parseFloat(tutor.Balance),
-                        "Rate":parseInt(tutor.Rate)};
+                        "subject":tutotr.subject,
+                        "university":tutor.university,
+                        "gender":tutor.gender,
+                        "suburb":tutor.suburb,
+                        "email":tutor.email,
+                        "balance":0,
+                        "rate":0};
         tutors.insertOne(oneTutor,function(err,result){
             callback(result);
             return;
