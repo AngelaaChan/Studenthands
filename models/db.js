@@ -115,6 +115,7 @@ exports.insertutor=function(tutor,callback){
                         "gender":tutor.gender,
                         "suburb":tutor.suburb,
                         "email":tutor.email,
+                        "description":"",
                         "balance":0,
                         "rate":0};
         tutors.insertOne(oneTutor,function(err,result){
