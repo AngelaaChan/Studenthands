@@ -31,7 +31,7 @@ exports.findtutorate=function(rate,callback){
     var client = new MongoClient(url, {useNewUrlParser: true});
     client.connect(err=>{
         var tutors=client.db("studenthands").collection("tutors");
-        tutors.find({"Rate":rate}).toArray(function(err,result){
+        tutors.find({"rate":rate}).toArray(function(err,result){
             callback(result);
             return;
         });
@@ -86,7 +86,6 @@ exports.insertstudent=function(student,callback){
         var oneStudent={"username":student.username,
                         "name":student.name,
                         "password":student.password,
-                        "age":parseInt(student.age),
                         "subject":student.subject,
                         "university":student.university,
                         "gender":student.Gender,
@@ -109,7 +108,6 @@ exports.insertutor=function(tutor,callback){
         var oneTutor={"username":tutor.username,
                         "name":tutor.name,
                         "password":tutor.password,
-                        "age":parseInt(tutor.age),
                         "subject":tutotr.subject,
                         "university":tutor.university,
                         "gender":tutor.gender,
@@ -151,7 +149,7 @@ exports.updatetutorsubject=function(tutor,callback){
         return;
     });
     client.close();
-}
+};
 
 exports.updatestudent=function(student,callback){
     var client = new MongoClient(url, { useNewUrlParser: true });
@@ -223,6 +221,17 @@ exports.findtutorcondition=function(condition,callback){
     });
     client.close();
 }
+
+exports.checkduplicate=function(username,callback){
+    var client = new MongoClient(url, { useNewUrlParser: true });
+    client.connect(err=>{
+        var tutors=client.db("studenthands").collection("tutors");
+        tutors.findOne({"username":username},function(err,result){
+            callback(result);
+            return;
+        });
+    });
+};
 
 //collection.update({a:996}, {$set: {a:997}}, function(error, bars){});
 //updatestudentsubject({"name":"Bob","subject":"Chemistry"});
