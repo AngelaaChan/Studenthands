@@ -24,6 +24,19 @@
 
     <!-- Main CSS-->
     <link href="css/register.css" rel="stylesheet" media="all">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(".tutorinfo").hide();
+            $(".confirmtutor").click(function(){
+                $(".tutorinfo").show();
+            });
+            $(".confirmstudent").click(function(){
+                $(".tutorinfo").hide();
+            });
+        });
+    </script>
+
 </head>
 
 <body>
@@ -35,7 +48,7 @@
                 </div>
                 <div class="card-body">
                     <!--please please put in the action-->
-                    <form action="/newstudent" method="POST">
+                    <form action="/newuser" method="POST">
                         <div class="form-row">
                             <div class="name">Username</div>
                             <div class="value">
@@ -109,14 +122,30 @@
                             <div class="name">Want to be...</div>
                             <div class="p-t-10">
                                 <label class="radio-container m-r-45">Student
-                                    <input type="radio" name="identity" value="student">
+                                    <input class="confirmstudent" type="radio" name="identity" value="student">
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="radio-container">Tutor
-                                    <input type="radio" name="identity" value="tutor">
+                                    <input class="confirmtutor" type="radio" name="identity" value="tutor">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
+                        </div>
+                        <div class="form-row tutorinfo">
+                            <div class="name">Certifications</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" name="certification">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row tutorinfo">
+                            <div class="name">Experience</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input class="input--style-5" type="text" name="experience">
+                                    </div>
+                                </div>
                         </div>
                         <div>
                             <button class="btn btn--radius-2 btn--green" type="submit">Register</button>

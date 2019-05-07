@@ -70,7 +70,7 @@ exports.alltutors = function(req,res){
     });
 };
 
-exports.createStudent = function(req,res){
+exports.createUser = function(req,res){
     var id = req.body.identity;
     if (id == "student"){
         db.insertstudent(req.body,function(result){
@@ -84,11 +84,7 @@ exports.createStudent = function(req,res){
     };
 };
 
-exports.createTutor = function(req,res){
-    db.insertutor(req.query,function(result){
-        res.json(result);
-    });
-};
+
 
 exports.updateStudentsub = function(req,res){
     db.updatestudentsubject(req.query,function(result){

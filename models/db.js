@@ -88,7 +88,7 @@ exports.insertstudent=function(student,callback){
                         "password":student.password,
                         "subject":student.subject,
                         "university":student.university,
-                        "gender":student.Gender,
+                        "gender":student.gender,
                         "suburb":student.suburb,
                         "email":student.email,
                         "balance":0};
@@ -115,7 +115,9 @@ exports.insertutor=function(tutor,callback){
                         "email":tutor.email,
                         "description":"",
                         "balance":0,
-                        "rate":0};
+                        "rate":0,
+                        "certification":tutor.certification,
+                        "experience":tutor.experience};
         tutors.insertOne(oneTutor,function(err,result){
             callback(result);
             return;

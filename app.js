@@ -44,9 +44,7 @@ app.get("/allstudents",router.allstudents);
 
 app.get("/alltutors",router.alltutors);
 
-app.post("/newstudent",router.createStudent);
-
-app.get("/newtutor",router.createTutor);
+app.post("/newuser",router.createUser);
 
 app.get("/updatestudentsubj",router.updateStudentsub);
 
