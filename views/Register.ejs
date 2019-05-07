@@ -32,6 +32,7 @@
                 $(".tutorinfo").show();
             });
             $(".confirmstudent").click(function(){
+                $(".info").val("");
                 $(".tutorinfo").hide();
             });
         });
@@ -135,7 +136,7 @@
                             <div class="name">Certifications</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="certification">
+                                    <input class="input--style-5 info" type="text" name="certification">
                                 </div>
                             </div>
                         </div>
@@ -143,7 +144,7 @@
                             <div class="name">Experience</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" name="experience">
+                                        <input class="input--style-5 info" type="text" name="experience">
                                     </div>
                                 </div>
                         </div>
