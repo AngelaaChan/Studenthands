@@ -235,6 +235,21 @@ exports.checkduplicate=function(username,callback){
     });
 };
 
+/*
+exports.createquestion=function(question,callback){
+    var client = new MongoClient(url, {useNewUrlParser: true});
+    client.connect(err=>{
+        var forum = client.db("studenthands").collection("forums");
+        var newquestion = {"questioner_name": question.qname,
+                            "question": question.question,
+                            "answerer": "",
+                            "answer": "",
+                            "date": 
+        }
+    })
+}
+*/
+
 //collection.update({a:996}, {$set: {a:997}}, function(error, bars){});
 //updatestudentsubject({"name":"Bob","subject":"Chemistry"});
 
