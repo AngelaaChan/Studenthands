@@ -108,7 +108,7 @@ exports.insertutor=function(tutor,callback){
         var oneTutor={"username":tutor.username,
                         "name":tutor.name,
                         "password":tutor.password,
-                        "subject":tutotr.subject,
+                        "subject":tutor.subject,
                         "university":tutor.university,
                         "gender":tutor.gender,
                         "suburb":tutor.suburb,
