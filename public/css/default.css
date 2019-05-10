@@ -312,7 +312,7 @@
 	{
 		overflow: hidden;
 		padding: 15em 0em;
-		background: url(./images/banner.gif) no-repeat center;
+		background: url(/image/banner.gif) no-repeat center;
 		background-size: cover;
 		border-top: 1px solid rgba(0,0,0,0.08);
 	}

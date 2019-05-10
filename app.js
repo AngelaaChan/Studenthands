@@ -62,7 +62,7 @@ app.get("/deltutor/:name",router.deltutor);
 });*/
 
 //app.post("/");
-
+app.get("/new",router.backup);
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 

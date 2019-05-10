@@ -131,3 +131,7 @@ exports.findtutorc = function(req,res){
         res.render("searchtutorresult.ejs",{"result":result});
     });
 };
+
+exports.backup = function(req,res){
+    res.render("newindex.ejs");
+}
