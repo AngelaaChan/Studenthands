@@ -11,7 +11,7 @@
 		font-family: 'Source Sans Pro', sans-serif;
 		font-size: 12pt;
 		font-weight: 300;
-		color: #000000;
+		color: rgba(0,0,0,.8);
 	}
 	
 	
@@ -312,7 +312,7 @@
 	{
 		overflow: hidden;
 		padding: 15em 0em;
-		background: url(images/banner.jpg) no-repeat center;
+		background: url(./images/banner.gif) no-repeat center;
 		background-size: cover;
 		border-top: 1px solid rgba(0,0,0,0.08);
 	}
