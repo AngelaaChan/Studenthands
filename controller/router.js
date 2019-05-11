@@ -4,15 +4,7 @@ var db = require("../models/db.js");
 
 exports.getIndex = function(req,res){
     var user = req.session.user;
-    //console.log(user);
     res.render("newindex.ejs",{'user':user});
-    /*if (user==undefined){
-        res.render("newindex.ejs");
-    }else{
-        
-        res.render("newindex.ejs",{'user':user});
-    }*/
-    //res.render("index.ejs");
 };
 
 exports.Register = function(req,res){
@@ -20,15 +12,20 @@ exports.Register = function(req,res){
 };
 
 exports.DiscussionBoard = function(req,res){
-    res.render("discussion.ejs");
+    var user = req.session.user;
+    res.render("discussion.ejs",{'user':user});
 }
 
 exports.ranking = function(req,res){
-    res.render("rank.ejs");
+    var user = req.session.user;
+
+    res.render("rank.ejs",{"user":user});
 };
 
 exports.Challenge = function(req,res){
-    res.render("challenge.ejs");
+    var user = req.session.user;
+
+    res.render("challenge.ejs",{"user":user});
 }
 
 exports.login = function(req,res){
@@ -36,11 +33,15 @@ exports.login = function(req,res){
 };
 
 exports.searchTutorSub = function(req,res){
-    res.render("searchTutorSub.ejs");
+    var user= req.session.user;
+
+    res.render("searchTutorSub.ejs",{"user":user});
 };
 
 exports.searchTutorRate = function(req,res){
-    res.render("searchTutorRate.ejs");
+    var user = req.session.user;
+
+    res.render("searchTutorRate.ejs",{"user":user});
 };
 
 exports.findstudentbyname = function(req,res){
@@ -132,19 +133,16 @@ exports.deltutor = function(req,res){
 };
 
 exports.findtutorc = function(req,res){
+    var user = req.session.user;
     for(var key in req.body){
         if (req.body[key] == ''){
             delete(req.body[key]);
         };
     };
     db.findtutorcondition(req.body,function(result){
-        res.render("searchtutorresult.ejs",{"result":result});
+        res.render("searchtutorresult.ejs",{"result":result,"user":user});
     });
 };
-/*
-exports.backup = function(req,res){
-    res.render("newindex.ejs");
-}*/
 
 exports.check_login = function(req,res){
     var id = req.body.identity;
@@ -199,7 +197,7 @@ exports.tutorinfo = function(req,res){
         db.findtutor(req.params.name,function(result){
             res.render("tutorinfo.ejs",{"user":result,"myself":user1});
         });
-    }
+    };
 }
 
 exports.sendmtutor = function(req,res){
