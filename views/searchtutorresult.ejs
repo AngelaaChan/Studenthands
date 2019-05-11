@@ -43,6 +43,7 @@
   <div class="container">
     <h2>Searching result</h2>
       <% for(var i=0;i<result.length;i++){%>
+        <a href="/tutorinfo/<%=result[i].name%>">info</a>
         <div class="jumbotron text-white rounded bg-dark">
           <img src="/image/people-icon.jpg" alt ="head" width="10%" algin ="right">
           <h4>name: <%=result[i].name%></h4>

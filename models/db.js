@@ -91,7 +91,8 @@ exports.insertstudent=function(student,callback){
                         "gender":student.gender,
                         "suburb":student.suburb,
                         "email":student.email,
-                        "balance":0};
+                        "balance":0,
+                        "message":[]};
         students.insertOne(oneStudent,function(err,result){
             callback(result);
             return;
@@ -117,7 +118,8 @@ exports.insertutor=function(tutor,callback){
                         "balance":0,
                         "rate":0,
                         "certification":tutor.certification,
-                        "experience":tutor.experience};
+                        "experience":tutor.experience,
+                        "message":[]};
         tutors.insertOne(oneTutor,function(err,result){
             callback(result);
             return;
@@ -233,7 +235,42 @@ exports.checkduplicate=function(username,callback){
             return;
         });
     });
+    client.close();
 };
+
+exports.tutor_check_login=function(user,callback){
+    var client = new MongoClient(url, { useNewUrlParser: true });
+    client.connect(err=>{
+        var tutors=client.db("studenthands").collection("tutors");
+        tutors.findOne({"username":user.username,"password":user.password},function(err,result){
+            callback(result);
+            return;
+        });
+    });
+    client.close();
+};
+
+exports.student_check_login=function(user,callback){
+    var client = new MongoClient(url, { useNewUrlParser: true });
+    client.connect(err=>{
+        var students=client.db("studenthands").collection("students");
+        students.findOne({"username":user.username,"password":user.password},function(err,result){
+            callback(result);
+            return;
+        });
+    });
+    client.close();
+};
+
+exports.update_messenge = function(user,message){
+    var client = new MongoClient(url, {useNewUrlParser: true});
+    client.connect(err=>{
+        var tutors = client.db("studenthands").collection("tutors");
+        tutors.updateOne({"name":user},
+            {$push:{"message":message}});
+    });
+    client.close();
+}
 
 /*
 exports.createquestion=function(question,callback){
@@ -249,6 +286,7 @@ exports.createquestion=function(question,callback){
     })
 }
 */
+
 
 //collection.update({a:996}, {$set: {a:997}}, function(error, bars){});
 //updatestudentsubject({"name":"Bob","subject":"Chemistry"});

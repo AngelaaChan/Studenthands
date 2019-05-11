@@ -5,9 +5,16 @@ const path = require('path');
 const PORT = process.env.PORT || 5000;
 //var db = require("./models/db.js");
 var app=express();
+var session = require("express-session");
 
 
 
+app.use(session({
+	secret: 'keyboard cat',
+	resave: false,
+	saveUninitialized: true,
+	//cookie: { secure: true } 
+}));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -20,6 +27,12 @@ app.get("/Register",router.Register);
 
 app.get("/Login",router.login);
 
+app.get("/Logout",router.logout);
+
+app.post("/checkLogin",router.check_login);
+
+app.get("/userinfo",router.userinfo);
+
 app.get("/discussionforum",router.DiscussionBoard);
 
 app.get("/challenge",router.Challenge);
@@ -27,6 +40,10 @@ app.get("/challenge",router.Challenge);
 app.get("/ranking",router.ranking);
 
 app.post("/search",router.findtutorc);
+
+app.get("/tutorinfo/:name",router.tutorinfo);
+
+app.post("/sendmessage/:username",router.sendmtutor);
 
 app.get("/searchTutorSub",router.searchTutorSub);
 
@@ -62,7 +79,7 @@ app.get("/deltutor/:name",router.deltutor);
 });*/
 
 //app.post("/");
-app.get("/new",router.backup);
+//app.get("/new",router.backup);
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 

@@ -1,0 +1,90 @@
+<!DOCTYPE html >
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+	<link href="css/register.css" rel="stylesheet" media="all">
+
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<link href="css/default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/fonts.css" rel="stylesheet" type="text/css" media="all" />
+
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+</head>
+<body>
+
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/"><b>Studenthands</b></a>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Find Tutors<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/searchTutorRate">By Rate</a></li>
+                    <li><a href="/searchTutorSub">By Location</a></li>
+                    <li><a href="/searchTutorSub">By Subjects</a></li>
+                </ul>
+            </li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Discussion Forum<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/discussionforum">Search Questions</a></li>
+                    <li><a href="#">Ask Questions</a></li>
+                </ul>
+            </li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Weekly Challenge<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/challenge">Current hallenges</a></li>
+                    <li><a href="/ranking">Ranking</a></li>
+                </ul>
+            </li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Learning Resources<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/challenge">Search Materials</a></li>
+                    <li><a href="/ranking">Share Materials</a></li>
+                </ul>
+            </li>
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <%if(!user){%>
+                <li><a href="/Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="/Register"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+            <%}else{%>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span><%=user.username%><span class="caret"></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">User information</a></li>
+                        <li><a href="#">Top up</a></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </li>
+            <%}%>
+        </ul>
+    </div>
+</nav>
+<h2>Tutor information</h2>
+<h3>Name:<%=user.name%></h3>
+<h3>Gender:<%=user.gender%></h3>
+<h3>Subject:<%=user.subject%></h3>
+<h3>University:<%=user.university%></h3>
+<h3>Rate:<%=user.rate%></h3>
+<h3>Email:<%=user.email%></h3>
+<%if (myself){%>
+<form action="/sendmessage/<%=user.name%>" method="POST">
+    <input type="textarea" name="message">
+    <input type="submit" value="send">
+</form>
+<%}%>
+</body>
+</html>

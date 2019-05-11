@@ -1,8 +1,18 @@
 
 var db = require("../models/db.js");
 
+
 exports.getIndex = function(req,res){
-    res.render("index.ejs");
+    var user = req.session.user;
+    //console.log(user);
+    res.render("newindex.ejs",{'user':user});
+    /*if (user==undefined){
+        res.render("newindex.ejs");
+    }else{
+        
+        res.render("newindex.ejs",{'user':user});
+    }*/
+    //res.render("index.ejs");
 };
 
 exports.Register = function(req,res){
@@ -124,14 +134,82 @@ exports.deltutor = function(req,res){
 exports.findtutorc = function(req,res){
     for(var key in req.body){
         if (req.body[key] == ''){
-            delete(req.body[key])
+            delete(req.body[key]);
         };
     };
     db.findtutorcondition(req.body,function(result){
         res.render("searchtutorresult.ejs",{"result":result});
     });
 };
-
+/*
 exports.backup = function(req,res){
     res.render("newindex.ejs");
+}*/
+
+exports.check_login = function(req,res){
+    var id = req.body.identity;
+    var user = {"username":req.body.username, "password":req.body.password};
+    if (id == "student"){
+        db.student_check_login(user,function(result){
+            if (result){
+                req.session.user = result;
+                res.render("newindex.ejs",{"user":result});
+            }else{
+                res.render("Login.ejs");
+            };  
+        });
+    }else if(id == "tutor"){
+        db.tutor_check_login(user,function(result){
+            if (result){
+                req.session.user = result;
+                res.render("newindex.ejs",{"user":result});
+            }else{
+                res.render("Login.ejs");
+            };
+        });
+    };
+};
+
+exports.userinfo = function(req,res){
+    var user = req.session.user;
+    if(user){
+        res.render("userinfo.ejs",{"user":user});
+    }else{
+        res.render("Login.ejs");
+    }
+};
+
+exports.logout = function(req,res){
+    var user=req.session.user;
+    if(user){
+        delete req.session.user;
+        res.render("newindex.ejs",{"user":req.session.user});
+    }else{
+        res.render("newindex.ejs",{"user":req.session.user});
+    }
+}
+
+exports.tutorinfo = function(req,res){
+    var user1 = req.session.user;
+    if(user1){
+        db.findtutor(req.params.name,function(result){
+            res.render("tutorinfo.ejs",{"user":result,"myself":user1});
+        });
+    }else{
+        db.findtutor(req.params.name,function(result){
+            res.render("tutorinfo.ejs",{"user":result,"myself":user1});
+        });
+    }
+}
+
+exports.sendmtutor = function(req,res){
+    var recname=req.params.username;
+    var text=req.body.message;
+    var myself=req.session.user;
+    var message={"sender":myself.name,"text":text};
+    db.update_messenge(recname,message);
+    console.log(recname);
+    db.findtutor(recname,function(result){
+        res.render("tutorinfo.ejs",{"user":result,"myself":myself});
+    });
 }
