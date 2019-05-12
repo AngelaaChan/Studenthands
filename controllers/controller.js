@@ -206,7 +206,6 @@ exports.sendmtutor = function(req,res){
     var myself=req.session.user;
     var message={"sender":myself.name,"text":text};
     db.update_messenge(recname,message);
-    console.log(recname);
     db.findtutor(recname,function(result){
         res.render("tutorinfo.ejs",{"user":result,"myself":myself});
     });

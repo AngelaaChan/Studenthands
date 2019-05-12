@@ -22,6 +22,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
     <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <link href="css/register.css" rel="stylesheet"  type="text/css" media="all" />
 
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 
@@ -68,9 +69,9 @@
             <%}else{%>
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span><%=user.username%><span class="caret"></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">User information</a></li>
+                        <li><a href="/userinfo">User information</a></li>
                         <li><a href="#">Top up</a></li>
-                        <li><a href="#">Logout</a></li>
+                        <li><a href="/Logout">Logout</a></li>
                     </ul>
                 </li>
             <%}%>
@@ -86,20 +87,23 @@
             </div>
             <div class="card-body">
                 <div class="jumbotron text-white rounded bg-dark">
-                    <div class="jumbotron text-white rounded bg-dark">
-                        <h3>Name:<%=user.name%></h3>
-                        <h3>Gender:<%=user.gender%></h3>
-                        <h3>Subject:<%=user.subject%></h3>
-                        <h3>University:<%=user.university%></h3>
-                        <h3>Rate:<%=user.rate%></h3>
-                        <h3>Email:<%=user.email%></h3>
-                        <%if (myself){%>
+                    <div class="name">Name:<%=user.name%></div>
+                    <div class="name">Gender:<%=user.gender%></div>
+                    <div class="name">Subject:<%=user.subject%></div>
+                    <div class="name">University:<%=user.university%></div>
+                    <div class="name">Rate:<%=user.rate%></div>
+                    <div class="name">Email:<%=user.email%></div>
+                    <%if (myself){%>
+                        <div class="name">Leave message to tutor</div>
                         <form action="/sendmessage/<%=user.name%>" method="POST">
-                            <input type="textarea" name="message">
-                            <input type="submit" value="send">
+                            <div class="value">
+                                <input calss ="input--style-5" type="text" name="message">
+                            </div>
+                            <div>
+                                <button class="btn btn--radius-2 btn--green" type="submit" value ="send">send</button>
+                            </div>
                         </form>
-                        <%}%>
-                    </div>
+                    <%}%>
                 </div>
             </div>
         </div>
