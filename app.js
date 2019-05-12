@@ -8,7 +8,6 @@ var app=express();
 var session = require("express-session");
 //var router = express.Router();
 
-
 app.use(session({
 	secret: 'keyboard cat',
 	resave: false,
@@ -20,7 +19,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static("./public"));
 app.use(bodyParser.urlencoded({extended:false}));
-
 
 var routes = require('./routes/route.js');
 app.use('/',routes);
