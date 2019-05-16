@@ -188,25 +188,27 @@ exports.logout = function(req,res){
 }
 
 exports.tutorinfo = function(req,res){
-    var user1 = req.session.user;
-    if(user1){
-        db.findtutor(req.params.name,function(result){
-            res.render("tutorinfo.ejs",{"user":result,"myself":user1});
-        });
-    }else{
-        db.findtutor(req.params.name,function(result){
-            res.render("tutorinfo.ejs",{"user":result,"myself":user1});
-        });
-    };
+    var user = req.session.user;
+    db.findtutor(req.params.name,function(result){
+        res.render("tutorinfo.ejs",{"tutor":result,"user":user});
+    });
 }
 
 exports.sendmtutor = function(req,res){
     var recname=req.params.username;
     var text=req.body.message;
-    var myself=req.session.user;
-    var message={"sender":myself.name,"text":text};
+    var user=req.session.user;
+    var message={"sender":user.name,"text":text};
     db.update_messenge(recname,message);
     db.findtutor(recname,function(result){
-        res.render("tutorinfo.ejs",{"user":result,"myself":myself});
+        res.render("tutorinfo.ejs",{"user":user,"tutor":result});
+    });
+}
+
+exports.getmessage = function(req,res){
+    var user=req.session.user;
+    db.findtutor(user.name,function(result){
+        req.session.user=result;
+        res.render("getmessage.ejs",{"user":user});
     });
 }

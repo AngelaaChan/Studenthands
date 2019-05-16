@@ -4,16 +4,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Tutor information</title>
+<title>user information</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-    <link href="css/register.css" rel="stylesheet" media="all">
-    <link href="css/default.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="css/fonts.css" rel="stylesheet" type="text/css" media="all" />
+	<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+	<link href="/css/register.css" rel="stylesheet" media="all">
+
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="/css/default.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/css/fonts.css" rel="stylesheet" type="text/css" media="all" />
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -72,6 +75,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="/userinfo">User information</a></li>
                         <li><a href="#">Top up</a></li>
+                        <li><a href="#">Message</a></li>
                         <li><a href="/Logout">Logout</a></li>
                     </ul>
                 </li>
@@ -84,41 +88,36 @@
     <div class="wrapper wrapper--w790">
         <div class="card card-5">
             <div class="card-heading">
-                <h2 class="title">User Information</h2>
+                <h2 class="title">Tutor Information</h2>
+            </div>
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="name">Name: <%=tutor.name%></div>
+                </div>
+                <div class="form-row">
+                    <div class="name">Subject: <%=tutor.subject%></div>
+                </div>
+                <div class="form-row">
+                    <div class="name">University: <%=tutor.university%></div>
+                </div>
+                <div class="form-row">
+                    <div class="name">Email: <%=tutor.email%></div>
+                </div>
+                <%if(user){%>
+                <div class="name">Leave message to tutor</div>
+                <form action="/sendmessage/<%=tutor.name%>" method="POST">
+                    <div class="value">
+                        <input calss ="input--style-5" type="text" name="message">
+                    </div>
+                    <div>
+                        <button class="btn btn--radius-2 btn--green" type="submit" value ="send">send</button>
+                    </div>
+                </form>
+                <%}%>
             </div>
         </div>
     </div>
 </div>
 
-<div class="page-wrapper">
-    <div class="wrapper wrapper--w790">
-        <div class="card card-5">
-            <div class="card-heading">
-                <h2 class="title">Tutor Information</h2>
-            </div>
-            <div class="card-body">
-                <div class="jumbotron text-white rounded bg-dark">
-                    <div class="name">Name:<%=user.name%></div>
-                    <div class="name">Gender:<%=user.gender%></div>
-                    <div class="name">Subject:<%=user.subject%></div>
-                    <div class="name">University:<%=user.university%></div>
-                    <div class="name">Rate:<%=user.rate%></div>
-                    <div class="name">Email:<%=user.email%></div>
-                    <%if (myself){%>
-                        <div class="name">Leave message to tutor</div>
-                        <form action="/sendmessage/<%=user.name%>" method="POST">
-                            <div class="value">
-                                <input calss ="input--style-5" type="text" name="message">
-                            </div>
-                            <div>
-                                <button class="btn btn--radius-2 btn--green" type="submit" value ="send">send</button>
-                            </div>
-                        </form>
-                    <%}%>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 </body>
 </html>

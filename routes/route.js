@@ -58,5 +58,7 @@ router.get("/delstudent/:name",controller.delstudent);
 
 router.get("/deltutor/:name",controller.deltutor);
 
+router.get("/getmessage",controller.getmessage);
+
 
 module.exports = router;

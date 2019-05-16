@@ -75,7 +75,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="/userinfo">User information</a></li>
                         <li><a href="#">Top up</a></li>
-                        <li><a href="#">Message</a></li>
+                        <li><a href="/getmessage">Message</a></li>
                         <li><a href="/Logout">Logout</a></li>
                     </ul>
                 </li>
@@ -88,28 +88,19 @@
     <div class="wrapper wrapper--w790">
         <div class="card card-5">
             <div class="card-heading">
-                <h2 class="title">User Information</h2>
+                <h2 class="title">Message</h2>
             </div>
             <div class="card-body">
+                <%for(var i=0;i<user.message.length;i++){%>
+
                 <div class="form-row">
-                    <div class="name">Username: <%=user.username%></div>
+                    <div class="name">Sender: <%=user.message[i].sender%></div>
                 </div>
+
                 <div class="form-row">
-                    <div class="name">Name: <%=user.name%></div>
+                    <div class="name">Message: <%=user.message[i].text%></div>
                 </div>
-                <div class="form-row">
-                    <div class="name">Gender: <%=user.gender%></div>
-                </div>
-                <div class="form-row">
-                    <div class="name">Subject: <%=user.subject%></div>
-                </div>
-                <div class="form-row">
-                    <div class="name">University: <%=user.university%></div>
-                </div>
-                <div class="form-row">
-                    <div class="name">Email: <%=user.email%></div>
-                </div>
-                
+                <%}%>
             </div>
         </div>
     </div>

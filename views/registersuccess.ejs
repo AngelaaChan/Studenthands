@@ -8,7 +8,7 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
             <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-            <link href="css/register.css" rel="stylesheet" media="all">
+            <link href="/css/register.css" rel="stylesheet" media="all">
     </head>
     <body>
         <nav class="navbar navbar-inverse">
@@ -37,8 +37,19 @@
     
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    <li><a href="/Register"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+                    <%if(!user){%>
+                        <li><a href="/Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a href="/Register"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+                    <%}else{%>
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span><%=user.username%><span class="caret"></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/userinfo">User information</a></li>
+                                <li><a href="#">Top up</a></li>
+                                <li><a href="#">Message</a></li>
+                                <li><a href="/Logout">Logout</a></li>
+                            </ul>
+                        </li>
+                    <%}%>
                 </ul>
             </div>
         </nav>

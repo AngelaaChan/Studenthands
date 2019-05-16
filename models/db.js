@@ -288,6 +288,4 @@ exports.createquestion=function(question,callback){
 */
 
 
-//collection.update({a:996}, {$set: {a:997}}, function(error, bars){});
-//updatestudentsubject({"name":"Bob","subject":"Chemistry"});
 
