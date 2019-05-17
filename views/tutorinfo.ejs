@@ -104,11 +104,15 @@
                     <div class="name">Email: <%=tutor.email%></div>
                 </div>
                 <%if(user){%>
-                <div class="name">Leave message to tutor</div>
                 <form action="/sendmessage/<%=tutor.name%>" method="POST">
-                    <div class="value">
-                        <input calss ="input--style-5" type="text" name="message">
-                    </div>
+                    <div class="form-row">
+                        <div class="name">Leave message to tutor...</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="text" name="message" required>
+                            </div>
+                        </div>
+                        </div>
                     <div>
                         <button class="btn btn--radius-2 btn--green" type="submit" value ="send">send</button>
                     </div>
