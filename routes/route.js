@@ -60,5 +60,10 @@ router.get("/deltutor/:name",controller.deltutor);
 
 router.get("/getmessage",controller.getmessage);
 
+router.post("/updateinfo",controller.updateUserinfo);
+
+router.get("/changeinfo",controller.changeinfo);
+
+
 
 module.exports = router;

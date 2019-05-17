@@ -3,10 +3,8 @@ const express = require('express');
 const bodyParser=require("body-parser");
 const path = require('path');
 const PORT = process.env.PORT || 5000;
-//var db = require("./models/db.js");
 var app=express();
 var session = require("express-session");
-//var router = express.Router();
 
 app.use(session({
 	secret: 'keyboard cat',

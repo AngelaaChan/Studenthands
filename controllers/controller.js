@@ -212,3 +212,30 @@ exports.getmessage = function(req,res){
         res.render("getmessage.ejs",{"user":user});
     });
 }
+
+exports.updateUserinfo = function(req,res){
+    var user=req.session.user;
+    user.subject= req.body.subject;
+    user.email = req.body.email;
+    user.suburb = req.body.suburb;
+    user.university = req.body.university;
+    db.findtutor(user.name,function(result){
+        if (result){
+            db.updatetutor(user,function(resul){
+                res.render("userinfo.ejs",{"user":user});
+            });
+        }
+    });
+    db.findstudent(user.name,function(result){
+        if (result){
+            db.updatestudent(user,function(resul){
+                res.render("userinfo.ejs",{"user":user});
+            });
+        };
+    });
+};
+
+exports.changeinfo = function(req,res){
+    var user=req.session.user;
+    res.render("changeuserinfo.ejs",{"user":user});
+}

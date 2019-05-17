@@ -161,9 +161,9 @@ exports.updatestudent=function(student,callback){
         var students = client.db("studenthands").collection("students");
         students.updateOne({"name":student.name},
             {$set:{"subject":student.subject,
-                    "age":parseInt(student.age),
-                    "Gender":student.Gender,
-                    "Balance":parseFloat(student.Balance)}},function(err,result){
+                    "university":student.university,
+                    "suburb":student.suburb,
+                    "email":student.email}},function(err,result){
             callback(result);
             return;
         });
@@ -178,11 +178,10 @@ exports.updatetutor=function(tutor,callback){
         var tutors = client.db("studenthands").collection("tutors");
         tutors.updateOne({"name":tutor.name},
             {$set:{"subject":tutor.subject,
-                    "age":parseInt(tutor.age),
-                    "University":tutor.University,
-                    "Gender":tutor.Gender,
-                    "Balance":parseFloat(tutor.Balance),
-                    "Rate":parseInt(tutor.Rate)}},function(err,result){
+                    "university":tutor.university,
+                    "suburb":tutor.suburb,
+                    "email":tutor.email
+                    }},function(err,result){
             callback(result);
             return;
         });
@@ -272,20 +271,6 @@ exports.update_messenge = function(user,message){
     client.close();
 }
 
-/*
-exports.createquestion=function(question,callback){
-    var client = new MongoClient(url, {useNewUrlParser: true});
-    client.connect(err=>{
-        var forum = client.db("studenthands").collection("forums");
-        var newquestion = {"questioner_name": question.qname,
-                            "question": question.question,
-                            "answerer": "",
-                            "answer": "",
-                            "date": 
-        }
-    })
-}
-*/
 
 
 

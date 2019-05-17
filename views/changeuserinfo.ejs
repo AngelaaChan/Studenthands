@@ -91,29 +91,51 @@
                 <h2 class="title">User Information</h2>
             </div>
             <div class="card-body">
-                <div class="form-row">
-                    <div class="name">Username: <%=user.username%></div>
-                </div>
-                <div class="form-row">
-                    <div class="name">Name: <%=user.name%></div>
-                </div>
-                <div class="form-row">
-                    <div class="name">Gender: <%=user.gender%></div>
-                </div>
-                <div class="form-row">
-                    <div class="name">Subject: <%=user.subject%></div>
-                </div>
-                <div class="form-row">
-                    <div class="name">University: <%=user.university%></div>
-                </div>
-                <div class="form-row">
-                    <div class="name">Email: <%=user.email%></div>
+                <form action="/updateinfo" method="POST">
+                    <div class="form-row">
+                        <div class="name">Username: <%=user.username%></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Name: <%=user.name%></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Subject: </div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="text" name="subject" value="<%=user.subject%>" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">University</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="text" name="university" value="<%=user.university%>" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Suburb</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="text" name="suburb" value="<%=user.suburb%>" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Email</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="text" name="email" value="<%=user.email%>" required>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div>
-                    <a href="/changeinfo">
-                        <button class="btn btn--radius-2 btn--green">Change information</button>
-                    </a>
+                    <button class="btn btn--radius-2 btn--green" type="submit" value ="change">Change information</button>
                 </div>
+                </form>
+
             </div>
         </div>
     </div>
