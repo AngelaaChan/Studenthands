@@ -1,0 +1,267 @@
+/*-----------------------------------------------------------------------------------*/
+/*	0.	RESET
+/*-----------------------------------------------------------------------------------*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	margin:0;
+	padding:0;
+	border:0;
+	outline:0;
+	font-size:100%;
+	vertical-align:baseline;
+	background:transparent
+}
+body {
+	line-height:1
+}
+ol, ul {
+	list-style:none
+}
+blockquote, q {
+	quotes:none
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content:'';
+	content:none
+}
+:focus {
+	outline:0
+}
+ins {
+	text-decoration:none
+}
+del {
+	text-decoration:line-through
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0
+}
+.clear {
+	clear:both;
+	display:block;
+	overflow:hidden;
+	visibility:hidden;
+	width:0;
+	height:0
+}
+.clearfix:after {
+	clear:both;
+	content:' ';
+	display:block;
+	font-size:0;
+	line-height:0;
+	visibility:hidden;
+	width:0;
+	height:0
+}
+.clearfix {
+	display:inline-block
+}
+* html .clearfix {
+	height:1%
+}
+.clearfix {
+	display:block
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/*	1.	FONT-FACE
+/*-----------------------------------------------------------------------------------*/
+
+ @font-face {
+ font-family: 'Puritan20Italic';
+ src: url('style/type/puritan/puritan_italic-webfont.eot?') format('eot'),  url('style/type/puritan/puritan_italic-webfont.woff') format('woff'),  url('style/type/puritan/puritan_italic-webfont.ttf') format('truetype'),  url('style/type/puritan/puritan_italic-webfont.svg#webfontZMWmRIPG') format('svg');
+ font-weight: normal;
+ font-style: normal;
+}
+ @font-face {
+ font-family: 'Puritan20Normal';
+ src: url('style/type/puritan/puritan_regular-webfont.eot?') format('eot'),  url('style/type/puritan/puritan_regular-webfont.woff') format('woff'),  url('style/type/puritan/puritan_regular-webfont.ttf') format('truetype'),  url('style/type/puritan/puritan_regular-webfont.svg#webfontJ25dHiGv') format('svg');
+ font-weight: normal;
+ font-style: normal;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	2.	GENERAL
+/*-----------------------------------------------------------------------------------*/
+
+body {
+	font-family:"Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", Helvetica, Arial, sans-serif;
+	background: transparent url(style/images/light-bg.jpg) repeat;
+	color: #565656;
+	font-size: 11px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+html, body {
+	height: 100%;
+}
+
+p {
+	line-height: 20px;
+	margin-bottom: 20px;
+}
+
+a {
+	text-decoration: none;
+	color: #1f1f1f;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #5d8ba6;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Puritan20Normal';
+	font-weight: normal;
+	color: #1f1f1f;
+	margin-bottom: 10px;
+}
+
+h4 {
+	font-size: 17px;
+	margin-bottom: 20px;
+}
+
+img.left {
+	top: 0px;
+	float:left;
+	display: block;
+	margin:0;
+	padding:0;
+	margin-right:20px;
+}
+
+
+#wrapper {
+	width: 960px;
+	margin: 100px auto 0;
+	padding-top: 0;
+	line-height: 20px;
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/*	3. CAROUSEL
+/*-----------------------------------------------------------------------------------*/
+
+.jcarousel-container {
+	float:left;
+	display: block;
+	position: relative;
+	margin:0;
+	padding:0;
+}
+
+.jcarousel-container-vertical {
+	width:  962px;
+	height: 535px;
+}
+
+.jcarousel-clip-vertical {
+	height: 535px;
+}
+
+.jcarousel-item {
+	height: 60px;
+	overflow: hidden;
+	position: relative;
+	display: block;
+	z-index: 1;
+}
+
+#newslist ul li {
+	width:  928px;
+	background: none;
+	margin: 2px 0 18px 2px;
+	background-color: #FFF;
+	-webkit-box-shadow: 0px 1px 2px 0px #b7b7b7;
+	-moz-box-shadow: 0px 1px 2px 0px #b7b7b7;
+	box-shadow: 0px 1px 2px 0px #b7b7b7; 
+	padding: 15px;
+	display: block;
+	overflow: hidden;
+}
+
+#newslist p {
+	margin: 0;
+}
+
+#newslist h4 {
+	margin-bottom: 8px;
+	line-height: 1;
+}
+
+#newslist h4 span {
+	font-style: italic;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	color: #565656;
+	padding-left: 5px;
+}
+
+#news h2 {
+	float: left;
+	margin-top: 10px;
+}
+
+#scroll {
+	overflow: hidden;
+	width: 92px;
+	height: 25px;
+	margin: 20px auto;
+	padding: 2px;
+}
+
+#newslist-next {
+	cursor: pointer;
+	top:0px;
+}
+
+#newslist-prev {
+	cursor: pointer;
+	outline: 0;
+}
+
+a.jbutton, a.jbutton:link, a.jbutton:visited {
+	display: block;
+	padding: 0;
+	height: 25px;
+	width: 40px;
+	background: transparent url(style/images/light-arrow.jpg) no-repeat;
+	-webkit-box-shadow: 0px 1px 2px 0px #b7b7b7;
+	-moz-box-shadow: 0px 1px 2px 0px #b7b7b7;
+	box-shadow: 0px 1px 2px 0px #b7b7b7; 
+	text-indent: -99999px;
+}
+
+a#newslist-prev.jbutton, a#prev.jbutton {
+	background-position: top left;
+	float: left;
+	height: 25px;
+	width: 40px;
+	margin-right: 12px;
+}
+
+a#newslist-next.jbutton, a#next.jbutton {
+	background-position: top right;
+	float: right;
+	height: 25px;
+	width: 40px;
+}
+
+a#newslist-prev.jbutton:hover {
+	background-position: left -25px;
+	text-decoration: none;
+}
+
+a#newslist-next.jbutton:hover {
+	background-position: right -25px;
+	text-decoration: none;
+}
+
