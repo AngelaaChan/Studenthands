@@ -291,3 +291,8 @@ exports.findtutorbymap = function(req,res){
     var user=req.session.user;
     res.render("googlemap.ejs",{"user":user});
 }
+
+exports.postquestion = function(req,res){
+    var user=req.session.user;
+    db.insert_question("discussion.ejs",{"user":user});
+}

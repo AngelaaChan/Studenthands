@@ -281,5 +281,16 @@ exports.update_smessage = function(user,message){
     client.close();
 };
 
-
+exports.insert_question = function(question){
+    var client = new MongoClient(url,{useNewUrlParser:true});
+    var q = {"question":question,answer:[]}
+    client.connect(err=>{
+        var forums = client.db("studenthands").collection("forums");
+        forums.insertOne(question,function(err,result){
+            callback(result);
+            return;
+        });
+    });
+    client.close();
+}
 

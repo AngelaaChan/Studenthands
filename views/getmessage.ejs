@@ -101,9 +101,11 @@
                     <div class="name">Message: <%=user.message[i].text%></div>
                 </div>
                 <form action="/replymessage/<%=user.message[i].sender%>" method="POST">
-                    <div class="name">Reply message</div>
+                    <div class="form-row">
+                        <div class="name">Reply message:</div>
+                    </div>
                     <div class="input-group">
-                        <input class="input--style-5" type="text" name="message" required>
+                        <input class="input--style-5" type="text" name="message" size="80" required>
                         <div>
                             <button class="btn btn--radius-2 btn--green" type="submit" value ="send">send</button>
                         </div>
