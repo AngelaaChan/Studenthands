@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>user information</title>
+<title>Messages</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -100,6 +100,15 @@
                 <div class="form-row">
                     <div class="name">Message: <%=user.message[i].text%></div>
                 </div>
+                <form action="/replymessage/<%=user.message[i].sender%>" method="POST">
+                    <div class="name">Reply message</div>
+                    <div class="input-group">
+                        <input class="input--style-5" type="text" name="message" required>
+                        <div>
+                            <button class="btn btn--radius-2 btn--green" type="submit" value ="send">send</button>
+                        </div>
+                    </div>
+                </form>
                 <%}%>
             </div>
         </div>

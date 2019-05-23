@@ -128,7 +128,7 @@ exports.insertutor=function(tutor,callback){
     });
     client.close();
 };
-
+/*
 exports.updatestudentsubject=function(student,callback){
     var client = new MongoClient(url, { useNewUrlParser: true });
     client.connect(err=>{
@@ -153,7 +153,7 @@ exports.updatetutorsubject=function(tutor,callback){
         return;
     });
     client.close();
-};
+};*/
 
 exports.updatestudent=function(student,callback){
     var client = new MongoClient(url, { useNewUrlParser: true });
@@ -261,7 +261,7 @@ exports.student_check_login=function(user,callback){
     client.close();
 };
 
-exports.update_messenge = function(user,message){
+exports.update_tmessenge = function(user,message){
     var client = new MongoClient(url, {useNewUrlParser: true});
     client.connect(err=>{
         var tutors = client.db("studenthands").collection("tutors");
@@ -271,6 +271,15 @@ exports.update_messenge = function(user,message){
     client.close();
 }
 
+exports.update_smessage = function(user,message){
+    var client = new MongoClient(url, {useNewUrlParser:true});
+    client.connect(err=>{
+        var students = client.db("studenthands").collection("students");
+        students.updateOne({"name":user},
+            {$push:{"message":message}});
+    });
+    client.close();
+};
 
 
 

@@ -60,10 +60,14 @@ router.get("/deltutor/:name",controller.deltutor);
 
 router.get("/getmessage",controller.getmessage);
 
+//router.post("/messagetostudent/:username",controller.sendmstudent);
+
+router.post("/replymessage/:name",controller.replymessage);
+
 router.post("/updateinfo",controller.updateUserinfo);
 
 router.get("/changeinfo",controller.changeinfo);
 
-
+router.get("/findbymap",controller.findtutorbymap);
 
 module.exports = router;

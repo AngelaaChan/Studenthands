@@ -151,6 +151,7 @@ exports.check_login = function(req,res){
         db.student_check_login(user,function(result){
             if (result){
                 req.session.user = result;
+                req.session.identity = "student";
                 res.render("newindex.ejs",{"user":result});
             }else{
                 res.render("Login.ejs");
@@ -160,6 +161,7 @@ exports.check_login = function(req,res){
         db.tutor_check_login(user,function(result){
             if (result){
                 req.session.user = result;
+                req.session.identity = "tutor";
                 res.render("newindex.ejs",{"user":result});
             }else{
                 res.render("Login.ejs");
@@ -196,22 +198,67 @@ exports.tutorinfo = function(req,res){
 
 exports.sendmtutor = function(req,res){
     var recname=req.params.username;
+    console.log(recname);
     var text=req.body.message;
     var user=req.session.user;
     var message={"sender":user.name,"text":text};
-    db.update_messenge(recname,message);
+    db.update_tmessenge(recname,message);
     db.findtutor(recname,function(result){
         res.render("tutorinfo.ejs",{"user":user,"tutor":result});
     });
 }
 
+/*exports.sendmstudent = function(req,res){
+    var recname = req.params.username;
+    var text=req.body.message;
+    var user=req.session.user;
+    var message={"sender":user.name,"text":text};
+    db.update_smessage(recname,message);
+    res.render("getmessage.ejs",{"user":user});
+}*/
+
+
+exports.replymessage = function(req,res){
+    var recname = req.params.name;
+    console.log(recname);
+    var text = req.body.message;
+    var user = req.session.user;
+    var id  = req.session.identity;
+    console.log(id);
+    var message = {"sender":user.name,"text":text};
+    if (id == "student"){
+        db.update_tmessenge(recname,message);
+    }else{
+        db.update_smessage(recname,message);
+        console.log("message sent");
+    }
+    res.render("getmessage.ejs",{"user":user});
+}
+
+/*exports.sendmtutor = function(req,res){
+    var recname = req.params.username;
+    var text=req.body.message;
+    var user = req.session.user;
+    var message={"sender":user.name,"text":text};
+    db.update_tmessenge(recname,message);
+
+}*/
+
 exports.getmessage = function(req,res){
     var user=req.session.user;
     db.findtutor(user.name,function(result){
-        req.session.user=result;
-        res.render("getmessage.ejs",{"user":user});
+        if(result){
+            req.session.user=result;
+            res.render("getmessage.ejs",{"user":user});
+        }
     });
-}
+    db.findstudent(user.name,function(result){
+        if(result){
+            req.session.user=result;
+            res.render("getmessage.ejs",{"user":user});
+        };
+    });
+};
 
 exports.updateUserinfo = function(req,res){
     var user=req.session.user;
@@ -232,10 +279,15 @@ exports.updateUserinfo = function(req,res){
                 res.render("userinfo.ejs",{"user":user});
             });
         };
-    });
+    }); 
 };
 
 exports.changeinfo = function(req,res){
     var user=req.session.user;
     res.render("changeuserinfo.ejs",{"user":user});
+}
+
+exports.findtutorbymap = function(req,res){
+    var user=req.session.user;
+    res.render("googlemap.ejs",{"user":user});
 }
