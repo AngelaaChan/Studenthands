@@ -11,11 +11,6 @@ exports.Register = function(req,res){
     res.render("Register.ejs");
 };
 
-exports.DiscussionBoard = function(req,res){
-    var user = req.session.user;
-    res.render("discussion.ejs",{'user':user});
-}
-
 exports.ranking = function(req,res){
     var user = req.session.user;
 
@@ -87,10 +82,9 @@ exports.createUser = function(req,res){
         db.insertstudent(req.body,function(result){
             res.render("registersuccess.ejs");
         });
-    }
-    else{
+    }else{
         db.insertutor(req.body,function(result){
-            res.render("registersuccess.ejs");
+            res.render("registersuccess.ejs",{"identity":"tutor"});
         });
     };
 };
@@ -208,41 +202,21 @@ exports.sendmtutor = function(req,res){
     });
 }
 
-/*exports.sendmstudent = function(req,res){
-    var recname = req.params.username;
-    var text=req.body.message;
-    var user=req.session.user;
-    var message={"sender":user.name,"text":text};
-    db.update_smessage(recname,message);
-    res.render("getmessage.ejs",{"user":user});
-}*/
-
 
 exports.replymessage = function(req,res){
     var recname = req.params.name;
-    console.log(recname);
     var text = req.body.message;
     var user = req.session.user;
     var id  = req.session.identity;
-    console.log(id);
     var message = {"sender":user.name,"text":text};
     if (id == "student"){
         db.update_tmessenge(recname,message);
     }else{
         db.update_smessage(recname,message);
-        console.log("message sent");
     }
     res.render("getmessage.ejs",{"user":user});
 }
 
-/*exports.sendmtutor = function(req,res){
-    var recname = req.params.username;
-    var text=req.body.message;
-    var user = req.session.user;
-    var message={"sender":user.name,"text":text};
-    db.update_tmessenge(recname,message);
-
-}*/
 
 exports.getmessage = function(req,res){
     var user=req.session.user;
@@ -292,7 +266,29 @@ exports.findtutorbymap = function(req,res){
     res.render("googlemap.ejs",{"user":user});
 }
 
+exports.DiscussionBoard = function(req,res){
+    var user = req.session.user;
+    db.find_question(function(result){
+        res.render("discussion.ejs",{"user":user,"questions":result});
+    });
+}
+
 exports.postquestion = function(req,res){
     var user=req.session.user;
-    db.insert_question("discussion.ejs",{"user":user});
-}
+    var question = req.body.question;
+    var description = req.body.description;
+    db.insert_question(user.name,question,description);
+    res.find_question(function(result){
+        res.render("discussion.ejs",{"user":user,"questions":result});
+    });
+};
+
+exports.answerquestion = function(req,res){
+    var user=req.session.user;
+    var ans = {"answer":req.body.answer,"poster":user.name};
+    var question = req.params.question;
+    db.answer_question(question,ans);
+    db.find_question(function(result){
+        res.render("discussion.ejs",{"user":user,"questions":result});
+    });
+};

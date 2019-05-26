@@ -91,6 +91,7 @@ exports.insertstudent=function(student,callback){
                         "gender":student.gender,
                         "suburb":student.suburb,
                         "email":student.email,
+                        "phone":student.phone,
                         "balance":0,
                         "message":[]};
         students.insertOne(oneStudent,function(err,result){
@@ -114,11 +115,13 @@ exports.insertutor=function(tutor,callback){
                         "gender":tutor.gender,
                         "suburb":tutor.suburb,
                         "email":tutor.email,
-                        "description":"",
+                        "phone":tutor.phone,
                         "balance":0,
                         "rate":0,
                         "certification":tutor.certification,
                         "experience":tutor.experience,
+                        "start_time":tutor.stime,
+                        "end_time":tutor.etime,
                         "message":[]};
         tutors.insertOne(oneTutor,function(err,result){
             callback(result);
@@ -281,12 +284,12 @@ exports.update_smessage = function(user,message){
     client.close();
 };
 
-exports.insert_question = function(question){
+exports.insert_question = function(poster,question,description){
     var client = new MongoClient(url,{useNewUrlParser:true});
-    var q = {"question":question,answer:[]}
+    var q = {"question":question,"description":description,"poster":poster,answer:[]};
     client.connect(err=>{
         var forums = client.db("studenthands").collection("forums");
-        forums.insertOne(question,function(err,result){
+        forums.insertOne(q,function(err,result){
             callback(result);
             return;
         });
@@ -294,3 +297,27 @@ exports.insert_question = function(question){
     client.close();
 }
 
+exports.answer_question = function(question,answer){
+    var client = new MongoClient(url,{useNewUrlParser:true});
+    client.connect(err=>{
+        var forums = client.db("studenthands").collection("forums");
+        forums.updateOne({"question":question},
+                        {$push:{"answer":answer}
+                    });
+        return;
+    });
+    client.close();
+};
+
+exports.find_question = function(callback){
+    var client = new MongoClient(url, {useNewUrlParser: true});
+    client.connect(err=>{
+        var forums=client.db("studenthands").collection("forums");
+        forums.find().toArray(function(err,result){
+            callback(result);
+            return;
+        });
+        return;
+    });
+    client.close();
+};

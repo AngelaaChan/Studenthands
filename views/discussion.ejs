@@ -61,26 +61,34 @@
         </div>
     </nav>
     <h2>Discussion Forum</h2>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="jumbotron text-white rounded bg-dark">
+    <%for (var i=0;i<questions.length;i++){%>
+        <div class="name">question: <%=questions[i].question%></div>
+        <div class="name">poster: <%=question[i].poster%></div>
+        <div class="name">description: <%=questions[i].description%></div>
+        <%for (var j=0;j<questions[i].answer.length;j++){%>
+            <div class="name">answer<%=j%>: <%=questions[i].answer[j]%></div>
+        <%}%>
+        <%if (user){%>
+            <form action="/answerquestion/<%=question[i].question>" method="POST">
+                <div class="name">Additional answer:</div>
+                <input class="input--style-5" type="text" name="answer">
+                <div>
+                    <button class="btn btn--radius-2 btn--green" type="submit" value ="post answer">Answer question</button>
                 </div>
+            </form>
+        <%}%>
+    <%}%>
+    <%if (user){%>
+        <form action="/postquestion" method="POST">
+            <div class="name">question:</div>
+            <input class="input--style-5" type="text" name="question" required>
+            <div class="name">description:</div>
+            <input class="input--style-5" type="text" name="description" required>
+            <div>
+                <button class="btn btn--radius-2 btn--green" type="submit" value ="post">Post Question</button>
             </div>
-            <div class="col-md-12">
-                <div class="jumbotron text-white rounded bg-dark">
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="jumbotron text-white rounded bg-dark">
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="jumbotron text-white rounded bg-dark">
-                </div>
-            </div>
-        </div>
-    </div>
+        </form>
+    <%}%>
 </body>
 
 </html>

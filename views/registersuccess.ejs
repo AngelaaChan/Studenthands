@@ -49,9 +49,15 @@
                         <h2 class="title">Registering</h2>
                     </div>
                     <div class="card-body">
-                        <div class="form-row">
-                            <div class="name">Register Success</div>
-                        </div>
+                        <%if (identity != "tutor"){%>
+                            <div class="form-row">
+                                <div class="name">Register Success</div>
+                            </div>
+                        <%}else{%>
+                            <div class="form-row">
+                                <div class="name">Registering, waiting for admin to approve</div>
+                            </div>
+                        <%}%>
                         <div>
                             <a href="/"><button class="btn btn--radius-2 btn--green" type="submit">OK</button></a>
                         </div>

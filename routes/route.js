@@ -70,5 +70,8 @@ router.get("/changeinfo",controller.changeinfo);
 
 router.get("/findbymap",controller.findtutorbymap);
 
+router.post("/postquestion",controller.postquestion);
+
+router.post("/answerquestion/:question",controller.answerquestion);
 
 module.exports = router;
