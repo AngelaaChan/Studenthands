@@ -69,7 +69,7 @@
             <div class="name">answer<%=j%>: <%=questions[i].answer[j]%></div>
         <%}%>
         <%if (user){%>
-            <form action="/answerquestion/<%=question[i].question>" method="POST">
+            <form action="/answerquestion/<%=question[i].question%>" method="POST">
                 <div class="name">Additional answer:</div>
                 <input class="input--style-5" type="text" name="answer">
                 <div>

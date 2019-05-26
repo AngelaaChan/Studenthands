@@ -313,7 +313,7 @@ exports.find_question = function(callback){
     var client = new MongoClient(url, {useNewUrlParser: true});
     client.connect(err=>{
         var forums=client.db("studenthands").collection("forums");
-        forums.find().toArray(function(err,result){
+        forums.find({}).toArray(function(err,result){
             callback(result);
             return;
         });
