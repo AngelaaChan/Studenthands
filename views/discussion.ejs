@@ -66,7 +66,7 @@
         <div class="name">poster: <%=question[i].poster%></div>
         <div class="name">description: <%=questions[i].description%></div>
         <%for (var j=0;j<questions[i].answer.length;j++){%>
-            <div class="name">answer<%=j%>: <%=questions[i].answer[j]%></div>
+            <div class="name">answer<%=j%> from <%=answer.poster%>: <%=questions[i].answer[j]%></div>
         <%}%>
         <%if (user){%>
             <form action="/answerquestion/<%=question[i].question%>" method="POST">
