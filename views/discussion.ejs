@@ -63,13 +63,13 @@
     <h2>Discussion Forum</h2>
     <%for (var i=0;i<questions.length;i++){%>
         <div class="name">question: <%=questions[i].question%></div>
-        <div class="name">poster: <%=question[i].poster%></div>
+        <div class="name">poster: <%=questions[i].poster%></div>
         <div class="name">description: <%=questions[i].description%></div>
         <%for (var j=0;j<questions[i].answer.length;j++){%>
-            <div class="name">answer<%=j%> from <%=answer.poster%>: <%=questions[i].answer[j]%></div>
+            <div class="name">answer<%=j+1%> from <%=questions[i].answer[j].poster%>: <%=questions[i].answer[j].ans%></div>
         <%}%>
         <%if (user){%>
-            <form action="/answerquestion/<%=question[i].question%>" method="POST">
+            <form action="/answerquestion/<%=questions[i].question%>" method="POST">
                 <div class="name">Additional answer:</div>
                 <input class="input--style-5" type="text" name="answer">
                 <div>

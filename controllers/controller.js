@@ -278,14 +278,14 @@ exports.postquestion = function(req,res){
     var question = req.body.question;
     var description = req.body.description;
     db.insert_question(user.name,question,description);
-    res.find_question(function(result){
+    db.find_question(function(result){
         res.render("discussion.ejs",{"user":user,"questions":result});
     });
 };
 
 exports.answerquestion = function(req,res){
     var user=req.session.user;
-    var ans = {"answer":req.body.answer,"poster":user.name};
+    var ans = {"ans":req.body.answer,"poster":user.name};
     var question = req.params.question;
     db.answer_question(question,ans);
     db.find_question(function(result){
