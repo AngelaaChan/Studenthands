@@ -28,6 +28,7 @@
        * element that contains the map. */
       #map {
         height: 100%;
+        width: 100%;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -91,29 +92,51 @@
 </nav>
 
 
+<div class="name">Google Map testing</div>
 <div id="map"></div>
 <script>
+    // This example adds a user-editable rectangle to the map.
+    // When the user changes the bounds of the rectangle,
+    // an info window pops up displaying the new bounds.
+    var rectangle;
     var map;
+    var infoWindow;
     function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
-    });
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: -37.83 , lng: 144.995},
+            zoom: 12
+        });
+        var drawingManager = new google.maps.drawing.DrawingManager({
+          drawingMode: google.maps.drawing.OverlayType.MARKER,
+          drawingControl: true,
+          drawingControlOptions: {
+            position: google.maps.ControlPosition.TOP_CENTER,
+            drawingModes: ['rectangle']
+          },
+          rectangleOptions: { editable: true, draggable: true},
+          map: map
+        });
+        google.maps.event.addListener(drawingManager,'overleycomplete',function(e){
+            if (e.type != google.maps.drawing.OverlayType.MARKER) {
+            // Switch back to non-drawing mode after drawing a shape.
+                drawingManager.setDrawingMode(null);
+            };
+            //option 1
+            var ne = rectangle.getBounds().getNorthEast();
+            var sw = rectangle.getBounds().getSouthWest();
+            //option 2
+            var coordinates = (e.overlay.getPath().getArray());
+            // however, console log is not working, cannnot detect where is error
+            drawingManager.setDrawingMode(null);
+        });
+        drawingManager.setMap(map);
     }
+
 </script>
-<<<<<<< HEAD:views/googlemap.ejs
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4B_1Yph5ka6QBKAI6z-gCsq2oIIrVG48&callback=initMap"
-async defer></script>
-=======
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGUl7T83zKY3A96GUBQSITe1b7hu0aq5A&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGUl7T83zKY3A96GUBQSITe1b7hu0aq5A&libraries=drawing&callback=initMap">
 </script>
 </body>
->>>>>>> efebdec78838c20eaef765ee03edb877fe2033d3:views/googlemap.html
-
-
-
-
 
 
 <div id="copyright" class="container">
