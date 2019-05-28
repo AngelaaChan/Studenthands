@@ -15,7 +15,8 @@ exports.insertstudent=function(student,callback){
                         "email":student.email,
                         "phone":student.phone,
                         "balance":0,
-                        "message":[]};
+                        "message":[],
+                        "coord":[]};
         students.insertOne(oneStudent,function(err,result){
             callback(result);
             return;
