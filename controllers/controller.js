@@ -1,4 +1,3 @@
-
 var db = require("../models/db.js");
 
 
@@ -7,9 +6,6 @@ exports.getIndex = function(req,res){
     res.render("newindex.ejs",{'user':user});
 };
 
-exports.Register = function(req,res){
-    res.render("Register.ejs");
-};
 
 exports.ranking = function(req,res){
     var user = req.session.user;
@@ -22,10 +18,6 @@ exports.Challenge = function(req,res){
 
     res.render("challenge.ejs",{"user":user});
 }
-
-exports.login = function(req,res){
-    res.render("Login.ejs");
-};
 
 exports.searchTutorSub = function(req,res){
     var user= req.session.user;
@@ -76,20 +68,6 @@ exports.alltutors = function(req,res){
     });
 };
 
-exports.createUser = function(req,res){
-    var id = req.body.identity;
-    if (id == "student"){
-        db.insertstudent(req.body,function(result){
-            res.render("registersuccess.ejs");
-        });
-    }else{
-        db.insertutor(req.body,function(result){
-            res.render("registersuccess.ejs",{"identity":"tutor"});
-        });
-    };
-};
-
-
 
 exports.updateStudentsub = function(req,res){
     db.updatestudentsubject(req.query,function(result){
@@ -126,169 +104,7 @@ exports.deltutor = function(req,res){
     });
 };
 
-exports.findtutorc = function(req,res){
-    var user = req.session.user;
-    for(var key in req.body){
-        if (req.body[key] == ''){
-            delete(req.body[key]);
-        };
-    };
-    db.findtutorcondition(req.body,function(result){
-        res.render("searchtutorresult.ejs",{"result":result,"user":user});
-    });
-};
-
-exports.check_login = function(req,res){
-    var id = req.body.identity;
-    var user = {"username":req.body.username, "password":req.body.password};
-    if (id == "student"){
-        db.student_check_login(user,function(result){
-            if (result){
-                req.session.user = result;
-                req.session.identity = "student";
-                res.render("newindex.ejs",{"user":result});
-            }else{
-                res.render("Login.ejs");
-            };  
-        });
-    }else if(id == "tutor"){
-        db.tutor_check_login(user,function(result){
-            if (result){
-                req.session.user = result;
-                req.session.identity = "tutor";
-                res.render("newindex.ejs",{"user":result});
-            }else{
-                res.render("Login.ejs");
-            };
-        });
-    };
-};
-
-exports.userinfo = function(req,res){
-    var user = req.session.user;
-    if(user){
-        res.render("userinfo.ejs",{"user":user});
-    }else{
-        res.render("Login.ejs");
-    }
-};
-
-exports.logout = function(req,res){
-    var user=req.session.user;
-    if(user){
-        delete req.session.user;
-        res.render("newindex.ejs",{"user":req.session.user});
-    }else{
-        res.render("newindex.ejs",{"user":req.session.user});
-    }
-}
-
-exports.tutorinfo = function(req,res){
-    var user = req.session.user;
-    db.findtutor(req.params.name,function(result){
-        res.render("tutorinfo.ejs",{"tutor":result,"user":user});
-    });
-}
-
-exports.sendmtutor = function(req,res){
-    var recname=req.params.username;
-    console.log(recname);
-    var text=req.body.message;
-    var user=req.session.user;
-    var message={"sender":user.name,"text":text};
-    db.update_tmessenge(recname,message);
-    db.findtutor(recname,function(result){
-        res.render("tutorinfo.ejs",{"user":user,"tutor":result});
-    });
-}
-
-
-exports.replymessage = function(req,res){
-    var recname = req.params.name;
-    var text = req.body.message;
-    var user = req.session.user;
-    var id  = req.session.identity;
-    var message = {"sender":user.name,"text":text};
-    if (id == "student"){
-        db.update_tmessenge(recname,message);
-    }else{
-        db.update_smessage(recname,message);
-    }
-    res.render("getmessage.ejs",{"user":user});
-}
-
-
-exports.getmessage = function(req,res){
-    var user=req.session.user;
-    db.findtutor(user.name,function(result){
-        if(result){
-            req.session.user=result;
-            res.render("getmessage.ejs",{"user":user});
-        }
-    });
-    db.findstudent(user.name,function(result){
-        if(result){
-            req.session.user=result;
-            res.render("getmessage.ejs",{"user":user});
-        };
-    });
-};
-
-exports.updateUserinfo = function(req,res){
-    var user=req.session.user;
-    user.subject= req.body.subject;
-    user.email = req.body.email;
-    user.suburb = req.body.suburb;
-    user.university = req.body.university;
-    db.findtutor(user.name,function(result){
-        if (result){
-            db.updatetutor(user,function(resul){
-                res.render("userinfo.ejs",{"user":user});
-            });
-        }
-    });
-    db.findstudent(user.name,function(result){
-        if (result){
-            db.updatestudent(user,function(resul){
-                res.render("userinfo.ejs",{"user":user});
-            });
-        };
-    }); 
-};
-
-exports.changeinfo = function(req,res){
-    var user=req.session.user;
-    res.render("changeuserinfo.ejs",{"user":user});
-}
-
 exports.findtutorbymap = function(req,res){
     var user=req.session.user;
     res.render("googlemap.ejs",{"user":user});
 }
-
-exports.DiscussionBoard = function(req,res){
-    var user = req.session.user;
-    db.find_question(function(result){
-        res.render("discussion.ejs",{"user":user,"questions":result});
-    });
-}
-
-exports.postquestion = function(req,res){
-    var user=req.session.user;
-    var question = req.body.question;
-    var description = req.body.description;
-    db.insert_question(user.name,question,description);
-    db.find_question(function(result){
-        res.render("discussion.ejs",{"user":user,"questions":result});
-    });
-};
-
-exports.answerquestion = function(req,res){
-    var user=req.session.user;
-    var ans = {"ans":req.body.answer,"poster":user.name};
-    var question = req.params.question;
-    db.answer_question(question,ans);
-    db.find_question(function(result){
-        res.render("discussion.ejs",{"user":user,"questions":result});
-    });
-};
