@@ -60,35 +60,60 @@
             </ul>
         </div>
     </nav>
-    <h2>Discussion Forum</h2>
-    <%for (var i=0;i<questions.length;i++){%>
-        <div class="name">question: <%=questions[i].question%></div>
-        <div class="name">poster: <%=questions[i].poster%></div>
-        <div class="name">description: <%=questions[i].description%></div>
-        <%for (var j=0;j<questions[i].answer.length;j++){%>
-            <div class="name">answer<%=j+1%> from <%=questions[i].answer[j].poster%>: <%=questions[i].answer[j].ans%></div>
-        <%}%>
-        <%if (user){%>
-            <form action="/answerquestion/<%=questions[i].question%>" method="POST">
-                <div class="name">Additional answer:</div>
-                <input class="input--style-5" type="text" name="answer">
-                <div>
-                    <button class="btn btn--radius-2 btn--green" type="submit" value ="post answer">Answer question</button>
+    <div class="page-wrapper">
+    <div class="wrapper wrapper--w790">
+      <div class="card card-5">
+        <div class="card-heading">
+          <h2 class="title">Discussion Forum</h2>
+        </div>
+        <div class="card-body">
+        <%for (var i=0;i<questions.length;i++){%>
+                <div class="form-row">
+                    <div class="name">question: <%=questions[i].question%></div>
                 </div>
-            </form>
-        <%}%>
-    <%}%>
-    <%if (user){%>
-        <form action="/postquestion" method="POST">
-            <div class="name">question:</div>
-            <input class="input--style-5" type="text" name="question" required>
-            <div class="name">description:</div>
-            <input class="input--style-5" type="text" name="description" required>
-            <div>
-                <button class="btn btn--radius-2 btn--green" type="submit" value ="post">Post Question</button>
-            </div>
-        </form>
-    <%}%>
+                <div class="form-row">
+                    <div class="name">poster: <%=questions[i].poster%></div>
+                </div>
+                <div class="form-row">
+                    <div class="name">description: <%=questions[i].description%></div>
+                </div>
+            
+                <%for (var j=0;j<questions[i].answer.length;j++){%>
+                    <div class="form-row">
+                        <div class="name">answer<%=j+1%> from <%=questions[i].answer[j].poster%>: <%=questions[i].answer[j].ans%></div>
+                    </div>
+                <%}%>
+                <%if (user){%>
+                    <form action="/answerquestion/<%=questions[i].question%>" method="POST">
+                        <div class="form-row">
+                            <div class="name">Additional answer:</div>
+                        </div>
+                        <input class="input--style-5" type="text" name="answer">
+                        <div>
+                            <button class="btn btn--radius-2 btn--green" type="submit" value ="post answer">Answer question</button>
+                        </div>
+                    </form>
+                <%}%>
+            <%}%>
+            <%if (user){%>
+                <form action="/postquestion" method="POST">
+                    <div class="form-row">
+                        <div class="name">question:</div>
+                    </div>
+                    <input class="input--style-5" type="text" name="question" required>
+                    <div class="form-row">
+                        <div class="name">description:</div>
+                    </div>
+                    <input class="input--style-5" type="text" name="description" required>
+                    <div>
+                        <button class="btn btn--radius-2 btn--green" type="submit" value ="post">Post Question</button>
+                    </div>
+                </form>
+            <%}%>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

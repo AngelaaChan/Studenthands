@@ -67,26 +67,24 @@
           <h2 class="title">Searching result</h2>
         </div>
         <div class="card-body">
-          <% for(var i=0;i<result.length;i++){%>
-          <a href="/tutorinfo/<%=result[i].name%>">
-            <img src="/image/people-icon.jpg" alt ="head" width="10%" algin ="right">
-            <div class="forum-row">
-              <div class="name">name: <%=result[i].name%><div>
-                </div>
-              <div class="forum-row">
-                <div class="name">subject: <%=result[i].subject%></div>
-              </div>
-              <div class="forum-row">
-                <div class="name">age: <%=result[i].age%></div>
-              </div>
-              <div class="forum-row">
-                <div class="name">rate: <%=result[i].rate%></div>
-              </div>
-          </a>
+            <% for(var i=0;i<result.length;i++){%>
+                <a href="/tutorinfo/<%=result[i].name%>"></a>
+                  <!--<img src="/image/people-icon.jpg" alt ="head" width="10%" algin ="right">-->
+                  <div class="forum-row">
+                    <div class="name">name: <%=result[i].name%><div>
+                  </div>
+                  <div class="forum-row">
+                    <div class="name">subject: <%=result[i].subject%></div>
+                  </div>
+                  <div class="forum-row">
+                    <div class="name">age: <%=result[i].age%></div>
+                  </div>
+                  <div class="forum-row">
+                    <div class="name">rate: <%=result[i].rate%></div>
+                  </div>
+                    <br></br>
               <% }%>
-            </div>
           </div>
-        </div>
       </div>
     </div>
   </div>
