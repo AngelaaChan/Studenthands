@@ -138,13 +138,13 @@
                     // 这里可以对返回的内容做处理  
                     // 一般会返回JSON或XML数据格式  
                     console.log(XHR.responseText);
-                    for (var i = 0;i<XHR.responseText.length;i++){
-                        if (XHR.responseText[i].coord){
-                            var tutorpos = XHR.responseText[i].coord;
-                            var marker = new google.maps.Marker({
-                            position:tutorpos,
-                            map:map
-                            });
+                    var text = JSON.parse(XHR.responseText);
+                    console.log(text);
+                    for (var i = 0;i<text.length;i++){
+                        if (text[i].coord){
+                            addMarker({"coords":text[i].coord});
+                            //console.log(XHR.responseText[i].coord);
+
                         }
                     } 
                     // 主动释放,JS本身也会回收的  
