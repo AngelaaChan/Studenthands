@@ -9,6 +9,8 @@ var user_controller = require('../controllers/user_controller.js');
 
 var search_controller = require('../controllers/search_controller.js');
 
+var map_controller = require('../controllers/map_controller.js');
+
 router.get("/",controller.getIndex);
 
 
@@ -86,5 +88,9 @@ router.get("/discussionforum",diss_controller.DiscussionBoard);
 router.post("/postquestion",diss_controller.postquestion);
 
 router.post("/answerquestion/:question",diss_controller.answerquestion);
+
+
+//google map
+router.post("/findpos",map_controller.findingpos);
 
 module.exports = router;

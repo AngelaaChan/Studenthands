@@ -95,93 +95,129 @@
 <div class="name">Google Map testing</div>
 <div id="map"></div>
 <script>
-    // This example adds a user-editable rectangle to the map.
-    // When the user changes the bounds of the rectangle,
-    // an info window pops up displaying the new bounds.
-    var drawingManager;
-    var selectedShape;
+    function initMap(){
+      // Map options
+      var options = {
+        zoom:8,
+        center:{lat:-37.83,lng:144.995}
+      }
 
+      // New map
+      var map = new google.maps.Map(document.getElementById('map'), options);
 
-    function clearSelection() {
-        if (selectedShape) {
-            selectedShape.setEditable(false);
-            selectedShape = null;
+      // Listen for click on map
+      google.maps.event.addListener(map, 'click', function(event){
+        // Add marker
+        addMarker({coords:event.latLng});
+        console.log(event.latLng.lat(),event.latLng.lng());
+        var data = 'lat='+event.latLng.lat()+'&lng='+event.latLng.lng();
+        var XHR=null;  
+        if (window.XMLHttpRequest) {   
+            //ie 内核
+            XHR = new XMLHttpRequest();  
+        } else if (window.ActiveXObject) {    
+            XHR = new ActiveXObject("Microsoft.XMLHTTP");  
+        } else {  
+            XHR = null;  
+        }  
+        
+        if(XHR){  
+            XHR.open("POST", "/findpos",true);  
+            XHR.onreadystatechange = function () {  
+                // readyState值说明  
+                // 0,初始化,XHR对象已经创建,还未执行open  
+                // 1,载入,已经调用open方法,但是还没发送请求  
+                // 2,载入完成,请求已经发送完成  
+                // 3,交互,可以接收到部分数据  
+        
+                // status值说明  
+                // 200:成功  
+                // 404:没有发现文件、查询或URl  
+                // 500:服务器产生内部错误  
+                if (XHR.readyState == 4 && XHR.status == 200) {  
+                    // 这里可以对返回的内容做处理  
+                    // 一般会返回JSON或XML数据格式  
+                    console.log(XHR.responseText);
+                    for (var i = 0;i<XHR.responseText.length;i++){
+                        if (XHR.responseText[i].coord){
+                            var tutorpos = XHR.responseText[i].coord;
+                            var marker = new google.maps.Marker({
+                            position:tutorpos,
+                            map:map
+                            });
+                        }
+                    } 
+                    // 主动释放,JS本身也会回收的  
+                    XHR = null;  
+                }  
+            }; 
+            XHR.setRequestHeader("Content-type","application/json");  
+            //XHR.setRequestHeader("Content-type","application/x-www-form-urlencoded"); 
+            // XHR.send(JSON.stringify(data));  //如果是对象格式的数据就要转换成jsonstring  
+            XHR.send(data);
         }
-    }
+      });
 
-    function setSelection(shape) {
-        clearSelection();
-        selectedShape = shape;
-        shape.setEditable(true);
-        //google.maps.event.addListener(shape.getPath(), 'set_at', calcar);
-        //google.maps.event.addListener(shape.getPath(), 'insert_at', calcar);
-    }
+      /*
+      // Add marker
+      var marker = new google.maps.Marker({
+        position:{lat:42.4668,lng:-70.9495},
+        map:map,
+        icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+      });
 
+      var infoWindow = new google.maps.InfoWindow({
+        content:'<h1>Lynn MA</h1>'
+      });
 
-    function deleteSelectedShape() {
-        if (selectedShape) {
-            selectedShape.setMap(null);
+      marker.addListener('click', function(){
+        infoWindow.open(map, marker);
+      });
+      */
+
+      // Array of markers
+      var markers = [
+        {
+          coords:{lat:42.4668,lng:-70.9495},
+          iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          content:'<h1>Lynn MA</h1>'
         }
-    }
+      ];
 
+      // Loop through markers
+      for(var i = 0;i < markers.length;i++){
+        // Add marker
+        addMarker(markers[i]);
+      }
 
-    // Retrieves the current options from the drawing manager and replaces the
-    // stroke or fill color as appropriate.
+      // Add Marker Function
+      function addMarker(props){
+        var marker = new google.maps.Marker({
+          position:props.coords,
+          map:map,
+          //icon:props.iconImage
+        });
 
-    var rectangleOptions = drawingManager.get('rectangleOptions');
-    drawingManager.set('rectangleOptions', rectangleOptions);
-
-
-
-
-    function initMap() {
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 11,
-        center: new google.maps.LatLng(-37.83, 144.995),
-    });
-
-    // Creates a drawing manager attached to the map that allows the user to draw
-    // markers, lines, and shapes.
-    drawingManager = new google.maps.drawing.DrawingManager({
-        drawingMode: google.maps.drawing.OverlayType.RECTANGLE,
-        drawingControlOptions:{
-            drawingModes:['rectangle']
-        },
-        markerOptions: {
-            draggable: true
-        },
-        rectangleOptions: {
-            editable: true,
-            draggable: true
-        },
-        map: map
-    });
-
-    google.maps.event.addListener(drawingManager, 'overlaycomplete', function(e) {
-        if (e.type != google.maps.drawing.OverlayType.MARKER) {
-        // Switch back to non-drawing mode after drawing a shape.
-            drawingManager.setDrawingMode(null);
-
-        // Add an event listener that selects the newly-drawn shape when the user
-        // mouses down on it.
-            var newShape = e.overlay;
-            newShape.type = e.type;
-            google.maps.event.addListener(newShape, 'click', function() {
-                setSelection(newShape);
-            });
-            setSelection(newShape);
+        // Check for customicon
+        if(props.iconImage){
+          // Set icon image
+          marker.setIcon(props.iconImage);
         }
-    });
 
-    // Clear the current selection when the drawing mode is changed, or when the
-    // map is clicked.
-    google.maps.event.addListener(drawingManager, 'drawingmode_changed', clearSelection);
-    google.maps.event.addListener(map, 'click', clearSelection);
-    google.maps.event.addDomListener(document.getElementById('delete-button'), 'click', deleteSelectedShape);
+        // Check content
+        if(props.content){
+          var infoWindow = new google.maps.InfoWindow({
+            content:props.content
+          });
 
+          marker.addListener('click', function(){
+            infoWindow.open(map, marker);
+          });
+        }
+      }
     }
-
 </script>
+
 <button id="delete-button" class="btn btn--radius-2 btn--green">Delete select shape </button>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGUl7T83zKY3A96GUBQSITe1b7hu0aq5A&libraries=drawing&callback=initMap">

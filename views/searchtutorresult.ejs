@@ -68,7 +68,7 @@
         </div>
         <div class="card-body">
             <% for(var i=0;i<result.length;i++){%>
-                <a href="/tutorinfo/<%=result[i].name%>"></a>
+                <a href="/tutorinfo/<%=result[i].name%>">
                   <!--<img src="/image/people-icon.jpg" alt ="head" width="10%" algin ="right">-->
                   <div class="forum-row">
                     <div class="name">name: <%=result[i].name%><div>
@@ -82,6 +82,7 @@
                   <div class="forum-row">
                     <div class="name">rate: <%=result[i].rate%></div>
                   </div>
+                  </a>
                     <br></br>
               <% }%>
           </div>

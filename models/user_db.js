@@ -16,7 +16,8 @@ exports.insertstudent=function(student,callback){
                         "phone":student.phone,
                         "balance":0,
                         "message":[],
-                        "coord":[]};
+                        "coord":[],
+                        };
         students.insertOne(oneStudent,function(err,result){
             callback(result);
             return;
@@ -113,3 +114,15 @@ exports.student_check_login=function(user,callback){
     });
     client.close();
 };
+
+exports.findpos = function(pos,callback){
+    var client = new MongoClient(url, { useNewUrlParser: true });
+    client.connect(err=>{
+        var tutors=client.db("studenthands").collection("tutors");
+        tutors.find({}).toArray(function(err,result){
+            callback(result);
+            return;
+        });
+    });
+    client.close();
+}
