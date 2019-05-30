@@ -1,6 +1,6 @@
 var db = require("../models/user_db.js");
-
-
+var formidable=require("formidable");
+var fs = require("fs");
 exports.Register = function(req,res){
     res.render("Register.ejs");
 };
@@ -8,12 +8,18 @@ exports.Register = function(req,res){
 exports.login = function(req,res){
     res.render("Login.ejs");
 };
-
+/*
 exports.createUser = function(req,res){
     var id = req.body.identity;
+    console.log(req.body);
+    for (var i=0;i<req.body.subject.length;i++){
+        if (req.body.subject[i] == ''){
+            req.body.subject.splice(i,1);
+        }
+    }
     if (id == "student"){
         db.insertstudent(req.body,function(result){
-            res.render("registersuccess.ejs");
+            res.render("registersuccess.ejs",{"identity":"student"});
         });
     }else{
         db.insertutor(req.body,function(result){
@@ -21,7 +27,7 @@ exports.createUser = function(req,res){
         });
     };
 };
-
+*/
 
 exports.check_login = function(req,res){
     var id = req.body.identity;
@@ -95,3 +101,38 @@ exports.updateUserinfo = function(req,res){
         };
     }); 
 };
+
+exports.picpost=function(req,res,next){
+    var form=new formidable.IncomingForm();
+    form.uploadDir="/Users/Ken/Desktop/2019SM1/INFO30005/INFO30005-2019-PW/public/image";
+    form.parse(req,function(err,fields,files){
+        var oldpath=files.picture.path;
+        var newpath="/Users/Ken/Desktop/2019SM1/INFO30005/INFO30005-2019-PW/public/image/"+fields.name+".jpg";
+        fs.rename(oldpath,newpath,function(err){
+            if(err){
+                console.log(req.body.name);
+                console.log("上传失败");
+                next();
+            }else{
+                console.log("上传成功");
+                var id = fields.identity;
+                for (var i=0;i<fields.subject.length;i++){
+                    if (fields.subject[i] == ''){
+                        fields.subject.splice(i,1);
+                    }
+                }
+                fields.picture = newpath;
+                console.log(fields);
+                if (id == "student"){
+                    db.insertstudent(fields,function(result){
+                        res.render("registersuccess.ejs",{"identity":"student"});
+                    })
+                }else{
+                    db.insertutor(fields,function(result){
+                        res.render("registersuccess.ejs",{"identity":"tutor"});
+                    });
+                };
+            }
+        });
+    });
+}

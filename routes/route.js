@@ -27,7 +27,8 @@ router.get("/userinfo",user_controller.userinfo);
 
 router.post("/updateinfo",user_controller.updateUserinfo);
 
-router.post("/newuser",user_controller.createUser);
+//register
+router.post("/picpost",user_controller.picpost);
 
 router.get("/changeinfo",user_controller.changeinfo);
 

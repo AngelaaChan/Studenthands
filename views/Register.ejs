@@ -22,6 +22,7 @@
     <!-- Main CSS-->
     <link href="/css/register.css" type="text/css" rel="stylesheet" media="all">
     <link href="/css/bootstrap-datepicker.css" type="text/css" rel="stylesheet" media="all">
+
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script type="text/javascript">
@@ -40,6 +41,15 @@
             interval: 30
         });
         $("#datepicker").datepicker({});
+        function getsubject(){
+            var subjects = [];
+            var temp = document.getElementsByName("subject");
+            for (i=0;i<temp.length;i++){
+                if(temp[i].checked){
+                    subjects.push(temp[i].value);
+                }
+            }
+        };
     </script>
     <script type="text/javascript">
         $(document).ready(function(){
@@ -59,7 +69,8 @@
                     <h2 class="title">Registration Form</h2>
                 </div>
                 <div class="card-body">
-                    <form action="/newuser" method="POST">
+                    <!--要改回来-->
+                    <form action="/picpost" method="POST" enctype="multipart/form-data">
                         <div class="form-row">
                             <div class="name">Username</div>
                             <div class="value">
@@ -109,16 +120,22 @@
                             </div>
                         </div>
                         <div class="form-row">
+                            <div class="name">upload picture</div>
+                            <div class="value">
+                                <input type="file" name="picture" id="pic" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
                             <div class="name">Subject</div>
                         </div>
                         <div class="form-row">
                             <div class="p-t-10">
                                 <label class="radio-container m-r-45">Mathematics
-                                    <input type="radio" name="subject" value = "Mathematics">
+                                    <input type="checkbox" name="subject" value = "Mathematics">
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="radio-container m-r-45">English
-                                    <input type="radio" name="subject" value = "English">
+                                    <input type="checkbox" name="subject" value = "English">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
@@ -126,11 +143,11 @@
                         <div class="form-row">
                             <div class="p-t-10">
                                 <label class="radio-container m-r-45">Engineering
-                                        <input type="radio" name="subject" value = "Engineering">
+                                        <input type="checkbox" name="subject" value = "Engineering">
                                         <span class="checkmark"></span>
                                     </label>
                                     <label class="radio-container m-r-45">Biology
-                                        <input type="radio" name="subject" value = "Biology">
+                                        <input type="checkbox" name="subject" value = "Biology">
                                         <span class="checkmark"></span>
                                     </label>
                             </div>
@@ -138,11 +155,11 @@
                         <div class="form-row">
                             <div class="p-t-10">
                                 <label class="radio-container m-r-45">Geology
-                                        <input type="radio" name="subject" value = "Geology">
+                                        <input type="checkbox" name="subject" value = "Geology">
                                         <span class="checkmark"></span>
                                     </label>
                                     <label class="radio-container m-r-45">IT
-                                        <input type="radio" name="subject" value = "IT">
+                                        <input type="checkbox" name="subject" value = "IT">
                                         <span class="checkmark"></span>
                                     </label>
                             </div>
@@ -151,11 +168,11 @@
                         <div class="form-row">
                             <div class="p-t-10">
                                 <label class="radio-container m-r-45">Accounting
-                                    <input type="radio" name="subject" value = "Accounting">
+                                    <input type="checkbox" name="subject" value = "Accounting">
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="radio-container m-r-45">Economics
-                                    <input type="radio" name="subject" value = "Economics">
+                                    <input type="checkbox" name="subject" value = "Economics">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
@@ -163,15 +180,15 @@
                         <div class="form-row">
                             <div class="p-t-10">
                                 <label class="radio-container m-r-45">Finance
-                                    <input type="radio" name="subject" value = "Finance">
+                                    <input type="checkbox" name="subject" value = "Finance">
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="radio-container m-r-45">Physics
-                                    <input type="radio" name="subject" value = "Physics">
+                                    <input type="checkbox" name="subject" value = "Physics">
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="radio-container m-r-45">Medicine
-                                    <input type="radio" name="subject" value = "Medicine">
+                                    <input type="checkbox" name="subject" value = "Medicine">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
@@ -180,7 +197,7 @@
                             <div class="value">
                                 <div class="input-group">
                                     <div class="name">other subjects:</div>
-                                    <input class="input--style-5" type="text" name="subject" required>
+                                    <input class="input--style-5" type="text" name="subject">
                                 </div>
                             </div>
                         </div>
@@ -193,7 +210,7 @@
                                     <input type="radio" name="gender" value="Male">
                                     <span class="checkmark"></span>
                                 </label>
-                                <label class="radio-container">Female
+                                <label class="radio-container m-r-45">Female
                                     <input type="radio" name="gender" value="Female">
                                     <span class="checkmark"></span>
                                 </label>
@@ -214,9 +231,44 @@
                         </div>
                         <div class="form-row tutorinfo">
                             <div class="name">Available time:</div>
-                            <div class="name">Starts: <input class="text timepicker" name="stime" required/></div>
-                            <div class="name">Ends: <input class="text timepicker" name="etime" required/></div>
-                            
+                            <div class="name">Starts: <input class="text timepicker" name="stime"/></div>
+                            <div class="name">Ends: <input class="text timepicker" name="etime"/></div>
+                        </div>
+                        <div class="form-row tutorinfo">
+                            <div class="name">Available days:</div>
+                        </div>
+                        <div class="form-row tutorinfo">
+                            <div class="p-t-10">
+                                <label class="radio-container m-r-45">Monday
+                                    <input type="checkbox" name="workingday" value="Monday">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="radio-container m-r-45">Tuesday
+                                    <input type="checkbox" name="workingday" value="Tuesday">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="radio-container m-r-45">Wednesday
+                                    <input type="checkbox" name="workingday" value="Wednesday">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="radio-container m-r-45">Thursday
+                                    <input type="checkbox" name="workingday" value="Thursday">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="radio-container m-r-45">Friday
+                                    <input type="checkbox" name="workingday" value="Fridy">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="radio-container m-r-45">Saturday
+                                    <input type="checkbox" name="workingday" value="Saturday">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="radio-container m-r-45">Sunday
+                                    <input type="checkbox" name="workingday" value="Sunday">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                           
                         </div>
                         <div class="form-row tutorinfo">
                             <div class="name">Certifications</div>
@@ -231,20 +283,31 @@
                         </div>
                         <div class="form-row tutorinfo">
                             <div class="name">
+                                Experience name:
+                            </div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5 info" type="text" name="exptitle">
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="form-row tutorinfo">
+                            <div class="name">
                                 starts:
                             </div>
-                            <input class="text datepicker" type="date" name="sdate" required>
+                            <input class="text datepicker" type="date" name="sdate">
                             <div class="name">
                                 end:
                             </div>
-                            <input class="text datepicker" type="date" name="edate" required>
+                            <input class="text datepicker" type="date" name="edate">
                         </div>
                         <div class="form-row tutorinfo">
-                            <div class="value">
+                            <div class="name">
                                 Experience Description:
-                                <div class="input-group">
-                                    <input class="input--style-5 info" type="text" name="experiencedescrip">
-                                </div>
+                            </div> 
+                            <div class="input-group">
+                                <input class="input--style-5 info" type="text" name="experiencedescrip">
                             </div>
                         </div>
                         <div>

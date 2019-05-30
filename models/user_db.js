@@ -16,7 +16,7 @@ exports.insertstudent=function(student,callback){
                         "phone":student.phone,
                         "balance":0,
                         "message":[],
-                        "coord":[],
+                        "profile":student.picture,
                         };
         students.insertOne(oneStudent,function(err,result){
             callback(result);
@@ -46,7 +46,10 @@ exports.insertutor=function(tutor,callback){
                         "experience":tutor.experience,
                         "start_time":tutor.stime,
                         "end_time":tutor.etime,
-                        "message":[]};
+                        "message":[],
+                        "coord":tutor.coord,
+                        "workingday":tutor.workingday,
+                        };
         tutors.insertOne(oneTutor,function(err,result){
             callback(result);
             return;
