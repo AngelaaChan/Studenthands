@@ -67,7 +67,7 @@ router.get("/delstudent/:name",controller.delstudent);
 
 router.get("/deltutor/:name",controller.deltutor);
 
-router.get("/findbymap",controller.findtutorbymap);
+
 
 
 //finding tutor information
@@ -91,6 +91,10 @@ router.post("/answerquestion/:question",diss_controller.answerquestion);
 
 
 //google map
+router.get("/findbymap",controller.findtutorbymap);
+
 router.post("/findpos",map_controller.findingpos);
+
+router.post("/googlemap",map_controller.findall);
 
 module.exports = router;

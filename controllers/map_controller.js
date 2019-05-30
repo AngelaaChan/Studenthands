@@ -9,3 +9,9 @@ exports.findingpos = function(req,res){
         res.send(result);
     });
 };
+
+exports.findall = function(req,res){
+    db.findallt(function(result){
+        res.send(result);
+    })
+}

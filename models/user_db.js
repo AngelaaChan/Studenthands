@@ -126,3 +126,15 @@ exports.findpos = function(pos,callback){
     });
     client.close();
 }
+
+exports.findallt = function(callback){
+    var client = new MongoClient(url, { useNewUrlParser: true });
+    client.connect(err=>{
+        var tutors=client.db("studenthands").collection("tutors");
+        tutors.find({}).toArray(function(err,result){
+            callback(result);
+            return;
+        });
+    });
+    client.close();
+};
