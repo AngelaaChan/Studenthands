@@ -8,7 +8,7 @@ exports.Register = function(req,res){
 exports.login = function(req,res){
     res.render("Login.ejs");
 };
-/*
+
 exports.createUser = function(req,res){
     var id = req.body.identity;
     console.log(req.body);
@@ -22,12 +22,14 @@ exports.createUser = function(req,res){
             res.render("registersuccess.ejs",{"identity":"student"});
         });
     }else{
+         var experience = {"exptitle":req.body.exptitle,"sdate":req.body.sdate,"edate":req.body.edate,"expdes":req.body.experiencedescrip};
+         req.body.experience = experience;
         db.insertutor(req.body,function(result){
             res.render("registersuccess.ejs",{"identity":"tutor"});
         });
     };
 };
-*/
+
 
 exports.check_login = function(req,res){
     var id = req.body.identity;
@@ -102,7 +104,7 @@ exports.updateUserinfo = function(req,res){
     }); 
 };
 
-exports.picpost=function(req,res,next){
+/*exports.picpost=function(req,res,next){
     var form=new formidable.IncomingForm();
     form.uploadDir="/Users/Ken/Desktop/2019SM1/INFO30005/INFO30005-2019-PW/public/image";
     form.parse(req,function(err,fields,files){
@@ -111,10 +113,8 @@ exports.picpost=function(req,res,next){
         fs.rename(oldpath,newpath,function(err){
             if(err){
                 console.log(req.body.name);
-                console.log("上传失败");
                 next();
             }else{
-                console.log("上传成功");
                 var id = fields.identity;
                 for (var i=0;i<fields.subject.length;i++){
                     if (fields.subject[i] == ''){
@@ -135,4 +135,4 @@ exports.picpost=function(req,res,next){
             }
         });
     });
-}
+}*/
