@@ -16,10 +16,12 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
     <!-- Main CSS-->
     <link href="/css/register.css" type="text/css" rel="stylesheet" media="all">
+    <link href="/css/bootstrap-datepicker.css" type="text/css" rel="stylesheet" media="all">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script type="text/javascript">
@@ -37,12 +39,14 @@
             timeFormat: 'h:mm p',
             interval: 30
         });
+        $("#datepicker").datepicker({});
     </script>
     <script type="text/javascript">
         $(document).ready(function(){
-            $(".timepicker").timepicker({
-                
-            });
+            $(".timepicker").timepicker();
+        });
+        $(document).read(function(){
+            $(".datepicker").datepicker();
         });
     </script>
 </head>
@@ -224,11 +228,24 @@
                         </div>
                         <div class="form-row tutorinfo">
                             <div class="name">Experience</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5 info" type="text" name="experience">
-                                    </div>
+                        </div>
+                        <div class="form-row tutorinfo">
+                            <div class="name">
+                                starts:
+                            </div>
+                            <input class="text datepicker" type="date" name="sdate" required>
+                            <div class="name">
+                                end:
+                            </div>
+                            <input class="text datepicker" type="date" name="edate" required>
+                        </div>
+                        <div class="form-row tutorinfo">
+                            <div class="value">
+                                Experience Description:
+                                <div class="input-group">
+                                    <input class="input--style-5 info" type="text" name="experiencedescrip">
                                 </div>
+                            </div>
                         </div>
                         <div>
                             <button class="btn btn--radius-2 btn--green" type="submit">Register</button>
@@ -245,3 +262,13 @@
 
 </html>
 <!-- end document-->
+
+<style>
+    .timepicker{
+        width: 100%;
+        padding: 12px 22px;
+        margin: 8px 0;
+        border: 2px solid #555555;
+        border-radius: 5px;
+    }
+</style>
