@@ -14,7 +14,6 @@ exports.insertstudent=function(student,callback){
                         "suburb":student.suburb,
                         "email":student.email,
                         "phone":student.phone,
-                        "balance":0,
                         "message":[],
                         "profile":student.picture,
                         };
@@ -40,7 +39,6 @@ exports.insertutor=function(tutor,callback){
                         "suburb":tutor.suburb,
                         "email":tutor.email,
                         "phone":tutor.phone,
-                        "balance":0,
                         "rate":0,
                         "certification":tutor.certification,
                         "experience":tutor.experience,

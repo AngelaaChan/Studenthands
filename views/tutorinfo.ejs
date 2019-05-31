@@ -103,7 +103,7 @@
                     <div class="name">Experience: <%=tutor.experience%> </div>
                 </div>
                 <div class="form-row">
-                    <div class="name">working hours: <%=tutor.stime%>~<%=tutor.etime%></div>
+                    <div class="name">working hours: <%=tutor.start_time%>~<%=tutor.end_time%></div>
                 </div>
                 <%if(user){%>
                 <form action="/sendmessage/<%=tutor.name%>" method="POST">
