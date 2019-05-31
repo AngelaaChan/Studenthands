@@ -23,7 +23,9 @@ exports.createUser = function(req,res){
     }else{
          var experience = {"exptitle":req.body.exptitle,"sdate":req.body.sdate,"edate":req.body.edate,"expdes":req.body.experiencedescrip};
          req.body.experience = experience;
-        db.insertutor(req.body,function(result){
+         var univerisity = {"uni_name":req.body.uni_name,"uni_sdate":req.body.uni_sdate,"uni_edate":req.body.uni_edate,"unides":req.body.unides};
+         req.body.university = univerisity;
+         db.insertutor(req.body,function(result){
             res.render("registersuccess.ejs",{"identity":"tutor"});
         });
     };
