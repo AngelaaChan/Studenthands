@@ -49,6 +49,7 @@ exports.insertutor=function(tutor,callback){
                         "message":[],
                         "coord":tutor.coord,
                         "workingday":tutor.workingday,
+                        //"profile":tutor.picture
                         };
         tutors.insertOne(oneTutor,function(err,result){
             callback(result);

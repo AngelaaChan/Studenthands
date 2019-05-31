@@ -1,6 +1,6 @@
 var db = require("../models/user_db.js");
-var formidable=require("formidable");
 var fs = require("fs");
+
 exports.Register = function(req,res){
     res.render("Register.ejs");
 };
