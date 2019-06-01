@@ -3,8 +3,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Home</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Home</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -13,66 +13,66 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 	<link href="/css/register.css" type="text/css" rel="stylesheet" media="all">
 
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
-<link href="/css/default.css" rel="stylesheet" type="text/css" media="all" />
-<link href="/css/fonts.css" rel="stylesheet" type="text/css" media="all" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+	<link href="/css/default.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="/css/fonts.css" rel="stylesheet" type="text/css" media="all" />
 
-<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+	<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 
 </head>
 <body>
 
 
-	<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="/"><b>Studenthands</b></a>
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="/">Home</a></li>
-					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Find Tutors<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="/searchTutor">By subjects</a></li>
-							<li><a href="/findbymap">By Location</a></li>
-						</ul>
-					</li>
-					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Discussion Forum<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="/discussionforum">Search Questions</a></li>
-							<li><a href="#">Ask Questions</a></li>
-						</ul>
-					</li>
-					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Weekly Challenge<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="/challenge">Current hallenges</a></li>
-							<li><a href="/ranking">Ranking</a></li>
-						</ul>
-					</li>
-					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Learning Resources<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="/challenge">Search Materials</a></li>
-							<li><a href="/ranking">Share Materials</a></li>
-						</ul>
-					</li>
-		
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="/"><b>Studenthands</b></a>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="/">Home</a></li>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Find Tutors<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="/searchTutor">By subjects</a></li>
+					<li><a href="/findbymap">By Location</a></li>
 				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<%if(!user){%>
-						<li><a href="/Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-						<li><a href="/Register"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
-					<%}else{%>
-						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span><%=user.username%><span class="caret"></a>
-							<ul class="dropdown-menu">
-								<li><a href="/userinfo">User information</a></li>
-								<li><a href="#">Top up</a></li>
-								<li><a href="/getmessage">Message</a></li>
-								<li><a href="/Logout">Logout</a></li>
-							</ul>
-						</li>
-					<%}%>
+			</li>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Discussion Forum<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="/discussionforum">Search Questions</a></li>
+					<li><a href="#">Ask Questions</a></li>
 				</ul>
-			</div>
-	</nav>
+			</li>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Weekly Challenge<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="/challenge">Current hallenges</a></li>
+					<li><a href="/ranking">Ranking</a></li>
+				</ul>
+			</li>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Learning Resources<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="/challenge">Search Materials</a></li>
+					<li><a href="/ranking">Share Materials</a></li>
+				</ul>
+			</li>
+
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<%if(!user){%>
+				<li><a href="/Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				<li><a href="/Register"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+			<%}else{%>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span><%=user.username%><span class="caret"></a>
+				<ul class="dropdown-menu">
+					<li><a href="/userinfo">User information</a></li>
+					<li><a href="#">Top up</a></li>
+					<li><a href="/getmessage">Message</a></li>
+					<li><a href="/Logout">Logout</a></li>
+				</ul>
+			</li>
+			<%}%>
+		</ul>
+	</div>
+</nav>
 
 
 
@@ -90,7 +90,7 @@
 <div id="page" class="container" style="max-width: 100%">
 
 
-	<div class="boxA">
+	<div class="boxA" style="max-width: 100%; margin-right: 0; width:100%">
 		<h2 style="text-align: center">Find Tutors</h2>
 		<div class="box">
 			<a href="#" class="image image-full"><img src="/image/pic01.jpg" alt="" /></a>
@@ -103,7 +103,7 @@
 
 
 
-	<div class="boxB">
+	<div class="boxB" style="max-width: 100%;margin-right: 0; width:100%">
 		<h2 style="text-align: center">Discussion Forum</h2>
 		<div class="box">
 			<a href="#" class="image image-full"><img src="/image/pic02.jpg" alt="" /></a>
@@ -116,7 +116,7 @@
 
 
 
-	<div class="boxC" >
+	<div class="boxC" style="max-width: 100%; width:100%">
 		<h2 style="text-align: center">Learning Resources</h2>
 		<div class="box">
 			<a href="#" class="image image-full"><img src="/image/pic03.jpg" alt="" /></a>
@@ -130,10 +130,10 @@
 
 </div>
 <div id="featured" class="container" style="max-width: 100%">
-	<div class="align-left" style="max-width: 100%">
-		<span class="fa fa-pagelines"></span>	
+	<div class="align-left" style="max-width: 100%; width: 100%">
+		<span class="fa fa-pagelines"></span>
 	</div>
-	<div class="align-right" style="max-width: 100%">
+	<div class="align-right" style="max-width: 100%; width:100%">
 		<p style="text-align: justify">This is <strong>StudentHand</strong>, a platform for tutors, a knowledge base for students. We make impact to fair education, to every generation, to any place in the world. Join us and make your effort to boost the equality of education. </p>
 		<a href="#" class="button" style="text-align: justify">Donate and TopUp</a>
 	</div>
