@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>googlemap testing</title>
+    <title>googlemap searching</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -24,8 +24,10 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 100%;
-        width: 100%;
+        height: 80%;
+        width: 80%;
+          border: solid 5px moccasin;
+          margin-left: 10%;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -65,19 +67,9 @@
           if(XHR1){  
               XHR1.open("POST", "/googlemap",true);  
               XHR1.onreadystatechange = function () {  
-                  // readyState值说明  
-                  // 0,初始化,XHR对象已经创建,还未执行open  
-                  // 1,载入,已经调用open方法,但是还没发送请求  
-                  // 2,载入完成,请求已经发送完成  
-                  // 3,交互,可以接收到部分数据  
-          
-                  // status值说明  
-                  // 200:成功  
-                  // 404:没有发现文件、查询或URl  
-                  // 500:服务器产生内部错误  
+
                   if (XHR1.readyState == 4 && XHR1.status == 200) {  
-                      // 这里可以对返回的内容做处理  
-                      // 一般会返回JSON或XML数据格式  
+
                       var text = JSON.parse(XHR1.responseText);
                       for (var i = 0;i<text.length;i++){
                           if (text[i].coord){
@@ -119,19 +111,7 @@
             if(XHR){  
                 XHR.open("POST", "/findpos",true);  
                 XHR.onreadystatechange = function () {  
-                    // readyState值说明  
-                    // 0,初始化,XHR对象已经创建,还未执行open  
-                    // 1,载入,已经调用open方法,但是还没发送请求  
-                    // 2,载入完成,请求已经发送完成  
-                    // 3,交互,可以接收到部分数据  
-            
-                    // status值说明  
-                    // 200:成功  
-                    // 404:没有发现文件、查询或URl  
-                    // 500:服务器产生内部错误  
                     if (XHR.readyState == 4 && XHR.status == 200) {  
-                        // 这里可以对返回的内容做处理  
-                        // 一般会返回JSON或XML数据格式  
                         var text = JSON.parse(XHR.responseText);
                         console.log(text);
                         for (var i = 0;i<text.length;i++){
@@ -157,37 +137,7 @@
           });
     
     
-          // Add marker
-          /*var marker = new google.maps.Marker({
-            position:{lat:42.4668,lng:-70.9495},
-            map:map,
-            icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
-          });
-    
-          var infoWindow = new google.maps.InfoWindow({
-            content:'<h1>Lynn MA</h1>'
-          });
-    
-          marker.addListener('click', function(){
-            infoWindow.open(map, marker);
-          });*/
-    
-    
-          // Array of markers
-          /*var markers = [
-            {
-              coords:{lat:42.4668,lng:-70.9495},
-              iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-              content:'<h1>Lynn MA</h1>'
-            }
-          ];
-    
-          // Loop through markers
-          for(var i = 0;i < markers.length;i++){
-            // Add marker
-            addMarker(markers[i]);
-          }*/
-    
+         
           // Add Marker Function
           function addMarker(props){
             var marker = new google.maps.Marker({
@@ -216,6 +166,7 @@
           $(function(){
               $("#submit").click(function(){
                 var data=document.getElementById("subject").value;
+                console.log(data);
                 var XHR=null; 
                 if (window.XMLHttpRequest) {   
                     //ie 内核
@@ -243,6 +194,7 @@
                             // 这里可以对返回的内容做处理  
                             // 一般会返回JSON或XML数据格式  
                             setMapOnAll(null);
+                            console.log(123);
                             var text = JSON.parse(XHR.responseText);
                             for (var i = 0;i<text.length;i++){
                                 if (text[i].coord){
@@ -322,11 +274,11 @@
       </div>
   </nav>
 
-
-<h2>Google Map Seaching tutor</h2>
-<input class="input--style-5" name="subject" type="text" id="subject">
-<button class="btn btn--radius-2 btn--green" id="submit">Search</button>
-<div id="map"></div>
+    <h2 style="text-align: center">Google Map Seaching tutor</h2>
+    <input class="input--style-5" name="subject" type="text" id="subject" style="width: 30%; margin-left: 30%">
+    <button class="btn btn--radius-2 btn--green" id="submit" style="max-width: 30%; text-align: justify">Search</button>
+<div id="map" >
+</div>
 
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGUl7T83zKY3A96GUBQSITe1b7hu0aq5A&libraries=drawing&callback=initMap">
