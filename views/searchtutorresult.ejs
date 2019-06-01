@@ -69,32 +69,26 @@
       <div class="card-body">
         <%if(check=="nores"){%>
           <div class="name">Sorry, we don't have the tutor you have, we suggesting you the following:</div>
-        <%}%>
-        <% for(var i=0;i<result.length;i++){%>
-        <a href="/tutorinfo/<%=result[i].name%>">
-          <!--<img src="/image/people-icon.jpg" alt ="head" width="10%" algin ="right">-->
-          <div class="forum-row">
-            <div class="name">name: <%=result[i].name%><div>
-              </div>
-              <%for (var j=0;j<result[i].subject.length;j++){%>
-              <div class="forum-row">
-                <div class="name">subject: <%=result[i].subject[j]%></div>
-              </div>
-              <%}%>
-              <div class="forum-row">
-                <div class="name">age: <%=result[i].age%></div>
-              </div>
-              <div class="forum-row">
-                <div class="name">rate: <%=result[i].rate%></div>
-              </div>
-        </a>
         <hr>
+        <%}%>
         <br>
-        <% }%>
+        <% for(var i=0;i<result.length;i++){%>
+        <!--<img src="/image/people-icon.jpg" alt ="head" width="10%" algin ="right">-->
+          <div class="name">name: <%=result[i].name%></div>
+            <div class="name">subject:</div>
+          <%for (var j=0;j<result[i].subject.length;j++){%>
+          <div class="forum-row">
+            <div class="name"><%=result[i].subject[j]%></div>
+          </div>
+          <%}%>
+          <a href="/tutorinfo/<%=result[i].name%>"><button class="btn btn--radius-2 btn--green">More information...</button></a>
+          <hr>
+          <br>
+          <% }%>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </body>
 </html>
 
@@ -102,5 +96,11 @@
   .navbar-header {
     color: #edf0f1;
     margin-top: -10px;
+
+
   }
+  .name {
+    color: #333333;
+    font-weight: bold;
+   }
 </style>
