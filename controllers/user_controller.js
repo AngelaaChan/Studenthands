@@ -23,21 +23,15 @@ exports.createUser = function(req,res){
         var university = {"uni_name":req.body.uni_name,"uni_sdate":req.body.uni_sdate,"uni_edate":req.body.uni_edate};
         req.body.experience = experience;
         req.body.university = university;
-        console.log(req.body);
         db.insertutor(req.body,function(result){
-            console.log(321);
-            console.log(result);
-            
             db.findtutor(req.body.name,function(tutor){
-
+                console.log("231");
                 req.session.user = tutor;
                 console.log(tutor);
-                //console.log(123);
                 res.render("tutorchoosemarker.ejs");
             });
             
         });
-        //res.render("tutorchoosemarker.ejs");
        
     };
 };
@@ -48,9 +42,6 @@ exports.updatemarker = function(req,res){
         var m = data.toString().split('&');
         var lat = parseFloat(m[0].split("\"")[1]);
         var lng = parseFloat(m[1]);
-        console.log(lat);
-        console.log(lng);
-        console.log(user);
         var coord = {"lat":lat,"lng":lng};
         db.addmarker(user,coord);
 
