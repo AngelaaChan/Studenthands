@@ -113,21 +113,21 @@
                     <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-white"></i>Feedback</b></p>
                     <p>Clear and understandable</p>
                     <div class="w3-light-grey w3-round-xlarge w3-small">
-                        <div class="w3-container w3-center w3-round-xlarge w3-green" style="width:90%"><%=tutor.rate%></div>
+                        <div class="w3-container w3-center w3-round-xlarge w3-green" style="width:<%=tutor.rate%>%"><%=tutor.rate%></div>
                     </div>
                     <p>Organisational skills</p>
                     <div class="w3-light-grey w3-round-xlarge w3-small">
-                        <div class="w3-container w3-center w3-round-xlarge w3-green" style="width:80%">
+                        <div class="w3-container w3-center w3-round-xlarge w3-green" style="width:<%=tutor.rate%>%">
                             <div class="w3-center w3-text-white"><%=tutor.rate%></div>
                         </div>
                     </div>
                     <p>Willingness to help</p>
                     <div class="w3-light-grey w3-round-xlarge w3-small">
-                        <div class="w3-container w3-center w3-round-xlarge w3-green" style="width:75%"><%=tutor.rate%></div>
+                        <div class="w3-container w3-center w3-round-xlarge w3-green" style="width:<%=tutor.rate%>%"><%=tutor.rate%></div>
                     </div>
                     <p>Guid and Encouragement</p>
                     <div class="w3-light-grey w3-round-xlarge w3-small">
-                        <div class="w3-container w3-center w3-round-xlarge w3-green" style="width:50%"><%=tutor.rate%></div>
+                        <div class="w3-container w3-center w3-round-xlarge w3-green" style="width:<%=tutor.rate%>%"><%=tutor.rate%></div>
                     </div>
                     <br>
 
@@ -166,9 +166,8 @@
                     <h5 class="w3-opacity"><b><%=tutor.experience.exptitle%></b></h5>
                     <h6 class="w3-text-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>from <%=tutor.experience.sdate%> to <%=tutor.experience.edate%></h6>
                     <p> <%=tutor.experience.expdes%></p>
-                    <hr>
+                    <br>
                 </div>
-<<<<<<< HEAD
 
             </div>
 
@@ -176,13 +175,11 @@
                 <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-green"></i>Education</h2>
                 <div class="w3-container">
                     <h5 class="w3-opacity"><b><%=tutor.university%></b></h5>
-
-
+                    <h6 class="w3-text-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>from <%=tutor.university.uni_sdate%> to <%=tutor.university.uni_edate%></h6>
+                    <p> <%=tutor.university.unides%></p>
                     <br>
-=======
+
                 <div class="form-row">
-                    <div class="name">working hours: <%=tutor.start_time%>~<%=tutor.end_time%></div>
->>>>>>> 125fb761440c6812317278a03a9075563e23cd3e
                 </div>
 
             </div>
