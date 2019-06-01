@@ -11,7 +11,11 @@ exports.login = function(req,res){
 
 exports.createUser = function(req,res){
     var id = req.body.identity;
-    
+    for (var i=0;i<req.body.subject.length;i++){
+        if(req.body.subject[i]==""){
+            req.body.subject.splice(i,1);
+        }
+    }
     if (id == "student"){
         db.insertstudent(req.body,function(result){
             res.render("registersuccess.ejs",{"identity":"student"});

@@ -91,7 +91,7 @@
 </nav>
 
 
-<div class="name">Google Map testing</div>
+<div class="name">Google Map Seaching tutor</div>
 <div id="map"></div>
 <script>
     function initMap(){
@@ -140,11 +140,11 @@
                   var text = JSON.parse(XHR1.responseText);
                   for (var i = 0;i<text.length;i++){
                       if (text[i].coord){
-                        var content = "<p>name: "+text[i].name+"</p>"+"<p>subject: "+text[i].subject+"</p>";
-                        var marker = {"coords":text[i].coord,"content":content};
-                        addMarker(marker);  
-                          //console.log(XHR.responseText[i].coord);
-
+                        for (var j = 0;j<text[i].coord.length;i++){
+                          var content = "<p>name: "+text[i].name+"</p>"+"<p>subject: "+text[i].subject+"</p>";
+                          var marker = {"coords":text[i].coord[j],"content":content};
+                          addMarker(marker);  
+                        }
                       }
                   } 
                   // 主动释放,JS本身也会回收的  

@@ -73,9 +73,11 @@
                   <div class="forum-row">
                     <div class="name">name: <%=result[i].name%><div>
                   </div>
-                  <div class="forum-row">
-                    <div class="name">subject: <%=result[i].subject%></div>
-                  </div>
+                  <%for (var j=0;j<result[i].subject.length;j++){%>
+                    <div class="forum-row">
+                      <div class="name">subject: <%=result[i].subject[j]%></div>
+                    </div>
+                  <%}%>
                   <div class="forum-row">
                     <div class="name">age: <%=result[i].age%></div>
                   </div>
