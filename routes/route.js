@@ -25,9 +25,9 @@ router.post("/checkLogin",user_controller.check_login);
 
 router.get("/userinfo",user_controller.userinfo);
 
-router.post("/updateinfo",user_controller.updateUserinfo);
+//router.post("/updateinfo",user_controller.updateUserinfo);
 
-//register
+//register routes
 router.post("/newuser",user_controller.createUser);
 
 router.get("/changeinfo",user_controller.changeinfo);
@@ -36,12 +36,33 @@ router.post("/addmarker",user_controller.updatemarker);
 
 router.get("/registSuccess",user_controller.registtutor);
 
+//finding tutor information
+router.post("/search",search_controller.findtutorc);
+
+router.get("/tutorinfo/:name",search_controller.tutorinfo);
+
+router.get("/getmessage",search_controller.getmessage);
+
+router.post("/replymessage/:name",search_controller.replymessage);
+
+router.post("/sendmessage/:username",search_controller.sendmtutor);
+
+
+//google map
+router.get("/findbymap",controller.findtutorbymap);
+
+router.post("/findpos",map_controller.findingpos);
+
+router.post("/googlemap",map_controller.findall);
+
+router.post("/filtersubject",map_controller.findtutorsubj);
+
+
+//backend
 router.get("/challenge",controller.Challenge);
 
 router.get("/ranking",controller.ranking);
 
-
-//backend
 //router.get("/searchTutorSub",controller.searchTutorSub);
 
 router.get("/searchTutor",controller.searchTutor);
@@ -73,19 +94,10 @@ router.get("/deltutor/:name",controller.deltutor);
 
 
 
-//finding tutor information
-router.post("/search",search_controller.findtutorc);
-
-router.get("/tutorinfo/:name",search_controller.tutorinfo);
-
-router.get("/getmessage",search_controller.getmessage);
-
-router.post("/replymessage/:name",search_controller.replymessage);
-
-router.post("/sendmessage/:username",search_controller.sendmtutor);
 
 
-//disscussion board routes
+
+//additional functionalities routes
 router.get("/discussionforum",diss_controller.DiscussionBoard);
 
 router.post("/postquestion",diss_controller.postquestion);
@@ -93,13 +105,5 @@ router.post("/postquestion",diss_controller.postquestion);
 router.post("/answerquestion/:question",diss_controller.answerquestion);
 
 
-//google map
-router.get("/findbymap",controller.findtutorbymap);
-
-router.post("/findpos",map_controller.findingpos);
-
-router.post("/googlemap",map_controller.findall);
-
-router.post("/filtersubject",map_controller.findtutorsubj);
 
 module.exports = router;
