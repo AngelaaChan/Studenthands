@@ -11,23 +11,55 @@ exports.login = function(req,res){
 
 exports.createUser = function(req,res){
     var id = req.body.identity;
-    var Binary = require("mongodb").Binary;
-    console.log(req.body.picture);
-    var insert_data = {};
-    insert_data.file_data = Binary(req.body.picture);
-    req.body.picture = insert_data;
+    
     if (id == "student"){
         db.insertstudent(req.body,function(result){
             res.render("registersuccess.ejs",{"identity":"student"});
         });
     }else{
-         var experience = {"exptitle":req.body.exptitle,"sdate":req.body.sdate,"edate":req.body.edate,"expdes":req.body.experiencedescrip};
-         req.body.experience = experience;
+        
+        console.log(123);
+        var experience = {"exptitle":req.body.exptitle,"sdate":req.body.sdate,"edate":req.body.edate,"expdes":req.body.experiencedescrip};
+        var university = {"uni_name":req.body.uni_name,"uni_sdate":req.body.uni_sdate,"uni_edate":req.body.uni_edate};
+        req.body.experience = experience;
+        req.body.university = university;
+        console.log(req.body);
         db.insertutor(req.body,function(result){
-            res.render("registersuccess.ejs",{"identity":"tutor"});
+            console.log(321);
+            console.log(result);
+            
+            db.findtutor(req.body.name,function(tutor){
+
+                req.session.user = tutor;
+                console.log(tutor);
+                //console.log(123);
+                res.render("tutorchoosemarker.ejs");
+            });
+            
         });
+        //res.render("tutorchoosemarker.ejs");
+       
     };
 };
+
+exports.updatemarker = function(req,res){
+    var user = req.session.user;
+    req.on('data',function(data){
+        var m = data.toString().split('&');
+        var lat = parseFloat(m[0].split("\"")[1]);
+        var lng = parseFloat(m[1]);
+        console.log(lat);
+        console.log(lng);
+        console.log(user);
+        var coord = {"lat":lat,"lng":lng};
+        db.addmarker(user,coord);
+
+    });
+    //var lat = parseFloat(req.query.lat);
+    //var lng = parseFloat(req.query.lng);
+    //var coord = {"lat":lat,"lng":lng};
+    //db.addmarker()
+}
 
 
 exports.check_login = function(req,res){
@@ -73,6 +105,10 @@ exports.logout = function(req,res){
     }else{
         res.render("newindex.ejs",{"user":req.session.user});
     }
+}
+
+exports.registtutor = function(req,res){
+    res.render("registersuccess.ejs",{"identity":"tutor"});
 }
 
 

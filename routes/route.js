@@ -32,7 +32,9 @@ router.post("/newuser",user_controller.createUser);
 
 router.get("/changeinfo",user_controller.changeinfo);
 
+router.post("/addmarker",user_controller.updatemarker);
 
+router.get("/registSuccess",user_controller.registtutor);
 
 router.get("/challenge",controller.Challenge);
 

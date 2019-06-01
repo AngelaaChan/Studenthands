@@ -22,7 +22,6 @@
     <!-- Main CSS-->
     <link href="/css/register.css" type="text/css" rel="stylesheet" media="all">
     <link href="/css/bootstrap-datepicker.css" type="text/css" rel="stylesheet" media="all">
-
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script type="text/javascript">
@@ -59,323 +58,256 @@
             $(".datepicker").datepicker();
         });
     </script>
-    <script>
-        function initMap(){
-            // Map options
-            var options = {
-            zoom:11.5,
-            center:{lat:-37.83,lng:144.995}
-            }
-            var markers=[];
-            // New map
-            var map = new google.maps.Map(document.getElementById('map'), options);
-    
-            function setMapOnAll(map){
-            for (var i=0;i<markers.length;i++){
-                markers[i].setMap(map);
-            }
-            }
-            
-        
-            // Listen for click on map
-            google.maps.event.addListener(map, 'click', function(event){
-            // Add marker
-            setMapOnAll(null);
-            addMarker({coords:event.latLng});
-            //console.log(event.latLng.lat(),event.latLng.lng());
-            });
-    
-    
-            // Add marker
-            var marker = new google.maps.Marker({
-            position:{lat:42.4668,lng:-70.9495},
-            map:map,
-            icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
-            });
-    
-            var infoWindow = new google.maps.InfoWindow({
-            content:'<h1>Lynn MA</h1>'
-            });
-    
-            marker.addListener('click', function(){
-            infoWindow.open(map, marker);
-            });
-    
-    
-            // Array of markers
-            /*var markers = [
-            {
-                coords:{lat:42.4668,lng:-70.9495},
-                iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-                content:'<h1>Lynn MA</h1>'
-            }
-            ];
-    
-            // Loop through markers
-            for(var i = 0;i < markers.length;i++){
-            // Add marker
-            addMarker(markers[i]);
-            }*/
-    
-            // Add Marker Function
-            function addMarker(props){
-            var marker = new google.maps.Marker({
-                position:props.coords,
-                map:map,
-                //icon:props.iconImage
-            });
-            markers.push(marker);
-            // Check for customicon
-            if(props.iconImage){
-                // Set icon image
-                marker.setIcon(props.iconImage);
-            }
-    
-            // Check content
-            if(props.content){
-                var infoWindow = new google.maps.InfoWindow({
-                content:props.content
-                });
-    
-                marker.addListener('click', function(){
-                infoWindow.open(map, marker);
-                });
-            }
-            }
-            
-        }
-        </script>
-        
-        <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGUl7T83zKY3A96GUBQSITe1b7hu0aq5A&libraries=drawing&callback=initMap">
-        </script>
-    <style>
-        #map{
-            height:100%;
-        }
-    </style>
 </head>
 
 <body>
-    <div class="page-wrapper">
-        <div class="wrapper wrapper--w790">
-            <div class="card card-5">
-                <div class="card-heading">
-                    <h2 class="title">Registration Form</h2>
-                </div>
-                <div class="card-body">
-                    <form action="/newuser" method="POST">
-                        <div class="form-row">
-                            <div class="name">Username</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" name="username" required>
-                                </div>
+<div class="page-wrapper">
+    <div class="wrapper wrapper--w790">
+        <div class="card card-5">
+            <div class="card-heading">
+                <h2 class="title">Registration Form</h2>
+            </div>
+            <div class="card-body">
+                <form action="/newuser" method="POST">
+                    <div class="form-row">
+                        <div class="name">Username</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="text" name="username" required>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="name">Password</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="password" name="password" required>
-                                </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Password</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="password" name="password" required>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="name">Name</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" name="name" required>
-                                </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Name</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="text" name="name" required>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="name">Email</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="email" name="email" required>
-                                </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Email</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="email" name="email" required>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="name">Suburb</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" name="suburb" required>
-                                </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Suburb</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="text" name="suburb" required>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="name">University</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" name="university" required>
-                                </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">University</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="text" name="university" required>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="name">upload picture</div>
-                            <div class="value">
-                                <input type="file" name="picture" id="pic" required>
+                    </div>
+
+                    <div class="form-row">
+                        <fieldset class="name"> Subject
+                            <table style="width: 100%">
+                                <tr>
+                                    <td>
+                                        <label class="radio-container m-r-45">Mathematics
+                                            <input type="checkbox" name="subject" value = "Mathematics">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="radio-container m-r-45">English
+                                            <input type="checkbox" name="subject" value = "English">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="radio-container m-r-45">Engineering
+                                            <input type="checkbox" name="subject" value = "Engineering">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="radio-container m-r-45">Biology
+                                            <input type="checkbox" name="subject" value = "Biology">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="radio-container m-r-45">Geology
+                                            <input type="checkbox" name="subject" value = "Geology">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="radio-container m-r-45">IT
+                                            <input type="checkbox" name="subject" value = "IT">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="radio-container m-r-45">Accounting
+                                            <input type="checkbox" name="subject" value = "Accounting">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="radio-container m-r-45">Economics
+                                            <input type="checkbox" name="subject" value = "Economics">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="radio-container m-r-45">Finance
+                                            <input type="checkbox" name="subject" value = "Finance">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="radio-container m-r-45">Physics
+                                            <input type="checkbox" name="subject" value = "Physics">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="radio-container m-r-45">Medicine
+                                            <input type="checkbox" name="subject" value = "Medicine">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </fieldset>
+                    </div>
+                    <div class="form-row">
+                        <div class="value">
+                            <div class="input-group">
+                                <div class="name">other subjects:</div>
+                                <input class="input--style-5" type="text" name="subject">
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="name">Subject</div>
+                    </div>
+                    <br>
+
+                    <div class="form-row">
+                        <div class="name">Gender</div>
+                        <div class="p-t-10">
+                            <label class="radio-container m-r-45">Male
+                                <input type="radio" name="gender" value="Male">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="radio-container m-r-45">Female
+                                <input type="radio" name="gender" value="Female">
+                                <span class="checkmark"></span>
+                            </label>
                         </div>
-                        <div class="form-row">
-                            <div class="p-t-10">
-                                <label class="radio-container m-r-45">Mathematics
-                                    <input type="checkbox" name="subject" value = "Mathematics">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="radio-container m-r-45">English
-                                    <input type="checkbox" name="subject" value = "English">
-                                    <span class="checkmark"></span>
-                                </label>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Want to be...</div>
+                        <div class="p-t-10">
+                            <label class="radio-container m-r-45">Student
+                                <input class="confirmstudent" type="radio" name="identity" value="student" required>
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="radio-container">Tutor
+                                <input class="confirmtutor" type="radio" name="identity" value="tutor" required>
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-row tutorinfo">
+                        <div class="name">Available time:</div>
+                        <div class="name">Starts: <input class="text timepicker" name="stime"/></div>
+                        <div class="name">Ends: <input class="text timepicker" name="etime"/></div>
+                    </div>
+                    <div class="form-row tutorinfo">
+                        <fieldset class="name">Available days:
+                            <table style="width: 100%">
+                                <tr>
+                                    <td>
+                                        <label class="radio-container m-r-45">Monday
+                                            <input type="checkbox" name="workingday" value="Monday">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="radio-container m-r-45">Tuesday
+                                            <input type="checkbox" name="workingday" value="Tuesday">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="radio-container m-r-45">Wednesday
+                                            <input type="checkbox" name="workingday" value="Wednesday">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="radio-container m-r-45">Thursday
+                                            <input type="checkbox" name="workingday" value="Thursday">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="radio-container m-r-45">Friday
+                                            <input type="checkbox" name="workingday" value="Fridy">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="radio-container m-r-45">Saturday
+                                            <input type="checkbox" name="workingday" value="Saturday">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="radio-container m-r-45">Sunday
+                                            <input type="checkbox" name="workingday" value="Sunday">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </fieldset>
+
+                    </div>
+                    <div class="form-row tutorinfo">
+                        <div class="name">Certifications</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5 info" type="text" name="certification">
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="p-t-10">
-                                <label class="radio-container m-r-45">Engineering
-                                        <input type="checkbox" name="subject" value = "Engineering">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="radio-container m-r-45">Biology
-                                        <input type="checkbox" name="subject" value = "Biology">
-                                        <span class="checkmark"></span>
-                                    </label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="p-t-10">
-                                <label class="radio-container m-r-45">Geology
-                                        <input type="checkbox" name="subject" value = "Geology">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="radio-container m-r-45">IT
-                                        <input type="checkbox" name="subject" value = "IT">
-                                        <span class="checkmark"></span>
-                                    </label>
-                            </div>
-                        </div>
-                         
-                        <div class="form-row">
-                            <div class="p-t-10">
-                                <label class="radio-container m-r-45">Accounting
-                                    <input type="checkbox" name="subject" value = "Accounting">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="radio-container m-r-45">Economics
-                                    <input type="checkbox" name="subject" value = "Economics">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="p-t-10">
-                                <label class="radio-container m-r-45">Finance
-                                    <input type="checkbox" name="subject" value = "Finance">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="radio-container m-r-45">Physics
-                                    <input type="checkbox" name="subject" value = "Physics">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="radio-container m-r-45">Medicine
-                                    <input type="checkbox" name="subject" value = "Medicine">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="value">
-                                <div class="input-group">
-                                    <div class="name">other subjects:</div>
-                                    <input class="input--style-5" type="text" name="subject">
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-                        <div class="form-row">
-                            <div class="name">Gender</div>
-                            <div class="p-t-10">
-                                <label class="radio-container m-r-45">Male
-                                    <input type="radio" name="gender" value="Male">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="radio-container m-r-45">Female
-                                    <input type="radio" name="gender" value="Female">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Want to be...</div>
-                            <div class="p-t-10">
-                                <label class="radio-container m-r-45">Student
-                                    <input class="confirmstudent" type="radio" name="identity" value="student" required>
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="radio-container">Tutor
-                                    <input class="confirmtutor" type="radio" name="identity" value="tutor" required>
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-row tutorinfo">
-                            <div class="name">Available time:</div>
-                            <div class="name">Starts: <input class="text timepicker" name="stime"/></div>
-                            <div class="name">Ends: <input class="text timepicker" name="etime"/></div>
-                        </div>
-                        <div class="form-row tutorinfo">
-                            <div class="name">Available days:</div>
-                        </div>
-                        <div class="form-row tutorinfo">
-                            <div class="p-t-10">
-                                <label class="radio-container m-r-45">Monday
-                                    <input type="checkbox" name="workingday" value="Monday">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="radio-container m-r-45">Tuesday
-                                    <input type="checkbox" name="workingday" value="Tuesday">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="radio-container m-r-45">Wednesday
-                                    <input type="checkbox" name="workingday" value="Wednesday">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="radio-container m-r-45">Thursday
-                                    <input type="checkbox" name="workingday" value="Thursday">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="radio-container m-r-45">Friday
-                                    <input type="checkbox" name="workingday" value="Fridy">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="radio-container m-r-45">Saturday
-                                    <input type="checkbox" name="workingday" value="Saturday">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="radio-container m-r-45">Sunday
-                                    <input type="checkbox" name="workingday" value="Sunday">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                           
-                        </div>
-                        <div class="form-row tutorinfo">
-                            <div class="name">Certifications</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5 info" type="text" name="certification">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row tutorinfo">
-                            <div class="name">Experience</div>
-                        </div>
-                        <div class="form-row tutorinfo">
+                    </div>
+
+
+                    <div class="form-row tutorinfo">
+                        <fieldset class="name" style="width: 100%; font-size:150%; font-weight: bold">Experience
+                            <hr style="border: 2px solid #555555">
                             <div class="name">
                                 Experience name:
                             </div>
@@ -384,37 +316,73 @@
                                     <input class="input--style-5 info" type="text" name="exptitle">
                                 </div>
                             </div>
-                            
+                        </fieldset>
+                    </div>
+                    <div class="form-row tutorinfo">
+                        <div class="name">
+                            Start Date:
                         </div>
-                        <div class="form-row tutorinfo">
-                            <div class="name">
-                                starts:
-                            </div>
-                            <input class="text datepicker" type="date" name="sdate">
-                            <div class="name">
-                                end:
-                            </div>
-                            <input class="text datepicker" type="date" name="edate">
+                        <input class="text datepicker" type="date" name="sdate">
+                        <div class="name">
+                            End Date:
                         </div>
-                        <div class="form-row tutorinfo">
-                            <div class="name">
-                                Experience Description:
-                            </div> 
+                        <input class="text datepicker" type="date" name="edate">
+                    </div>
+                    <div class="form-row tutorinfo">
+                        <div class="name">
+                            Experience Description:
+                        </div>
+                        <div class="input-group">
+                            <textarea></textarea>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-row tutorinfo">
+                        <fieldset class="name" style="width: 100%; font-size: 150%; font-weight: bold">Education
+                            <hr style="border: 2px solid #555555">
+                        <div class="name">
+                            University/Education Institution:
+                        </div>
+                        <div class="value">
                             <div class="input-group">
-                                <input class="input--style-5 info" type="text" name="experiencedescrip">
+                                <input class="input--style-5 info" type="text" name="uni_name">
                             </div>
                         </div>
-                        <div id="map"></div>
-                        <div>
-                            <button class="btn btn--radius-2 btn--green" type="submit">Register</button>
-                            <a href="/"><button class="btn btn--radius-2 btn--red" type="button">Cancel</button></a>
+                        </fieldset>
+                    </div>
+                    <div class="form-row tutorinfo">
+                        <div class="name">
+                            Start Date:
                         </div>
-                    </form>
-                </div>
+                        <input class="text datepicker" type="date" name="uni_sdate">
+                        <div class="name">
+                            End Date:
+                        </div>
+                        <input class="text datepicker" type="date" name="uni_edate">
+                    </div>
+                    <div class="form-row tutorinfo">
+                        <div class="name">
+                            Education Description:
+                        </div>
+                        <div class="input-group">
+                            <textarea></textarea>
+                        </div>
+                    </div>
+
+
+                    <div id="map"></div>
+                    <div>
+                        <button class="btn btn--radius-2 btn--green" type="submit">Register</button>
+                        <a href="/"><button class="btn btn--radius-2 btn--red" type="button">Cancel</button></a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    
+</div>
+
 
 </body>
 
@@ -422,6 +390,17 @@
 <!-- end document-->
 
 <style>
+    textarea{
+        width: 100%;
+        height: 150px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        font-size: 16px;
+        resize: none;
+    }
     .timepicker{
         width: 100%;
         padding: 12px 22px;
@@ -429,4 +408,24 @@
         border: 2px solid #555555;
         border-radius: 5px;
     }
+    .input-group{
+        width:100%;
+    }
+    .input--style-5{
+        width: 100%;
+        border: 2px solid #555555;
+        border-radius: 5px;
+    }
+    fieldset{
+        width: 100%;
+    }
+    .datepicker{
+        width: 50%;
+        padding: 12px 22px;
+        margin: 8px 0;
+        border: 2px solid #555555;
+        border-radius: 5px;
+    }
+
+
 </style>

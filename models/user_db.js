@@ -45,7 +45,7 @@ exports.insertutor=function(tutor,callback){
                         "start_time":tutor.stime,
                         "end_time":tutor.etime,
                         "message":[],
-                        "coord":tutor.coord,
+                        "coord":[],
                         "workingday":tutor.workingday,
                         //"profile":tutor.picture
                         };
@@ -137,6 +137,31 @@ exports.findallt = function(callback){
             callback(result);
             return;
         });
+    });
+    client.close();
+};
+
+
+exports.addmarker = function(user,coord,callback){
+    var client = new MongoClient(url, {useNewUrlParser:true});
+    client.connect(err=>{
+        var tutors=client.db("studenthands").collection("tutors");
+        tutors.updateOne({"name":user.name},{$push:{"coord":coord}});
+        return;
+    });
+    client.close();
+}
+
+
+exports.findtutor=function(name,callback){
+    var client = new MongoClient(url, { useNewUrlParser: true });
+    client.connect(err=>{
+        var tutors=client.db("studenthands").collection("tutors");
+        tutors.findOne({"name":name},function(err,result){
+            callback(result);
+            return;
+        })
+        return;
     });
     client.close();
 };

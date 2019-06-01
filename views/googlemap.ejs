@@ -20,7 +20,6 @@
     <link href="/css/fonts.css" rel="stylesheet" type="text/css" media="all" />
 
     <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
-    <title>Simple Map</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <style>
@@ -165,7 +164,7 @@
         addMarker({coords:event.latLng});
         //console.log(event.latLng.lat(),event.latLng.lng());
         var data = 'lat='+event.latLng.lat()+'&lng='+event.latLng.lng();
-        var XHR=null;  
+        var XHR=null; 
         if (window.XMLHttpRequest) {   
             //ie 内核
             XHR = new XMLHttpRequest();  
@@ -214,7 +213,7 @@
 
 
       // Add marker
-      var marker = new google.maps.Marker({
+      /*var marker = new google.maps.Marker({
         position:{lat:42.4668,lng:-70.9495},
         map:map,
         icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
@@ -226,7 +225,7 @@
 
       marker.addListener('click', function(){
         infoWindow.open(map, marker);
-      });
+      });*/
 
 
       // Array of markers
