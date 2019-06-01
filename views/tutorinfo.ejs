@@ -129,19 +129,16 @@
 
 
                 </div>
-                <%if(user){%>
-                    <form action="/sendmessage/<%=tutor.name%>" method="POST">
-                        <div class="w3-container">
-                        <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-white"></i>Leaving message:</b></p>
-                        <br>
-                        <div class="input-group">
-                            <input class="input--style-5" type="text" name="message" required>
-                        </div>
-                        </div>
-                        <div>
-                            <button class="btn btn--radius-2 btn--green" type="submit">Send</button>
-                        </div>
-                    </form>
+                <%if(user) {%>
+                <form action="/sendmessage/<%=tutor.name%>" method="POST">
+
+                    <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-white"></i>Leaving message:</b></p>
+                    <br>
+                    <div class="w3-container">
+                        <textarea style="width: 100%; height:156.5px; border: 2px solid #ccc; border-radius: 5px; resize: none; box-sizing: border-box; background-color: #f8f8f8;"></textarea>
+                        <button class="btn btn--radius-2 btn--green " type="submit" >Send</button>
+                    </div>
+                </form>
                 <%}%>
             </div><br>
 

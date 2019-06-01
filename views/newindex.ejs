@@ -25,79 +25,78 @@
 <body>
 
 
-<nav class="navbar navbar-inverse">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="/"><b>Studenthands</b></a>
-		<ul class="nav navbar-nav">
-			<li class="active"><a href="/">Home</a></li>
-			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Find Tutors<span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li><a href="/searchTutor">By subjects</a></li>
-					<li><a href="/findbymap">By Location</a></li>
+	<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/"><b>Studenthands</b></a>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/">Home</a></li>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Find Tutors<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/searchTutor">By subjects</a></li>
+							<li><a href="/findbymap">By Location</a></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Discussion Forum<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/discussionforum">Search Questions</a></li>
+							<li><a href="#">Ask Questions</a></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Weekly Challenge<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/challenge">Current hallenges</a></li>
+							<li><a href="/ranking">Ranking</a></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Learning Resources<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/challenge">Search Materials</a></li>
+							<li><a href="/ranking">Share Materials</a></li>
+						</ul>
+					</li>
+		
 				</ul>
-			</li>
-			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Discussion Forum<span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li><a href="/discussionforum">Search Questions</a></li>
-					<li><a href="#">Ask Questions</a></li>
+				<ul class="nav navbar-nav navbar-right">
+					<%if(!user){%>
+						<li><a href="/Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+						<li><a href="/Register"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+					<%}else{%>
+						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span><%=user.username%><span class="caret"></a>
+							<ul class="dropdown-menu">
+								<li><a href="/userinfo">User information</a></li>
+								<li><a href="#">Top up</a></li>
+								<li><a href="/getmessage">Message</a></li>
+								<li><a href="/Logout">Logout</a></li>
+							</ul>
+						</li>
+					<%}%>
 				</ul>
-			</li>
-			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Weekly Challenge<span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li><a href="/challenge">Current hallenges</a></li>
-					<li><a href="/ranking">Ranking</a></li>
-				</ul>
-			</li>
-			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Learning Resources<span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li><a href="/challenge">Search Materials</a></li>
-					<li><a href="/ranking">Share Materials</a></li>
-				</ul>
-			</li>
-
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<%if(!user){%>
-				<li><a href="/Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-				<li><a href="/Register"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
-			<%}else{%>
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span><%=user.username%><span class="caret"></a>
-					<ul class="dropdown-menu">
-						<li><a href="/userinfo">User information</a></li>
-						<li><a href="#">Top up</a></li>
-						<li><a href="/getmessage">Message</a></li>
-						<li><a href="/Logout">Logout</a></li>
-					</ul>
-				</li>
-			<%}%>
-		</ul>
-	</div>
-</nav>
+			</div>
+	</nav>
 
 
 
 
 
 
-
-<div id="header" class="container">
+<div id="header" class="container" style="width: 100%">
 	<div id="logo">
-		<h1><a href="#">StudentHands</a></h1>
-		<p>Stay Hungry. Stay Foolish. We make impact on worldwide equal education.</p>
+		<h1 style="text-align: justify"><a href="#">StudentHands</a></h1>
+		<p style="text-align: justify">Stay Hungry. Stay Foolish. We make impact on worldwide equal education.</p>
 	</div>
 
 </div>
 <div id="banner"></div>
-<div id="page" class="container">
+<div id="page" class="container" style="max-width: 100%">
 
 
 	<div class="boxA">
-		<h2>Find Tutors</h2>
+		<h2 style="text-align: center">Find Tutors</h2>
 		<div class="box">
 			<a href="#" class="image image-full"><img src="/image/pic01.jpg" alt="" /></a>
 			<span>Search By Subjects</span>
 		</div>
-		<p>StudentHands link you to the worldwide TOP tutors. Get a hand and find a guider from the specialists. Find them! Now!</p>
+		<p style="text-align: center">StudentHands link you to the worldwide TOP tutors. Get a hand and find a guider from the specialists. Find them! Now!</p>
 		<a href="/searchTutorRate" class="button">Search by filters</a>
 	</div>
 
@@ -105,41 +104,41 @@
 
 
 	<div class="boxB">
-		<h2>Discussion Forum</h2>
+		<h2 style="text-align: center">Discussion Forum</h2>
 		<div class="box">
 			<a href="#" class="image image-full"><img src="/image/pic02.jpg" alt="" /></a>
 			<span>Questions?</span>
 		</div>
-		<p>For true success, ask yourself these four questions: Why? Why not? Why not me? Why not now?               – James Allen</p>
+		<p style="text-align: center">For true success, ask yourself these four questions: Why? Why not? Why not me? Why not now?               – James Allen</p>
 		<a href="/discussionforum" class="button">Disscussion Forum</a>
 	</div>
 
 
 
 
-	<div class="boxC">
-		<h2>Learning Resources</h2>
+	<div class="boxC" >
+		<h2 style="text-align: center">Learning Resources</h2>
 		<div class="box">
 			<a href="#" class="image image-full"><img src="/image/pic03.jpg" alt="" /></a>
 			<span>Weekly Chanllenge</span>
 		</div>
-		<p>One part of knowledge consists in being ignorant of such things as are not worthy to be known. Sharing is a virtue.</p>
+		<p style="text-align: center">One part of knowledge consists in being ignorant of such things as are not worthy to be known. Sharing is a virtue.</p>
 		<a href="/challenge" class="button">Current Challenge</a>
 	</div>
 
 
 
 </div>
-<div id="featured" class="container">
+<div id="featured" class="container" style="max-width: 100%">
 	<div class="align-left">
 		<span class="fa fa-pagelines"></span>	
 	</div>
 	<div class="align-right">
-		<p>This is <strong>StudentHand</strong>, a platform for tutors, a knowledge base for students. We make impact to fair education, to every generation, to any place in the world. Join us and make your effort to boost the equality of education. </p>
-		<a href="#" class="button">Donate and TopUp</a>
+		<p style="text-align: justify">This is <strong>StudentHand</strong>, a platform for tutors, a knowledge base for students. We make impact to fair education, to every generation, to any place in the world. Join us and make your effort to boost the equality of education. </p>
+		<a href="#" class="button" style="text-align: justify">Donate and TopUp</a>
 	</div>
 </div>
-<div id="copyright" class="container">
+<div id="copyright" class="container" style="width: 100%">
 	<p>&copy; Keep Typing</p>
 </div>
 </body>
