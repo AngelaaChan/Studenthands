@@ -177,3 +177,16 @@ exports.findstudent=function(name,callback){
     });
     client.close();
 };
+
+exports.findtutorsub = function(subject,callback){
+    var client = new MongoClient(url, {useNewUrlParser: true});
+    client.connect(err=>{
+        var tutors = client.db("studenthands").collection("tutors");
+        var condition = {"subject":{$in:[subject]}};
+        tutors.find(condition).toArray(function(err,result){
+            callback(result);
+        });
+    });
+    client.close();
+};
+

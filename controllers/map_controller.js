@@ -16,3 +16,13 @@ exports.findall = function(req,res){
         res.send(result);
     })
 }
+
+exports.findtutorsubj = function(req,res){
+    req.on('data',function(data){
+        console.log(data.toString());
+        var subject = data.toString();
+        db.findtutorsub(subject,function(result){
+            res.send(result);
+        });
+    });
+}

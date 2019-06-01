@@ -100,4 +100,6 @@ router.post("/findpos",map_controller.findingpos);
 
 router.post("/googlemap",map_controller.findall);
 
+router.post("/filtersubject",map_controller.findtutorsubj);
+
 module.exports = router;
