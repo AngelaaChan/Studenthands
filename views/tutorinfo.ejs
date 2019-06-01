@@ -130,6 +130,7 @@
 
 
                 </div>
+                <%if(user){%>
                     <form action="/sendmessage/<%=tutor.name%>" method="POST">
                         <div class="w3-container">
                         <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-white"></i>Leaving message:</b></p>
@@ -142,6 +143,7 @@
                             <button class="btn btn--radius-2 btn--green" type="submit">Send</button>
                         </div>
                     </form>
+                <%}%>
             </div><br>
 
             <!-- End Left Column -->
