@@ -13,10 +13,8 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
     <link href="/css/register.css" rel="stylesheet" media="all">
 
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
-    <link href="/css/default.css" rel="stylesheet" type="text/css" media="all" />
+    <!--<link href="/css/default.css" rel="stylesheet" type="text/css" media="all" />-->
     <link href="/css/fonts.css" rel="stylesheet" type="text/css" media="all" />
 
     <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
@@ -90,7 +88,9 @@
   </nav>
 
 
-<div class="name">Google Map Seaching tutor</div>
+<h2>Google Map Seaching tutor</h2>
+<input class="input--style-5" name="subject" type="text" id="subject">
+<button class="btn btn--radius-2 btn--green" id="submit" onclick="submitpos();">Finished</button>
 <div id="map"></div>
 <script>
     function initMap(){
@@ -271,6 +271,9 @@
           });
         }
       }
+      function submitpos(){
+        Document.getElementById()
+      };
       
     }
 </script>
@@ -278,7 +281,7 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGUl7T83zKY3A96GUBQSITe1b7hu0aq5A&libraries=drawing&callback=initMap">
 </script>
-</body>
+
 
 
 <div id="copyright" class="container">
