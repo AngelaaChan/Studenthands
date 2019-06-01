@@ -12,53 +12,52 @@
 </head>
 <body>
     <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/"><b>Studenthands</b></a>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Find Tutors<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/searchTutorRate">By Rate</a></li>
-                        <li><a href="/searchTutorSub">By Location</a></li>
-                        <li><a href="/searchTutorSub">By Subjects</a></li>
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/"><b>Studenthands</b></a>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/">Home</a></li>
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Find Tutors<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/searchTutor">By subjects</a></li>
+                                <li><a href="/findbymap">By Location</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Discussion Forum<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/discussionforum">Search Questions</a></li>
+                                <li><a href="#">Ask Questions</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Weekly Challenge<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/challenge">Current hallenges</a></li>
+                                <li><a href="/ranking">Ranking</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Learning Resources<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/challenge">Search Materials</a></li>
+                                <li><a href="/ranking">Share Materials</a></li>
+                            </ul>
+                        </li>
+            
                     </ul>
-                </li>
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Discussion Forum<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/discussionforum">Search Questions</a></li>
-                        <li><a href="#">Ask Questions</a></li>
+                    <ul class="nav navbar-nav navbar-right">
+                        <%if(!user){%>
+                            <li><a href="/Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                            <li><a href="/Register"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+                        <%}else{%>
+                            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span><%=user.username%><span class="caret"></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/userinfo">User information</a></li>
+                                    <li><a href="#">Top up</a></li>
+                                    <li><a href="/getmessage">Message</a></li>
+                                    <li><a href="/Logout">Logout</a></li>
+                                </ul>
+                            </li>
+                        <%}%>
                     </ul>
-                </li>
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Weekly Challenge<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/challenge">Current hallenges</a></li>
-                        <li><a href="/ranking">Ranking</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Learning Resources<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/challenge">Search Materials</a></li>
-                        <li><a href="/ranking">Share Materials</a></li>
-                    </ul>
-                </li>
-    
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <%if(!user){%>
-                    <li><a href="/Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    <li><a href="/Register"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
-                <%}else{%>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span><%=user.username%><span class="caret"></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/userinfo">User information</a></li>
-                            <li><a href="#">Top up</a></li>
-                            <li><a href="/getmessage">Message</a></li>
-                            <li><a href="/Logout">Logout</a></li>
-                        </ul>
-                    </li>
-                <%}%>
-            </ul>
-        </div>
+                </div>
     </nav>
     <div class="page-wrapper">
     <div class="wrapper wrapper--w790">

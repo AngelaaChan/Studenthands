@@ -42,9 +42,9 @@ router.get("/ranking",controller.ranking);
 
 
 //backend
-router.get("/searchTutorSub",controller.searchTutorSub);
+//router.get("/searchTutorSub",controller.searchTutorSub);
 
-router.get("/searchTutorRate",controller.searchTutorRate);
+router.get("/searchTutor",controller.searchTutor);
 
 router.get("/findstudent/:name",controller.findstudentbyname);
 

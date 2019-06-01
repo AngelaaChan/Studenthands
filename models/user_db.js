@@ -63,8 +63,7 @@ exports.updatestudent=function(student,callback){
     client.connect(err=>{
         var students = client.db("studenthands").collection("students");
         students.updateOne({"name":student.name},
-            {$set:{"subject":student.subject,
-                    "university":student.university,
+            {$set:{ "university":student.university,
                     "suburb":student.suburb,
                     "email":student.email}},function(err,result){
             callback(result);
@@ -158,6 +157,19 @@ exports.findtutor=function(name,callback){
     client.connect(err=>{
         var tutors=client.db("studenthands").collection("tutors");
         tutors.findOne({"name":name},function(err,result){
+            callback(result);
+            return;
+        })
+        return;
+    });
+    client.close();
+};
+
+exports.findstudent=function(name,callback){
+    var client = new MongoClient(url, { useNewUrlParser: true });
+    client.connect(err=>{
+        var students=client.db("studenthands").collection("students");
+        students.findOne({"name":name},function(err,result){
             callback(result);
             return;
         })

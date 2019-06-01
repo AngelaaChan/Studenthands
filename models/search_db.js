@@ -5,6 +5,11 @@ exports.findtutorcondition=function(condition,callback){
     var client = new MongoClient(url, {useNewUrlParser: true});
     client.connect(err=>{
         var tutors=client.db("studenthands").collection("tutors");
+        if (condition.subject.length != 0){
+            var subject = condition.subject;
+            subject = {"subject":{$in:subject}};
+            condition.subject = subject;
+        }
         tutors.find(condition).toArray(function(err,result){
             callback(result);
             return;
@@ -39,6 +44,32 @@ exports.findtutor=function(name,callback){
     client.connect(err=>{
         var tutors=client.db("studenthands").collection("tutors");
         tutors.findOne({"name":name},function(err,result){
+            callback(result);
+            return;
+        })
+        return;
+    });
+    client.close();
+};
+
+exports.findtutorall = function(callback){
+    var client = new MongoClient(url, {useNewUrlParser: true});
+    client.connect(err=>{
+        var tutors=client.db("studenthands").collection("tutors");
+        tutors.find({}).toArray(function(err,result){
+            callback(result);
+            return;
+        });
+        return;
+    });
+    client.close();
+};
+
+exports.findstudent=function(name,callback){
+    var client = new MongoClient(url, { useNewUrlParser: true });
+    client.connect(err=>{
+        var students=client.db("studenthands").collection("students");
+        students.findOne({"name":name},function(err,result){
             callback(result);
             return;
         })

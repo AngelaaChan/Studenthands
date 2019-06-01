@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>searching tutor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+  <link href="/css/register.css" rel="stylesheet" media="all">
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/"><b>Studenthands</b></a>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Home</a></li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Find Tutors<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/searchTutor">By subjects</a></li>
+                            <li><a href="/findbymap">By Location</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Discussion Forum<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/discussionforum">Search Questions</a></li>
+                            <li><a href="#">Ask Questions</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Weekly Challenge<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/challenge">Current hallenges</a></li>
+                            <li><a href="/ranking">Ranking</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Learning Resources<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/challenge">Search Materials</a></li>
+                            <li><a href="/ranking">Share Materials</a></li>
+                        </ul>
+                    </li>
+        
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <%if(!user){%>
+                        <li><a href="/Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a href="/Register"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+                    <%}else{%>
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span><%=user.username%><span class="caret"></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/userinfo">User information</a></li>
+                                <li><a href="#">Top up</a></li>
+                                <li><a href="/getmessage">Message</a></li>
+                                <li><a href="/Logout">Logout</a></li>
+                            </ul>
+                        </li>
+                    <%}%>
+                </ul>
+            </div>
+    </nav>
+
+    
+
+  <div class="page-wrapper">
+    <div class="wrapper wrapper--w790">
+        <div class="card card-5">
+            <div class="card-heading">
+                <h2 class="title">Searching tutors</h2>
+            </div>
+            <div class="card-body">
+                <!--please please put in the action-->
+                <form action="/search" method="POST">
+                <div class="form-row">
+                        <fieldset class="name"> Popular Subjects:
+                            <table style="width: 100%">
+                                <tr>
+                                    <td>
+                                        <label class="radio-container m-r-45">Mathematics
+                                            <input type="checkbox" name="subject" value = "Mathematics">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="radio-container m-r-45">English
+                                            <input type="checkbox" name="subject" value = "English">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="radio-container m-r-45">Engineering
+                                            <input type="checkbox" name="subject" value = "Engineering">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="radio-container m-r-45">Biology
+                                            <input type="checkbox" name="subject" value = "Biology">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="radio-container m-r-45">Geology
+                                            <input type="checkbox" name="subject" value = "Geology">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="radio-container m-r-45">IT
+                                            <input type="checkbox" name="subject" value = "IT">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="radio-container m-r-45">Accounting
+                                            <input type="checkbox" name="subject" value = "Accounting">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="radio-container m-r-45">Economics
+                                            <input type="checkbox" name="subject" value = "Economics">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="radio-container m-r-45">Finance
+                                            <input type="checkbox" name="subject" value = "Finance">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="radio-container m-r-45">Physics
+                                            <input type="checkbox" name="subject" value = "Physics">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="radio-container m-r-45">Medicine
+                                            <input type="checkbox" name="subject" value = "Medicine">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </fieldset>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Other Subject:</div>
+                        <div class="value">
+                            <div class="input-group-desc">
+                                <input class="input--style-5" type="text" name="subject">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Gender</div>
+                        <div class="p-t-10">
+                            <label class="radio-container m-r-45">Male
+                                <input type="radio" name="gender" value="Male">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="radio-container">Female
+                                <input type="radio" name="gender" value="Female">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn--radius-2 btn--green" type="submit">Search</button>
+                        <a href="/"><button class="btn btn--radius-2 btn--red" type="button">Cancel</button></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+  </div>
+
+</body>
+</html>
+
+<style>
+  .navbar-header {
+      color: #edf0f1;
+      margin-top: -10px;
+  }
+</style>

@@ -25,10 +25,10 @@ exports.searchTutorSub = function(req,res){
     res.render("searchTutorSub.ejs",{"user":user});
 };
 
-exports.searchTutorRate = function(req,res){
+exports.searchTutor = function(req,res){
     var user = req.session.user;
 
-    res.render("searchTutorRate.ejs",{"user":user});
+    res.render("searchTutor.ejs",{"user":user});
 };
 
 exports.findstudentbyname = function(req,res){

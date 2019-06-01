@@ -2,13 +2,15 @@ var db = require("../models/search_db.js");
 
 exports.findtutorc = function(req,res){
     var user = req.session.user;
-    for(var key in req.body){
-        if (req.body[key] == ''){
-            delete(req.body[key]);
-        };
-    };
     db.findtutorcondition(req.body,function(result){
-        res.render("searchtutorresult.ejs",{"result":result,"user":user});
+        if (result.length != 0){
+            res.render("searchtutorresult.ejs",{"result":result,"user":user,"check":"no"});
+        }
+        else{
+            db.findtutorall(function(tutors){
+                res.render("searchtutorresult.ejs",{"result":tutors,"user":user,"check":"nores"});
+            });
+        }
     });
 };
 
@@ -62,4 +64,17 @@ exports.getmessage = function(req,res){
             res.render("getmessage.ejs",{"user":user});
         };
     });
+};
+
+exports.findstudent=function(name,callback){
+    var client = new MongoClient(url, { useNewUrlParser: true });
+    client.connect(err=>{
+        var students=client.db("studenthands").collection("students");
+        students.findOne({"name":name},function(err,result){
+            callback(result);
+            return;
+        })
+        return;
+    });
+    client.close();
 };
