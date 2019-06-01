@@ -96,10 +96,15 @@
                     <div class="name">Gender: <%=user.gender%></div>
                 </div>
                 <div class="form-row">
-                    <div class="name">Subject: <%=user.subject%></div>
+                    <div class="name">Subject:</div>
                 </div>
+                <%for (var i=0;i<user.subject.length;i++){%>
+                    <div class="form-row">
+                        <div class="name"><%=user.subject[i]%></div>
+                    </div>
+                <%}%>
                 <div class="form-row">
-                    <div class="name">University: <%=user.university%></div>
+                    <div class="name">University: <%=user.university.uni_name%></div>
                 </div>
                 <div class="form-row">
                     <div class="name">Email: <%=user.email%></div>

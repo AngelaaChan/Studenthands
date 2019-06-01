@@ -69,19 +69,22 @@
         <div class="card-body">
             <%if(check=="nores"){%>
               <div class="name">Sorry, we don't have the tutor you have, we suggesting you the following:</div>
+              <br>
             <%}%>
             <% for(var i=0;i<result.length;i++){%>
-                <a href="/tutorinfo/<%=result[i].name%>">
                   <!--<img src="/image/people-icon.jpg" alt ="head" width="10%" algin ="right">-->
                   <div class="forum-row">
                     <div class="name">name: <%=result[i].name%><div>
                   </div>
+                  <div class="forum-row">
+                    <div class="name">subject:</div>
+                  </div>
                   <%for (var j=0;j<result[i].subject.length;j++){%>
                     <div class="forum-row">
-                      <div class="name">subject: <%=result[i].subject[j]%></div>
+                      <div class="name"><%=result[i].subject[j]%></div>
                     </div>
                   <%}%>
-                  </a>
+                  <a href="/tutorinfo/<%=result[i].name%>"><button class="btn btn--radius-2 btn--green">More Information...</button></a>
                     <br>
               <% }%>
           </div>
