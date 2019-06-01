@@ -17,7 +17,6 @@ exports.createUser = function(req,res){
             res.render("registersuccess.ejs",{"identity":"student"});
         });
     }else{
-<<<<<<< HEAD
         
         console.log(123);
         var experience = {"exptitle":req.body.exptitle,"sdate":req.body.sdate,"edate":req.body.edate,"expdes":req.body.experiencedescrip};
@@ -37,14 +36,6 @@ exports.createUser = function(req,res){
                 res.render("tutorchoosemarker.ejs");
             });
             
-=======
-         var experience = {"exptitle":req.body.exptitle,"sdate":req.body.sdate,"edate":req.body.edate,"expdes":req.body.experiencedescrip};
-         req.body.experience = experience;
-         var univerisity = {"uni_name":req.body.uni_name,"uni_sdate":req.body.uni_sdate,"uni_edate":req.body.uni_edate,"unides":req.body.unides};
-         req.body.university = univerisity;
-         db.insertutor(req.body,function(result){
-            res.render("registersuccess.ejs",{"identity":"tutor"});
->>>>>>> 815a8cf0d88fec1bf561247cd518100a9664c7df
         });
         //res.render("tutorchoosemarker.ejs");
        
