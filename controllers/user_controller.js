@@ -83,11 +83,10 @@ exports.userinfo = function(req,res){
     var user = req.session.user;
     var id = req.session.identity;
     user.identity = id;
-    console.log(user.identity);
     if(user){
         res.render("userinfo.ejs",{"user":user,"identity":id});
     }else{
-        res.render("Login.ejs",);
+        res.render("Login.ejs");
     }
 };
 
