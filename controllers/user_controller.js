@@ -59,7 +59,8 @@ exports.check_login = function(req,res){
             if (result){
                 req.session.user = result;
                 req.session.identity = "student";
-                res.render("newindex.ejs",{"user":result});
+                req.session.user.identity = "student";
+                res.render("newindex.ejs",{"user":result,"identity":"student"});
             }else{
                 res.render("Login.ejs");
             };  
@@ -69,7 +70,8 @@ exports.check_login = function(req,res){
             if (result){
                 req.session.user = result;
                 req.session.identity = "tutor";
-                res.render("newindex.ejs",{"user":result});
+                req.session.user.identity = "tutor";
+                res.render("newindex.ejs",{"user":result,"identity":"tutor"});
             }else{
                 res.render("Login.ejs");
             };
@@ -81,10 +83,11 @@ exports.userinfo = function(req,res){
     var user = req.session.user;
     var id = req.session.identity;
     user.identity = id;
+    console.log(user.identity);
     if(user){
-        res.render("userinfo.ejs",{"user":user});
+        res.render("userinfo.ejs",{"user":user,"identity":id});
     }else{
-        res.render("Login.ejs");
+        res.render("Login.ejs",);
     }
 };
 
