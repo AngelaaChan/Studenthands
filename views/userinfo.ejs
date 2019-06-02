@@ -13,8 +13,6 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 	<link href="/css/register.css" rel="stylesheet" media="all">
 
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
     <link href="/css/default.css" rel="stylesheet" type="text/css" media="all" />
     <link href="/css/fonts.css" rel="stylesheet" type="text/css" media="all" />
 
@@ -22,7 +20,13 @@
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 
-    <!-- Vendor CSS-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+    </style>
+
 
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 
@@ -79,7 +83,7 @@
             </div>
     </nav>
 
-<div class="page-wrapper">
+<!--<div class="page-wrapper">
     <div class="wrapper wrapper--w790">
         <div class="card card-5">
             <div class="card-heading">
@@ -112,7 +116,106 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
+
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+        <!-- The Grid -->
+        <div class="w3-row-padding">
+    
+            <!-- Left Column -->
+            <div class="w3-third">
+    
+                <div class="w3-white w3-text-grey w3-card-4">
+                    
+                    <div class="w3-container">
+                        <h2><%=user.name%></h2>
+                        <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-green"></i><%=user.email%></p>
+                        <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-green"></i><%=user.phone%></p>
+                        <hr>
+    
+                        <%if (user.identity = "tutor"){%>
+                            <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-white"></i>Feedback</b></p>
+                            <p>Clear and understandable</p>
+                            <div class="w3-light-grey w3-round-xlarge w3-small">
+                                <div class="w3-container w3-center w3-round-xlarge w3-green" style="width:<%=user.rate%>%"><%=user.rate%></div>
+                            </div>
+                            <p>Organisational skills</p>
+                            <div class="w3-light-grey w3-round-xlarge w3-small">
+                                <div class="w3-container w3-center w3-round-xlarge w3-green" style="width:<%=user.rate%>%">
+                                    <div class="w3-center w3-text-white"><%=user.rate%></div>
+                                </div>
+                            </div>
+                            <p>Willingness to help</p>
+                            <div class="w3-light-grey w3-round-xlarge w3-small">
+                                <div class="w3-container w3-center w3-round-xlarge w3-green" style="width:<%=user.rate%>%"><%=user.rate%></div>
+                            </div>
+                            <p>Guid and Encouragement</p>
+                            <div class="w3-light-grey w3-round-xlarge w3-small">
+                                <div class="w3-container w3-center w3-round-xlarge w3-green" style="width:<%=user.rate%>%"><%=user.rate%></div>
+                            </div>
+                            <br>
+                        <%}%>
+    
+    
+                    </div>
+                </div>
+    
+                <!-- End Left Column -->
+            </div>
+    
+            <!-- Right Column -->
+            <div class="w3-twothird">
+    
+                <div class="w3-container w3-card w3-white">
+                    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-green"></i>Subjects</h2>
+                    <div class="w3-container">
+                        <h5 class="w3-opacity"><b>User Information</b></h5>
+                        <%if (user.identity == "tutor"){%>
+                            <h6 class="w3-text-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Time Available : from <%=user.start_time%> to <%=user.end_time%>
+                        <%}%>
+                        </h6>
+                        <% for (var i =0; i<user.subject.length; i++) {%>
+                            <p><%=user.subject[i]%></p>
+                        <%}%>
+                        <br>
+                    </div>
+    
+                </div>
+                <%if(user.identity == "tutor"){%>
+                <div class="w3-container w3-card w3-white w3-margin-bottom">
+                    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-green"></i>Work Experience</h2>
+    
+                    <div class="w3-container">
+                        <h5 class="w3-opacity"><b><%=user.experience.exptitle%></b></h5>
+                        <h6 class="w3-text-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>from <%=user.experience.sdate%> to <%=user.experience.edate%></h6>
+                        <p> <%=user.experience.expdes%></p>
+                        <br>
+                    </div>
+    
+                </div>
+    
+                <div class="w3-container w3-card w3-white">
+                    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-green"></i>Education</h2>
+                    <div class="w3-container">
+                        <h5 class="w3-opacity"><b><%=user.university.uni_name%></b></h5>
+                        <h6 class="w3-text-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>from <%=user.university.uni_sdate%> to <%=user.university.uni_edate%></h6>
+                        <p> <%=user.university.unides%></p>
+                        <br>
+    
+                    <div class="form-row"></div>
+    
+                    </div>
+                <!-- End Right Column -->
+                </div>
+                <%}%>
+            </div>
+    
+            <!-- End Grid -->
+        </div>
+    
+        <!-- End Page Container -->
+    </div>
 
 </body>
 </html>

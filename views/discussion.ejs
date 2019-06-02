@@ -66,21 +66,21 @@
           <h2 class="title">Discussion Forum</h2>
         </div>
         <div class="card-body">
-        <div class="panel panel-info">
         <%for (var i=0;i<questions.length;i++){%>
+            <div class="panel panel-info">
                 <div class="form-row panel-heading">
-                    <div class="name">question: <%=questions[i].question%></div>
+                    <div class="name">Question: <%=questions[i].question%></div>
                 </div>
                 <div class="form-row">
-                    <div class="name">poster: <%=questions[i].poster%></div>
+                    <div class="name">Poster: <%=questions[i].poster%></div>
                 </div>
                 <div class="form-row">
-                    <div class="name">description: <%=questions[i].description%></div>
+                    <div class="name">Description: <%=questions[i].description%></div>
                 </div>
                 
                 <%for (var j=0;j<questions[i].answer.length;j++){%>
                     <div class="form-row">
-                        <div class="name">answer<%=j+1%> from <%=questions[i].answer[j].poster%>: <%=questions[i].answer[j].ans%></div>
+                        <div class="name">Answer<%=j+1%> from <%=questions[i].answer[j].poster%>: <%=questions[i].answer[j].ans%></div>
                     </div>
                 <%}%>
                 <%if (user){%>
@@ -94,23 +94,25 @@
                         </div>
                     </form>
                 <%}%>
+            </div>
             <%}%>
             <%if (user){%>
-                <form action="/postquestion" method="POST">
-                    <div class="form-row">
-                        <div class="name">question:</div>
-                    </div>
-                    <input class="input--style-5" type="text" name="question" required>
-                    <div class="form-row">
-                        <div class="name">description:</div>
-                    </div>
-                    <input class="input--style-5" type="text" name="description" required>
-                    <div>
-                        <button class="btn btn--radius-2 btn--green" type="submit" value ="post">Post Question</button>
-                    </div>
-                </form>
+                <div class="panel panel-info">
+                    <form action="/postquestion" method="POST">
+                        <div class="form-row">
+                            <div class="name">Question:</div>
+                        </div>
+                        <input class="input--style-5" type="text" name="question" required>
+                        <div class="form-row">
+                            <div class="name">Description:</div>
+                        </div>
+                        <input class="input--style-5" type="text" name="description" required>
+                        <div>
+                            <button class="btn btn--radius-2 btn--green" type="submit" value ="post">Post Question</button>
+                        </div>
+                    </form>
+                </div>
             <%}%>
-        </div>
         </div>
       </div>
     </div>

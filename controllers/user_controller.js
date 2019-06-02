@@ -22,16 +22,13 @@ exports.createUser = function(req,res){
         });
     }else{
         
-        console.log(123);
         var experience = {"exptitle":req.body.exptitle,"sdate":req.body.sdate,"edate":req.body.edate,"expdes":req.body.experiencedescrip};
         var university = {"uni_name":req.body.uni_name,"uni_sdate":req.body.uni_sdate,"uni_edate":req.body.uni_edate};
         req.body.experience = experience;
         req.body.university = university;
         db.insertutor(req.body,function(result){
             db.findtutor(req.body.name,function(tutor){
-                console.log("231");
                 req.session.user = tutor;
-                console.log(tutor);
                 res.render("tutorchoosemarker.ejs");
             });
             
@@ -50,10 +47,7 @@ exports.updatemarker = function(req,res){
         db.addmarker(user,coord);
 
     });
-    //var lat = parseFloat(req.query.lat);
-    //var lng = parseFloat(req.query.lng);
-    //var coord = {"lat":lat,"lng":lng};
-    //db.addmarker()
+
 }
 
 
@@ -85,6 +79,8 @@ exports.check_login = function(req,res){
 
 exports.userinfo = function(req,res){
     var user = req.session.user;
+    var id = req.session.identity;
+    user.identity = id;
     if(user){
         res.render("userinfo.ejs",{"user":user});
     }else{
