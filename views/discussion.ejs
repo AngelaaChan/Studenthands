@@ -66,8 +66,9 @@
           <h2 class="title">Discussion Forum</h2>
         </div>
         <div class="card-body">
+        <div class="panel panel-info">
         <%for (var i=0;i<questions.length;i++){%>
-                <div class="form-row">
+                <div class="form-row panel-heading">
                     <div class="name">question: <%=questions[i].question%></div>
                 </div>
                 <div class="form-row">
@@ -76,7 +77,7 @@
                 <div class="form-row">
                     <div class="name">description: <%=questions[i].description%></div>
                 </div>
-            
+                
                 <%for (var j=0;j<questions[i].answer.length;j++){%>
                     <div class="form-row">
                         <div class="name">answer<%=j+1%> from <%=questions[i].answer[j].poster%>: <%=questions[i].answer[j].ans%></div>
@@ -109,6 +110,7 @@
                     </div>
                 </form>
             <%}%>
+        </div>
         </div>
       </div>
     </div>

@@ -72,15 +72,18 @@
         <hr>
         <%}%>
         <br>
+        <div class="panel panel-info">
         <% for(var i=0;i<result.length;i++){%>
         <!--<img src="/image/people-icon.jpg" alt ="head" width="10%" algin ="right">-->
-          <div class="name">name: <%=result[i].name%></div>
-            <div class="name">subject:</div>
+          <div class="name panel-heading">name: <%=result[i].name%></div>
+          <div class="name panel-name">subject:</div>
+          <div class="panel-body">
           <%for (var j=0;j<result[i].subject.length;j++){%>
           <div class="forum-row">
             <div class="name"><%=result[i].subject[j]%></div>
           </div>
           <%}%>
+          </div>
           <a href="/tutorinfo/<%=result[i].name%>"><button class="btn btn--radius-2 btn--green">More information...</button></a>
           <hr>
           <br>
