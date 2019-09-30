@@ -54,7 +54,7 @@ After login, more functionalities can be approached. On the top right corner, us
 - Logout 
 - Discussion forum (can be accessed from navigation bar and homepage)
 
-###### url: <https://studenthands.herokuapp.com/Register> or locally : <http://localhost:5000/Register>
+###### url: https://studenthand.herokuapp.com/
 
 ###### controller: controllers/user_controller.js
 
@@ -75,7 +75,7 @@ If there is no matching result, we will suggest results so that students can che
 
 ###### url: <http://localhost:5000/searchTutor> or locally: <http://localhost:5000/searchTutor>
 
-###### support functionalities: get message url (must after login) :<https://studenthands.herokuapp.com/getmessage> locally:<http://localhost:5000/getmessage>
+###### support functionalities: get message url (must after login) :<https://studenthand.herokuapp.com/getmessage> locally:<http://localhost:5000/getmessage>
 
 ###### controller: controllers/search_controller.js
 
@@ -91,7 +91,7 @@ To visualize the exact locations of tutors. We use Google Map to present all the
 
 users can search tutor by location. In this page, first of all is all of the tutors available and given coordinates will be on the map. By clicking the marker, a information window will show up with some basic information of the tutor, such as name and subject/s he/she is/are tutoring. By clicking their names, will directly goes to the tutor information page, and same as above, if you have logined, you can leave message to the tutor and wait for response. Also, you can type in the subject exactly you want to get help with and the marker will be update with the condition given (all of the tutors on the map will be match with the condition).
 
-###### url: <https://studenthands.herokuapp.com/findbymap> or locally : <http://localhost:5000/findbymap>
+###### url: <https://studenthand.herokuapp.com/findbymap> or locally : <http://localhost:5000/findbymap>
 
 ###### controller: controllers/map_controller.js
 
